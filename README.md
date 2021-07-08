@@ -1,6 +1,6 @@
 # dnd-5th-6-repo
 
-### commit convention
+### Commit Convention
 | prefix | commit message |
 |:-:|:-:|
 |feat|새로운 기능 추가|
@@ -11,7 +11,7 @@
 |test|테스트 코드, 리팩토링 테스트 코드 추가|
 |chore|빌드 업무 수정, 패키지 매니저 수정|
 
-### architecture
+### Architecture
 <img src="../main/images/architecture.PNG" height="300">
 
 ### Git Branch 전략
