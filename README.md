@@ -13,3 +13,8 @@
 
 ### architecture
 <img src="../main/images/architecture.PNG" height="300">
+
+### Git Branch 전략
+ -  master  - 최종 완성 됐을 때 [develop] 으로부터 pull  
+ -  develop - 주기적으로 [feature/(기능)] 으로부터 pull   
+ -  feature - 기능 별 작업
