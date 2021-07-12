@@ -1,8 +1,10 @@
 const {ApolloServer} = require('apollo-server-express');
+const {PrismaClient} = require('@prisma/client');
 const queries = require('./lib/typeDefs/Query');
 const mutations = require('./lib/typeDefs/Mutation');
 const users = require('./lib/resolver/users');
 const schema = require('./lib/schema/_schema');
+const prisma = new PrismaClient();
 
 const typeDefs = [
     queries,
@@ -19,7 +21,7 @@ const apollo = new ApolloServer({
     resolvers,
     context: ({req}) => {
         return {
-            req
+            req, prisma
         }
     }
 })
