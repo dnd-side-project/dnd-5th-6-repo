@@ -5,6 +5,9 @@ const typeDefs = gql`
         testQuery(
             test: String!
         ): String!
+        testRead(
+            test: String!
+        ): String!
     }    
 `
 
