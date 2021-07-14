@@ -30,6 +30,29 @@ const resolvers = {
                 }
             })
             return "Create"
+        },
+
+        testUpdate: async (parent, args, context) => {
+            const {prisma} = context;
+            const user = await prisma.user.update({
+                where: {
+                    userIndex: 2
+                },
+                data: {
+                    naverID: 'naver12'
+                }
+            })
+            return "Update"
+        },
+
+        testDelete: async (parent, args, context) => {
+            const {prisma} = context;
+            const user = await prisma.user.delete({
+                where: {
+                    userIndex: 2
+                }
+            })
+            return "Delete"
         }
 
     }

@@ -8,6 +8,12 @@ const typeDefs = gql`
         testCreate(
             test_: String!
         ): String!
+        testUpdate(
+            test_: String!
+        ): String!
+        testDelete(
+            test_: String!
+        ): String!
     }
 `
 
