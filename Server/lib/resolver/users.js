@@ -1,21 +1,22 @@
-const {validation} = require('../resolver-utils/validation')
+const {naverUserInfo} = require('../resolver-utils/NaverUserInfo');
+
 const resolvers = {
     Query: {
         testQuery: (parent, args) => {
             return args.test + "Test Query!";
         },
-        testRead: async (parent, args) => {
-            const responseCode = await validation(args.test);
+        naverLogin: async (parent, args) => {
+            const responseCode = await naverUserInfo(args.test);
             if(responseCode === 200) {
 
             }else{
-                // return {
-                //     isSuccess: false,
-                //     code: responseCode,
-                //     message: "별론걸??"
-                // }
+                return {
+                    isSuccess: false,
+                    code: responseCode,
+                    message: "별론걸??"
+                }
             }
-            return args.test;
+            return args.naverLogin;
         }
     },
     Mutation: {

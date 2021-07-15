@@ -2,11 +2,11 @@ const {gql} = require('apollo-server');
 
 const typeDefs = gql`
     type Query{
-        testQuery(
+        testQuery (
             test: String!
         ): String!
-        testRead(
-            test: String!
+        naverLogin (
+            accessToken: String!
         ): String!
     }    
 `
