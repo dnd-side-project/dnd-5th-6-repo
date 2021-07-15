@@ -7,13 +7,27 @@ const naverUserInfo = async (accessToken) => {
             'Authorization' : `Bearer ${accessToken}`
         }
     })
-    console.log(response)
-    if(response.status === 200){
-        const result = await response.text();
-        console.log("너구나?",result);
+
+    const result = await response.text();
+
+    if (response.status === 200) {
+        return [response.status, JSON.parse(result).response.id];
     }
+    else {
+        return [response.status, JSON.parse(result).message];
+    }
+    
+    //const data = [response.status, JSON.parse(result).response.id];
+    //console.log(JSON.parse(result));
+
+    //return data;
+}
+
+const naverDuplicateCheck = async (id) => {
+    console.log('id >>', id);
 }
 
 module.exports = {
-    naverUserInfo
+    naverUserInfo,
+    naverDuplicateCheck
 }

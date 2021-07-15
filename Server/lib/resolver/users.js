@@ -1,4 +1,4 @@
-const {naverUserInfo} = require('../resolver-utils/NaverUserInfo');
+const {naverUserInfo, naverDuplicateCheck} = require('../resolver-utils/NaverUserInfo');
 
 const resolvers = {
     Query: {
@@ -6,10 +6,16 @@ const resolvers = {
             return args.test + "Test Query!";
         },
         naverLogin: async (parent, args) => {
-            const responseCode = await naverUserInfo(args.test);
-            if(responseCode === 200) {
+            const response = await naverUserInfo(args.accessToken);
+            
+            console.log('response >>', response);
 
-            }else{
+            if(response[0] === 200) {
+                // const isDuplicated = await naverDuplicateCheck(response[1]);
+                // 이미 가입한 유저인지, 새로 로그인 하는 유저인지 확인
+            }
+
+            else {
                 return {
                     isSuccess: false,
                     code: responseCode,
