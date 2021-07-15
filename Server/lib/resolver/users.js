@@ -1,18 +1,21 @@
-
+const {validation} = require('../resolver-utils/validation')
 const resolvers = {
     Query: {
         testQuery: (parent, args) => {
             return args.test + "Test Query!";
         },
-        testRead: async (parent, args, context) => {
-            const {prisma} = context;
-            try {
-                const user = await prisma.user.findMany()
-                console.log(user);
-            }catch (err) {
-                throw err
+        testRead: async (parent, args) => {
+            const responseCode = await validation(args.test);
+            if(responseCode === 200) {
+
+            }else{
+                // return {
+                //     isSuccess: false,
+                //     code: responseCode,
+                //     message: "별론걸??"
+                // }
             }
-            return "Read"
+            return args.test;
         }
     },
     Mutation: {
