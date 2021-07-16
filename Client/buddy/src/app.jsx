@@ -1,7 +1,8 @@
 import React from "react";
+import NaverLogin from "./components/naverLogin";
 
 function App() {
-  return <h1>React</h1>;
+  return <NaverLogin></NaverLogin>;
 }
 
 export default App;
