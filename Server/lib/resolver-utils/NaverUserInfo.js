@@ -24,6 +24,10 @@ const naverDuplicateCheck = async (context, id) => {
         const result = await context.prisma.user.findMany();
         if (result.filter(node => node.naverID === id).length > 0) {
             // Logic
+            return {
+                nickname: "TEST ID",
+                userIndex: result[result.length - 1].userIndex
+            }
         } else {
             await context.prisma.user.create({
                 data: {

@@ -1,5 +1,5 @@
 const {naverUserInfo, naverDuplicateCheck} = require('../resolver-utils/NaverUserInfo');
-
+const {createJwtToken}= require('../resolver-utils/UserAuth')
 const resolvers = {
     Query: {
         testQuery: (parent, args) => {
@@ -9,8 +9,7 @@ const resolvers = {
             const response = await naverUserInfo(args.accessToken);
             if(response[0] === 200) {
                 const isDuplicated = await naverDuplicateCheck(context, response[1]);
-                console.log("뭔데?:", isDuplicated);
-                // 이미 가입한 유저인지, 새로 로그인 하는 유저인지 확인
+                return createJwtToken(isDuplicated.userIndex);
             } else {
                 return JSON.stringify({
                     isSuccess: false,
@@ -18,7 +17,6 @@ const resolvers = {
                     message: "Error"
                 });
             }
-            return args.accessToken;
         }
     },
     Mutation: {
