@@ -16,6 +16,18 @@ const resolvers = [
     users.resolvers,
 ]
 
+const testServer = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: () => {
+        const {request: req} = require('express')
+        req.headers['authorization'] = `Bearer ${process.env.TEST_TOKEN}`
+        return {
+            req, prisma
+        }
+    }
+})
+
 const apollo = new ApolloServer({
     typeDefs,
     resolvers,
@@ -26,4 +38,4 @@ const apollo = new ApolloServer({
     }
 })
 
-module.exports = {apollo}
+module.exports = {apollo, testServer}
