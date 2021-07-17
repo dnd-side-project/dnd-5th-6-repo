@@ -1,35 +1,28 @@
 const {naverUserInfo, naverDuplicateCheck} = require('../resolver-utils/NaverUserInfo');
-
+const {createJwtToken}= require('../resolver-utils/UserAuth')
 const resolvers = {
     Query: {
         testQuery: (parent, args) => {
             return args.test + "Test Query!";
         },
-        naverLogin: async (parent, args) => {
+        naverLogin: async (parent, args, context) => {
             const response = await naverUserInfo(args.accessToken);
-            
-            console.log('response >>', response);
-
             if(response[0] === 200) {
-                // const isDuplicated = await naverDuplicateCheck(response[1]);
-                // 이미 가입한 유저인지, 새로 로그인 하는 유저인지 확인
-            }
-
-            else {
-                return {
+                const isDuplicated = await naverDuplicateCheck(context, response[1]);
+                return createJwtToken(isDuplicated.userIndex);
+            } else {
+                return JSON.stringify({
                     isSuccess: false,
-                    code: responseCode,
-                    message: "별론걸??"
-                }
+                    code: response[0],
+                    message: "Error"
+                });
             }
-            return args.naverLogin;
         }
     },
     Mutation: {
         testMutation: async (parent, args, context) => {
             return args.test_ + "Test Mutation!";
         },
-
         testCreate: async (parent, args, context) => {
             const {prisma} = context;
             const user = await prisma.user.create({
@@ -41,7 +34,6 @@ const resolvers = {
             })
             return "Create"
         },
-
         testUpdate: async (parent, args, context) => {
             const {prisma} = context;
             const user = await prisma.user.update({
@@ -54,7 +46,6 @@ const resolvers = {
             })
             return "Update"
         },
-
         testDelete: async (parent, args, context) => {
             const {prisma} = context;
             const user = await prisma.user.delete({
