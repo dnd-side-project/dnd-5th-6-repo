@@ -11,10 +11,10 @@ const naverUserInfo = async (accessToken) => {
     const result = await response.text();
     console.log("유저 정보:", result);
     if (response.status === 200) {
-        return [response.status, JSON.parse(result).response.id];
+        return {status: response.status, userId: JSON.parse(result).response.id};
     }
     else {
-        return [response.status, JSON.parse(result).message];
+        return {status: response.status, error: JSON.parse(result).message};
     }
 }
 
@@ -30,15 +30,15 @@ const naverDuplicateCheck = async (context, id, nickname) => {
         } else {
             await context.prisma.user.create({
                 data: {
-                    userName: makeUserNickname(context),
+                    userName: "dummy",
                     naverID: id,
                     googleID: "null"
                 }
             })
-            const currUserIndex = await context.prisma.user.findMany();
+            const currUserIndex = await makeUserNickname(context);
             return {
-                nickname: currUserIndex[currUserIndex.length - 1].userName,
-                userIndex: currUserIndex[currUserIndex.length - 1].userIndex
+                nickname: currUserIndex.nickName,
+                userIndex: currUserIndex.userIndex
             }
         }
     } catch (err) {
@@ -47,21 +47,32 @@ const naverDuplicateCheck = async (context, id, nickname) => {
 }
 
 const makeUserNickname = async (context) => {
-    let Alpa = 65;
-    // TODO: count 값 기준으로 진행하면 ID가 중복 될 수 있음
-    const userNode = await context.prisma.user.count();
-    let count = userNode[userNode.length - 1].userIndex;
-    while(count > 999){
-        count = count % 999
-        Alpa++;
+    let alpa = 65;
+    let nick;
+    const userNode = await context.prisma.user.findMany();
+    let lastUser = userNode[userNode.length - 1];
+    let tempUserIndex = lastUser.userIndex;
+    while(tempUserIndex > 999) {
+        tempUserIndex = tempUserIndex % 999
+        alpa++;
     }
-    if(count < 10){
-        return String.fromCharCode(Alpa).concat('00', String(count+1));
-    }else if (count < 100){
-        return String.fromCharCode(Alpa).concat('0', String(count+1));
+
+    if(tempUserIndex < 10){
+        nick = String.fromCharCode(alpa).concat('00', String(tempUserIndex));
+    }else if (tempUserIndex < 100){
+        nick = String.fromCharCode(alpa).concat('0', String(tempUserIndex));
     }else{
-        return String.fromCharCode(Alpa).concat(String(count+1));
+        nick = String.fromCharCode(alpa).concat(String(tempUserIndex));
     }
+
+    await context.prisma.user.update({
+        where: {
+            userIndex: lastUser.userIndex
+        },data: {
+            userName: nick
+        }
+    })
+    return {userIndex: lastUser.userIndex, nickName: nick};
 }
 
 module.exports = {

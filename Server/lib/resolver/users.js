@@ -7,14 +7,14 @@ const resolvers = {
         },
         naverLogin: async (parent, args, context) => {
             const response = await naverUserInfo(args.accessToken);
-            if(response[0] === 200) {
-                const isDuplicated = await naverDuplicateCheck(context, response[1]);
+            if(response.status === 200) {
+                const isDuplicated = await naverDuplicateCheck(context, response.userId);
                 return createJwtToken(isDuplicated.userIndex);
             } else {
                 return JSON.stringify({
                     isSuccess: false,
-                    code: response[0],
-                    message: "Error"
+                    code: response.status,
+                    message: response.error
                 });
             }
         }
