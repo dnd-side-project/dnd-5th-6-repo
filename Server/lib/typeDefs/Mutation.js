@@ -5,6 +5,15 @@ const typeDefs = gql`
         testMutation (
             test_: String!
         ): String!
+        testCreate(
+            test_: String!
+        ): String!
+        testUpdate(
+            test_: String!
+        ): String!
+        testDelete(
+            test_: String!
+        ): String!
     }
 `
 
