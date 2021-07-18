@@ -18,13 +18,11 @@ const naverUserInfo = async (accessToken) => {
     }
 }
 
-// TODO: Nickname return 값은 닉네임 생성 방법 정의하여 사용해야 함
 const naverDuplicateCheck = async (context, id, nickname) => {
     try {
         const result = await context.prisma.user.findMany();
         const targetUserNode = result.filter(node => node.naverID === id);
         if (targetUserNode.length > 0) {
-            makeUserNickname(1);
             return {
                 nickname: result[result.length - 1].userName,
                 userIndex: targetUserNode.userIndex
@@ -49,13 +47,22 @@ const naverDuplicateCheck = async (context, id, nickname) => {
 }
 
 const makeUserNickname = async (context) => {
-    console.log('A'.charCodeAt(0));
-    const count = await context.prisma.user.count();
-    console.log("COUNT: ", count);
-    return context;
+    let Alpa = 65;
+    // TODO: count 값 기준으로 진행하면 ID가 중복 될 수 있음
+    const userNode = await context.prisma.user.count();
+    let count = userNode[userNode.length - 1].userIndex;
+    while(count > 999){
+        count = count % 999
+        Alpa++;
+    }
+    if(count < 10){
+        return String.fromCharCode(Alpa).concat('00', String(count+1));
+    }else if (count < 100){
+        return String.fromCharCode(Alpa).concat('0', String(count+1));
+    }else{
+        return String.fromCharCode(Alpa).concat(String(count+1));
+    }
 }
-
-
 
 module.exports = {
     naverUserInfo,
