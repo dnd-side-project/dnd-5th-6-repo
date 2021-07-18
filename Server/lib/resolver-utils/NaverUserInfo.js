@@ -9,7 +9,7 @@ const naverUserInfo = async (accessToken) => {
     })
 
     const result = await response.text();
-    console.log(result);
+    console.log("유저 정보:", result);
     if (response.status === 200) {
         return [response.status, JSON.parse(result).response.id];
     }
@@ -18,34 +18,50 @@ const naverUserInfo = async (accessToken) => {
     }
 }
 
-// TODO: Nickname return 값은 닉네임 생성 방법 정의하여 사용해야 함
-const naverDuplicateCheck = async (context, id) => {
+const naverDuplicateCheck = async (context, id, nickname) => {
     try {
         const result = await context.prisma.user.findMany();
-        if (result.filter(node => node.naverID === id).length > 0) {
-            // Logic
+        const targetUserNode = result.filter(node => node.naverID === id);
+        if (targetUserNode.length > 0) {
             return {
-                nickname: "TEST ID",
-                userIndex: result[result.length - 1].userIndex
+                nickname: result[result.length - 1].userName,
+                userIndex: targetUserNode.userIndex
             }
         } else {
             await context.prisma.user.create({
                 data: {
-                    userName: "TEST ID",
+                    userName: makeUserNickname(context),
                     naverID: id,
                     googleID: "null"
                 }
             })
             const currUserIndex = await context.prisma.user.findMany();
             return {
-                nickname: "TEST ID",
+                nickname: currUserIndex[currUserIndex.length - 1].userName,
                 userIndex: currUserIndex[currUserIndex.length - 1].userIndex
             }
         }
     } catch (err) {
         throw err;
     }
+}
 
+const makeUserNickname = async (context) => {
+    let Alpa = 65;
+    // TODO: count 값 기준으로 진행하면 ID가 중복 될 수 있음
+    const userNode = await context.prisma.user.count();
+    let count = userNode[userNode.length - 1].userIndex;
+    while(count > 999){
+        count = count % 999
+        Alpa++;
+    }
+    if(count < 10){
+        return String.fromCharCode(Alpa).concat('00', String(count+1));
+    }else if (count < 100){
+        return String.fromCharCode(Alpa).concat('0', String(count+1));
+    }else{
+        return String.fromCharCode(Alpa).concat(String(count+1));
+    }
 }
 
 module.exports = {
