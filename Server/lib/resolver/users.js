@@ -41,21 +41,20 @@ const resolvers = {
         kakaoLogin: async (parent, args, context) => {
             const response = await kakaoValidCheck(context, args.accessToken);
             const token = createJwtToken(response.userIndex);
-
-            if (response.status === 200) {
+            if (response.status === 200 || response.status === 201) {
                 if (response.newUser) {
                     return JSON.stringify({
                         isSuccess: true,
-                        code: 200,
-                        message: "join success",
+                        code: response.status,
+                        message: "Join Success",
                         JWT: token
                     })
                 }
                 else {
                     return JSON.stringify({
                         isSuccess: true,
-                        code: 201,
-                        message: "login success",
+                        code: response.status,
+                        message: "Login Success",
                         JWT: token
                     })
                 }            
@@ -63,7 +62,7 @@ const resolvers = {
                 return JSON.stringify({
                     isSuccess: false,
                     code: response.status,
-                    message: "invalid access token"
+                    message: response.error
                 })
             }
         }
