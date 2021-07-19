@@ -9,7 +9,25 @@ const resolvers = {
             const response = await naverUserInfo(args.accessToken);
             if(response.status === 200) {
                 const isDuplicated = await naverDuplicateCheck(context, response.userId);
-                return createJwtToken(isDuplicated.userIndex);
+                const token = createJwtToken(isDuplicated.userIndex);
+                
+                if (isDuplicated.newUser) {
+                    return JSON.stringify({
+                        isSuccess: true,
+                        code: 200,
+                        message: "join success",
+                        JWT: token
+                    })
+                }
+                else {
+                    return JSON.stringify({
+                        isSuccess: true,
+                        code: 201,
+                        message: "login success",
+                        JWT: token
+                    })
+                }
+
             } else {
                 return JSON.stringify({
                     isSuccess: false,
