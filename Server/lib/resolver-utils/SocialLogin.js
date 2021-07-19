@@ -33,7 +33,76 @@ const naverDuplicateCheck = async (context, id, nickname) => {
                 data: {
                     userName: "dummy",
                     naverID: id,
-                    googleID: "null"
+                    kakaoID: "null"
+                }
+            })
+            const currUserIndex = await makeUserNickname(context);
+            return {
+                nickname: currUserIndex.nickName,
+                userIndex: currUserIndex.userIndex,
+                newUser: true
+            }
+        }
+    } catch (err) {
+        throw err;
+    }
+}
+
+const kakaoValidCheck = async (context, accessToken) => {
+    const response = await fetch('https://kapi.kakao.com/v1/user/access_token_info', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+
+    const result = await response.text();
+
+    if (JSON.parse(result).msg) {
+        return {status: 400, error: JSON.parse(result).msg}
+    }
+    else {
+        const userInfo = await kakaoUserInfo(context, accessToken);
+
+        return {
+            status: 200,
+            userIndex: userInfo.userIndex,
+            newUser: userInfo.newUser
+        }
+    }
+}
+
+const kakaoUserInfo = async (context, accessToken) => {
+    const response = await fetch('https://kapi.kakao.com/v2/user/me', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+
+    const result = await response.text();
+
+    return await kakaoDuplicateCheck(context, JSON.parse(result).id);
+}
+
+const kakaoDuplicateCheck = async (context, id) => {
+    try {
+
+        const result = await context.prisma.user.findMany();
+        const targetUserNode = result.filter(node => node.kakaoID === String(id));
+
+        if (targetUserNode.length > 0) {
+            return {
+                nickname: result[result.length - 1].userName,
+                userIndex: targetUserNode[0].userIndex,
+                newUser: false
+            }
+        } else {
+            await context.prisma.user.create({
+                data: {
+                    userName: "dummy",
+                    naverID: "null",
+                    kakaoID: String(id)
                 }
             })
             const currUserIndex = await makeUserNickname(context);
@@ -79,5 +148,8 @@ const makeUserNickname = async (context) => {
 
 module.exports = {
     naverUserInfo,
-    naverDuplicateCheck
+    naverDuplicateCheck,
+    kakaoValidCheck,
+    kakaoUserInfo,
+    kakaoDuplicateCheck
 }
