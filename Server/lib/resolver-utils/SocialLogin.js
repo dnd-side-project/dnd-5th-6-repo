@@ -56,16 +56,14 @@ const kakaoValidCheck = async (context, accessToken) => {
         }
     })
 
-    const result = await response.text();
-
-    if (JSON.parse(result).msg) {
-        return {status: 400, error: JSON.parse(result).msg}
+    const result = JSON.parse(await response.text());
+    if (result.msg) {
+        return {status: result.code, error: result.msg}
     }
     else {
         const userInfo = await kakaoUserInfo(context, accessToken);
-
         return {
-            status: 200,
+            status: userInfo.code,
             userIndex: userInfo.userIndex,
             newUser: userInfo.newUser
         }
@@ -81,7 +79,6 @@ const kakaoUserInfo = async (context, accessToken) => {
     })
 
     const result = await response.text();
-
     return await kakaoDuplicateCheck(context, JSON.parse(result).id);
 }
 
@@ -93,6 +90,7 @@ const kakaoDuplicateCheck = async (context, id) => {
 
         if (targetUserNode.length > 0) {
             return {
+                code: 201,
                 nickname: result[result.length - 1].userName,
                 userIndex: targetUserNode[0].userIndex,
                 newUser: false
@@ -107,6 +105,7 @@ const kakaoDuplicateCheck = async (context, id) => {
             })
             const currUserIndex = await makeUserNickname(context);
             return {
+                code: 200,
                 nickname: currUserIndex.nickName,
                 userIndex: currUserIndex.userIndex,
                 newUser: true
