@@ -11,5 +11,5 @@ model User {
   userIndex     Int    @id @default(autoincrement())
   userName      String
   naverID       String
-  googleID      String
+  kakaoID      String
 }
