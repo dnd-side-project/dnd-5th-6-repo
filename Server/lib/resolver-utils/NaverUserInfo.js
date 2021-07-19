@@ -9,7 +9,7 @@ const naverUserInfo = async (accessToken) => {
     })
 
     const result = await response.text();
-    console.log("유저 정보:", result);
+    
     if (response.status === 200) {
         return {status: response.status, userId: JSON.parse(result).response.id};
     }
@@ -25,7 +25,8 @@ const naverDuplicateCheck = async (context, id, nickname) => {
         if (targetUserNode.length > 0) {
             return {
                 nickname: result[result.length - 1].userName,
-                userIndex: targetUserNode.userIndex
+                userIndex: targetUserNode[0].userIndex,
+                newUser: false
             }
         } else {
             await context.prisma.user.create({
@@ -38,7 +39,8 @@ const naverDuplicateCheck = async (context, id, nickname) => {
             const currUserIndex = await makeUserNickname(context);
             return {
                 nickname: currUserIndex.nickName,
-                userIndex: currUserIndex.userIndex
+                userIndex: currUserIndex.userIndex,
+                newUser: true
             }
         }
     } catch (err) {
