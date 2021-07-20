@@ -3,8 +3,5 @@
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.9"
   },
-  "devDependencies": {
-    "babel-jest": "^27.0.6",
-    "jest": "^27.0.6"
-  }
+  "devDependencies": {}
 }
