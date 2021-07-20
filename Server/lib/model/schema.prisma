@@ -9,7 +9,22 @@ datasource db {
 
 model User {
   userIndex Int     @id @default(autoincrement())
-  userName  String
-  naverID   String
+  userName  String  @db.VarChar(45)
+  naverID   String? @db.VarChar(45)
   kakaoID   String? @db.VarChar(45)
+  Post      Post[]
+}
+
+model Post {
+  postIndex    Int      @id @default(autoincrement())
+  userIndex    Int
+  uploadDate   DateTime @db.Date
+  exercise     String   @db.VarChar(45)
+  content      String   @db.VarChar(300)
+  condition    Int
+  feedOpen     Int      @db.SmallInt
+  cardImgIndex Int?
+  User         User     @relation(fields: [userIndex], references: [userIndex])
+
+  @@index([userIndex], name: "FK_Post_userIndex_User_userIndex")
 }

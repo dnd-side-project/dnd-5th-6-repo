@@ -5,8 +5,8 @@ const { naver } = window;
 const CLIENT_KEY = process.env.REACT_APP_CLIENT_KEY;
 
 const ADD_TOKEN = gql`
-  query AddToken($token: String!) {
-    naverLogin(accessToken: $token)
+  query AddToken($accessToken: String!) {
+    naverLogin(accessToken: $accessToken)
   }
 `;
 
@@ -26,9 +26,9 @@ function NaverLogin() {
   const getNaverToken = () => {
     window.location.href.includes("access_token") && GetToken();
     function GetToken() {
-      const token = window.location.href.split("=")[1].split("&")[0];
-      console.log(token);
-      addToken({ variables: { token } });
+      const accessToken = window.location.href.split("=")[1].split("&")[0];
+      console.log(accessToken);
+      addToken({ variables: { accessToken } });
     }
   };
 
