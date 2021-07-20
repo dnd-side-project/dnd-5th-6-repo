@@ -2,7 +2,7 @@ const { getAllLatestPost } = require('../resolver-utils/getFeeds');
 
 const resolvers = {
     Query: {
-        readFeed: (parent, args, context) => {
+        getAllLatestPost: (parent, args, context) => {
             return getAllLatestPost(context.req.headers['authorization'].split(' ')[1], context);
         },
     }
