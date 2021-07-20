@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useLazyQuery } from "@apollo/client";
 
 const { naver } = window;
 const CLIENT_KEY = process.env.REACT_APP_CLIENT_KEY;
 
+const ADD_TOKEN = gql`
+  query AddToken($accessToken: String!) {
+    naverLogin(accessToken: $accessToken)
+  }
+`;
+
 function NaverLogin() {
+  const [addToken, { loading, error, data }] = useLazyQuery(ADD_TOKEN);
+
   const Naver = () => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: `${CLIENT_KEY}`,
-      callbackUrl: "http://localhost:4000",
+      callbackUrl: "http://localhost:8080",
       isPopup: false, // popup 형식으로 띄울것인지 설정
       loginButton: { color: "green", type: 1, height: "47" },
     });
@@ -18,10 +26,12 @@ function NaverLogin() {
   const getNaverToken = () => {
     window.location.href.includes("access_token") && GetToken();
     function GetToken() {
-      const token = window.location.href.split("=")[1].split("&")[0];
-      console.log(token);
+      const accessToken = window.location.href.split("=")[1].split("&")[0];
+      console.log(accessToken);
+      addToken({ variables: { accessToken } });
     }
   };
+
   useEffect(() => {
     Naver();
     getNaverToken();

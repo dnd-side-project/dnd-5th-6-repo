@@ -3,4 +3,5 @@ Server/node_modules/
 Client/node_modules/
 DnD-5th-6-Project.iml/
 .idea/
-Server/.env/
+Server/.env
+Server/lib/model/.env
