@@ -12,6 +12,7 @@ model User {
   userName  String  @db.VarChar(45)
   naverID   String? @db.VarChar(45)
   kakaoID   String? @db.VarChar(45)
+  Like      Like[]
   Post      Post[]
 }
 
@@ -25,6 +26,18 @@ model Post {
   feedOpen     Int      @db.SmallInt
   cardImgIndex Int?
   User         User     @relation(fields: [userIndex], references: [userIndex])
+  Like         Like[]
 
   @@index([userIndex], name: "FK_Post_userIndex_User_userIndex")
+}
+
+model Like {
+  likeIndex Int  @id @default(autoincrement())
+  userIndex Int
+  postIndex Int
+  Post      Post @relation(fields: [postIndex], references: [postIndex])
+  User      User @relation(fields: [userIndex], references: [userIndex])
+
+  @@index([postIndex], name: "Like_Post__fk")
+  @@index([userIndex], name: "Like_User__fk")
 }
