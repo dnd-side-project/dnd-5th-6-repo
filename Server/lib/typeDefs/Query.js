@@ -11,8 +11,8 @@ const typeDefs = gql`
         kakaoLogin (
             accessToken: String!
         ): String!
-        readFeed: String!
-#        readFeed: [Post]
+#        readFeed: String!
+        getAllLatestPost: [Post]
     }    
 `
 

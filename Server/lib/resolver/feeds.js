@@ -1,11 +1,10 @@
-const { getAllFeeds } = require('../resolver-utils/getFeeds');
+const { getAllLatestPost } = require('../resolver-utils/getFeeds');
 
 const resolvers = {
     Query: {
-        readFeed: (parent, args, context) => {
-            getAllFeeds(context.req.headers['authorization'].split(' ')[1], context);
-            return "TEST Read Feed";
-        }
+        getAllLatestPost: (parent, args, context) => {
+            return getAllLatestPost(context.req.headers['authorization'].split(' ')[1], context);
+        },
     }
 }
 
