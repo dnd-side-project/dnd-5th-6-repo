@@ -11,8 +11,14 @@ const ADD_TOKEN = gql`
 `;
 
 function NaverLogin() {
-  const [addToken, { loading, error, data }] = useLazyQuery(ADD_TOKEN);
-
+  const [addToken, { loading, error, data }] = useLazyQuery(ADD_TOKEN, {
+    onCompleted: (token) => {
+      {
+        token &&
+          localStorage.setItem("jwtToken", JSON.parse(token.naverLogin).JWT);
+      }
+    },
+  });
   const Naver = () => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: `${CLIENT_KEY}`,
