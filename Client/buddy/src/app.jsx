@@ -1,5 +1,4 @@
 import React from "react";
-import NaverLogin from "./components/login/naverLogin";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Main from "./routes/main";
 import Record from "./routes/record";

@@ -1,0 +1,10 @@
+.cardItem {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  margin-bottom: 0.2em;
+  border: 1px solid lightgray;
+  box-shadow: 3px 3px 5px 0px rgba(191, 191, 191, 0.53);
+  cursor: pointer;
+  transition: transform 250ms ease-in;
+}
