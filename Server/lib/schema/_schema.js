@@ -4,8 +4,8 @@ const typeDefs = gql`
     type User{
         userIndex: Int!
         userName: String!
-        naverID: String
-        kakaoID: String
+#        naverID: String
+#        kakaoID: String
     }
     
     type Post{

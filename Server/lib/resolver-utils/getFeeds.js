@@ -9,12 +9,14 @@ function tokenDecode(token){
     return decode;
 }
 
-const getAllLatestPost = async (context) => {
-    // const decode = tokenDecode(token);
+const getAllLatestPost = async (token, context) => {
+    if(token !== undefined) {
+        const decode = tokenDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        }
+    }
 
-    // if (decode === null) {
-    //     throw new Error('Invalid_Token')
-    // }
     let returnData = [];
     const allLatestPost = await context.prisma.post.findMany({
         orderBy:[{uploadDate: 'desc'}],
