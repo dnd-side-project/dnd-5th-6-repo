@@ -12,7 +12,7 @@ const typeDefs = gql`
             accessToken: String!
         ): String!
 #        readFeed: String!
-        getAllLatestPost: [Post]
+        getAllLatestPost: PostData!
     }    
 `
 
