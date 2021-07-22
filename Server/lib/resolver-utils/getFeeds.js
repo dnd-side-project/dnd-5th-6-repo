@@ -9,7 +9,7 @@ function tokenDecode(token){
     return decode;
 }
 
-const getAllLatestPost = async (token, context) => {
+const getAllLatestPost = async (context) => {
     // const decode = tokenDecode(token);
 
     // if (decode === null) {
