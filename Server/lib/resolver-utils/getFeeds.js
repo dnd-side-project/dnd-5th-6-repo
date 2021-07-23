@@ -9,38 +9,36 @@ function tokenDecode(token){
     return decode;
 }
 
-const getAllLatestPost = async (context) => {
-    // const decode = tokenDecode(token);
+const getAllLatestPost = async (token, context) => {
+    if(token !== undefined) {
+        const decode = tokenDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        }
+    }
 
-    // if (decode === null) {
-    //     throw new Error('Invalid_Token')
-    // }
+    let returnData = [];
     const allLatestPost = await context.prisma.post.findMany({
         orderBy:[{uploadDate: 'desc'}],
         where: {feedOpen: 1}
     });
     for (const node of allLatestPost) {
-        const userIndex = node.userIndex;
-        const postIndex = node.postIndex;
-        
-        const nickname = await context.prisma.user.findUnique({
-            where: {
-                userIndex: userIndex
-            }
+        returnData.push({
+            Post: node,
+            User: await context.prisma.user.findUnique({
+                where: { userIndex: node.userIndex }
+            }),
+            // TODO: 좋아요 여부를 알아야 하니 Like 테이블 자체 값도 필요할 듯 함
+            Like: await context.prisma.like.count({
+                where: { postIndex: node.postIndex }
+            })
         })
-
-        const cntLikes = await context.prisma.like.count({
-            where: {
-                postIndex: postIndex
-            }
-        })
-
-        console.log('닉네임 >>', nickname.userName);
-        console.log('좋아요 수 >>', cntLikes);
-
         node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 11)
     }
-    return allLatestPost;
+
+    return {
+        PostData: returnData
+    };
 }
 
 module.exports = {
