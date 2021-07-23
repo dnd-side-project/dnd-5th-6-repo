@@ -10,7 +10,9 @@ const resolvers = {
             const response = await naverUserInfo(args.accessToken);
             if (response.status === 200) {
                 const isDuplicated = await naverDuplicateCheck(context, response.userId);
+		console.log(isDuplicated);
                 const token = createJwtToken(isDuplicated.userIndex);
+		console.log(token);
                 
                 if (isDuplicated.newUser) {
                     return JSON.stringify({
