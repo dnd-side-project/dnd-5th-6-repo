@@ -1,8 +1,8 @@
 .cardItem {
   display: flex;
   /* 그리드로 나눈 구역의 가운데에서 85%... */
-  width: 85%;
-  height: 15rem;
+  width: 90%;
+  height: 12rem;
   border-radius: 14px;
 
   background-color: #d3d3d3;
@@ -26,7 +26,20 @@
   font-family: Spoqa Han Sans Neo;
   font-style: normal;
   font-weight: bold;
+  font-size: 24px;
+  height: 0.5rem;
+}
+
+
+.container {
+  /* display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+	grid-gap: 0.5em; */
+  margin-bottom: 8%;
 }
 
 .content {
+  height: 2.8rem;
 }
+
+

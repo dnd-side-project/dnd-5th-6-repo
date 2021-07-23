@@ -15,24 +15,12 @@
   flex-wrap: wrap;
   list-style: none;
   padding-left: 0%;
+  margin-left: 4%;
+  
 }
 
-/* 제일 바깥 */
-.container {
-  /* display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-	grid-gap: 0.5em; */
-  margin: 0.5%;
-}
 
-/* 카드끼리 여백(가운데 제외) */
-.card_description {
-  width: 100%;
-  /* height: 20rem; */
-  margin-bottom: 5%;
-  margin-left: 8%;
-  margin-right: 8%;
-}
+
 
 .card {
   /* height: max-content; */
