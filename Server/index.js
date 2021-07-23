@@ -3,6 +3,7 @@ const app = express()
 const apolloInstance = require('./apollo-instance');
 const cookieParser = require('cookie-parser');
 const port = 3000
+require('dotenv').config();
 
 app.use(cookieParser());
 

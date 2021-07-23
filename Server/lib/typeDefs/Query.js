@@ -8,6 +8,11 @@ const typeDefs = gql`
         naverLogin (
             accessToken: String!
         ): String!
+        kakaoLogin (
+            accessToken: String!
+        ): String!
+#        readFeed: String!
+        getAllLatestPost: PostData!
     }    
 `
 

@@ -1,15 +1,43 @@
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  url      = env("DATABASE_URL")
   provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  userIndex     Int    @id @default(autoincrement())
-  userName      String
-  naverID       String
-  googleID      String
+  userIndex Int     @id @default(autoincrement())
+  userName  String  @db.VarChar(45)
+  naverID   String? @db.VarChar(45)
+  kakaoID   String? @db.VarChar(45)
+  Like      Like[]
+  Post      Post[]
+}
+
+model Post {
+  postIndex    Int      @id @default(autoincrement())
+  userIndex    Int
+  uploadDate   DateTime @db.Date
+  exercise     String   @db.VarChar(45)
+  content      String   @db.VarChar(300)
+  condition    Int
+  feedOpen     Int      @db.SmallInt
+  cardImgIndex Int?
+  User         User     @relation(fields: [userIndex], references: [userIndex])
+  Like         Like[]
+
+  @@index([userIndex], name: "FK_Post_userIndex_User_userIndex")
+}
+
+model Like {
+  likeIndex Int  @id @default(autoincrement())
+  userIndex Int
+  postIndex Int
+  Post      Post @relation(fields: [postIndex], references: [postIndex])
+  User      User @relation(fields: [userIndex], references: [userIndex])
+
+  @@index([postIndex], name: "Like_Post__fk")
+  @@index([userIndex], name: "Like_User__fk")
 }
