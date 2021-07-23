@@ -1,32 +1,32 @@
-/* .cardItem {
-  display: flex;
-  width: 50%;
-  align-items: center;
-  margin-bottom: 0.2em;
-  border: 1px solid lightgray;
-  box-shadow: 3px 3px 5px 0px rgba(191, 191, 191, 0.53);
-  cursor: pointer;
-  transition: transform 250ms ease-in;
-} */
-
 .cardItem {
   display: flex;
   /* 그리드로 나눈 구역의 가운데에서 85%... */
-  width: 85%; 
+  width: 85%;
   height: 15rem;
-  border-radius: 7%;
+  border-radius: 14px;
 
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 
   /* 텍스트 아래 정렬 관련 */
   align-items: flex-end;
   /* align-content: center; */
 
-
   margin-bottom: 0.2em;
   border: 1px solid lightgray;
-  box-shadow: 3px 3px 5px 0px rgba(191, 191, 191, 0.53);
+
   cursor: pointer;
   transition: transform 250ms ease-in;
 }
+.card {
+  font-size: 12px;
+  margin-inline: 0.9375rem;
+}
 
+.date {
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.content {
+}
