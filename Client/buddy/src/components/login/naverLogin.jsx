@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { gql, useLazyQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const { naver } = window;
 const CLIENT_KEY = process.env.REACT_APP_CLIENT_KEY;
@@ -12,11 +13,17 @@ const ADD_NAVER_TOKEN = gql`
 `;
 
 function NaverLogin() {
+  const history = useHistory();
+
   const [addToken, { loading, error, data }] = useLazyQuery(ADD_NAVER_TOKEN, {
     onCompleted: (token) => {
+      console.log(token);
       {
         token &&
           localStorage.setItem("Token", JSON.parse(token.naverLogin).JWT);
+      }
+      {
+        token && history.push("/");
       }
     },
   });
