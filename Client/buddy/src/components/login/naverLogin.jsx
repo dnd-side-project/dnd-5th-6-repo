@@ -18,13 +18,9 @@ function NaverLogin() {
   const [addToken, { loading, error, data }] = useLazyQuery(ADD_NAVER_TOKEN, {
     onCompleted: (token) => {
       console.log(token);
-      {
-        token &&
-          localStorage.setItem("Token", JSON.parse(token.naverLogin).JWT);
-      }
-      {
-        token && history.push("/");
-      }
+
+      token && localStorage.setItem("Token", JSON.parse(token.naverLogin).JWT);
+      token && history.push("/");
     },
   });
   const Naver = () => {

@@ -6,21 +6,26 @@ import CardItem from "../cardItem/cardItem";
 const GET_CARD = gql`
   query getCard {
     getAllLatestPost {
-      postIndex
-      uploadDate
-      content
+      PostData {
+        Post {
+          postIndex
+          uploadDate
+          content
+        }
+      }
     }
   }
 `;
 
 function CardList() {
   const { loading, error, data } = useQuery(GET_CARD);
-  const items = data && Object.values(data)[0];
+  const postData = data && data["getAllLatestPost"]["PostData"];
+
   return (
     <ul className={styles.cardList}>
       {loading && <h1>loading</h1>}
-      {items?.map((card) => (
-        <CardItem key={card.postIndex} card={card} />
+      {postData?.map((card) => (
+        <CardItem key={card["Post"].postIndex} card={card["Post"]} />
       ))}
     </ul>
   );

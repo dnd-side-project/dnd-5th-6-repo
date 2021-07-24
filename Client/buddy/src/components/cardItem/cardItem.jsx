@@ -3,7 +3,7 @@ import styles from "./cardItem.module.css";
 
 function CardItem(props) {
   const content = props.card.content;
-
+  console.log(props);
   return (
     <div className={styles.container}>
       <li className={styles.cardItem}>
