@@ -13,4 +13,3 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
-console.log(client.link);
