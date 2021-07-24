@@ -17,12 +17,9 @@ function KakaoLogin() {
 
   const [addToken, { loading, error, data }] = useLazyQuery(ADD_KAKAO_TOKEN, {
     onCompleted: (token) => {
-      {
-        token &&
-          localStorage.setItem("Token", JSON.parse(token.kakaoLogin).JWT);
-      }
-      {
-        token && history.push("/");
+      if (token !== false) {
+        localStorage.setItem("Token", JSON.parse(token.kakaoLogin).JWT);
+        history.push("/");
       }
     },
   });
