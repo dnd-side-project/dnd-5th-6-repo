@@ -10,6 +10,7 @@
 |refactor|코드 리팩토링|
 |test|테스트 코드, 리팩토링 테스트 코드 추가|
 |chore|빌드 업무 수정, 패키지 매니저 수정|
+|hotfix|긴급 버그 수정(AWS 등)|
 
 ### Architecture
 <img src="../master/images/architecture.PNG" height="300">

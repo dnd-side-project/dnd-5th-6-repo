@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
+require("dotenv").config();
 const SECRET_KEY = process.env.JWT_SECRET_KEY
 
 function tokenDecode(token){
+    console.log("시크릿 키: ", SECRET_KEY);
     const decode = jwt.verify(token, SECRET_KEY);
     if (!decode) {
         return null;
@@ -10,6 +12,7 @@ function tokenDecode(token){
 }
 
 const getAllLatestPost = async (token, context) => {
+    console.log("토큰:", token);
 
     var decode = '';
     var didLogin = false;
