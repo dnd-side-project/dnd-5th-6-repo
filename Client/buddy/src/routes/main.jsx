@@ -10,8 +10,6 @@ function Main() {
   return (
     <>
       <NavBar></NavBar>
-      <NaverLogin></NaverLogin>
-      <KakaoLogin></KakaoLogin>
       <SelectOption></SelectOption>
       <CardList></CardList>
     </>

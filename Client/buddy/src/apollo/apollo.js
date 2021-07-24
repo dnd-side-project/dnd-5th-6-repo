@@ -9,11 +9,14 @@ const httpLink = new HttpLink({ uri: "http://13.124.114.54:3000/graphql" });
 
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem("Token");
-  operation.setContext({
-    headers: {
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  });
+  console.log(token);
+  if (token) {
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    });
+  }
   return forward(operation);
 });
 
