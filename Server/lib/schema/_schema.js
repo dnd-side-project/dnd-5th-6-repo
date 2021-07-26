@@ -29,12 +29,17 @@ const typeDefs = gql`
     
     type PostData {
         PostData: [PostInfomation]!
+        likeArray: [Int!]
     }
     
     type PostInfomation {
         Post: Post!
         User: User!
-        Like: Like!
+        Like: Int!
+    }
+    
+    type LikedPost {
+        postIndex: Int!
     }
 `
 

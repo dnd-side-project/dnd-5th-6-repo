@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 const SECRET_KEY = process.env.JWT_SECRET_KEY
-
 function tokenDecode(token){
     const decode = jwt.verify(token, SECRET_KEY);
     if (!decode) {
@@ -9,11 +8,11 @@ function tokenDecode(token){
     }
     return decode;
 }
-
 const getAllLatestPost = async (token, context) => {
     let decode = '';
     let userIndex = -1
-    let likeObject = [];
+    let returnLike = [];
+    let orderByFlag;
 
     if(token !== undefined) {
         decode = tokenDecode(token.split(' ')[1]);
@@ -25,32 +24,10 @@ const getAllLatestPost = async (token, context) => {
     }
     let returnData = [];
     const allLatestPost = await context.prisma.post.findMany({
-        orderBy:[{uploadDate: 'desc'}],
+        orderBy:[{uploadDate: `${orderByFlag}`}],
         where: {feedOpen: 1}
     });
     for (const node of allLatestPost) {
-        const postIndex = node.postIndex;
-        const didLike = await context.prisma.like.count({
-            where: {
-                postIndex: postIndex,
-                userIndex: userIndex
-            }
-        })
-        
-        /*
-        JWT 토큰 값이 없어서 decode를 진행하지 않은, 즉 로그인을 하지 않은 경우에는
-        userIndex가 -1로 지정이 되어서 무조건 좋아요 누른 여부(didLike)가 0으로 나옴.
-        */
-        likeObject = await context.prisma.like.findMany({
-            where: {
-                postIndex: postIndex,
-            }
-        })
-        likeObject.totalLike = await context.prisma.like.count({where:{postIndex: node.postIndex}})
-        console.log("테스트:", likeObject);
-
-        console.log(userIndex, '번 유저가', postIndex, '번 카드에 좋아요를 눌렀을까요?! >>', didLike);
-
         returnData.push({
             Post: node,
             User: await context.prisma.user.findUnique({
@@ -59,15 +36,22 @@ const getAllLatestPost = async (token, context) => {
             Like: await context.prisma.like.count({
                 where: { postIndex: node.postIndex }
             })
-        })
+        });
         node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 11)
+    }
+    const likeArray = await context.prisma.like.findMany({
+        where: {userIndex: userIndex}
+    });
+
+    for(const node of likeArray) {
+        returnLike.push(node.postIndex);
     }
 
     return {
-        PostData: returnData
+        PostData: returnData,
+        likeArray: returnLike
     };
 }
-
 module.exports = {
     getAllLatestPost
 };
