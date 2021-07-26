@@ -2,7 +2,12 @@ const {gql} = require('apollo-server');
 
 const typeDefs = gql`
     type Mutation {
-        getAllLatestPost: PostData!
+        naverLogin (
+            accessToken: String!
+        ): String!
+        kakaoLogin (
+            accessToken: String!
+        ): String!
     }
 `
 

@@ -2,6 +2,9 @@ const {naverUserInfo, naverDuplicateCheck, kakaoValidCheck} = require('../resolv
 const {createJwtToken}= require('../resolver-utils/UserAuth')
 const resolvers = {
     Query: {
+
+    },
+    Mutation: {
         naverLogin: async (parent, args, context) => {
             const response = await naverUserInfo(args.accessToken);
             if (response.status === 200) {
@@ -23,7 +26,6 @@ const resolvers = {
                         JWT: token
                     })
                 }
-
             } else {
                 return JSON.stringify({
                     isSuccess: false,
@@ -52,7 +54,7 @@ const resolvers = {
                         message: "Login Success",
                         JWT: token
                     })
-                }            
+                }
             } else {
                 return JSON.stringify({
                     isSuccess: false,
@@ -61,10 +63,6 @@ const resolvers = {
                 })
             }
         }
-
-    },
-    Mutation: {
-
     }
 }
 
