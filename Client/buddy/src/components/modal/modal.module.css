@@ -1,0 +1,61 @@
+.contain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.contain .modal {
+  z-index: 1;
+  background: white;
+  width: 18.063rem;
+  height: 24.063rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+
+  border-radius: 14px;
+
+  background-color: #d3d3d3;
+
+  /* 텍스트 아래 정렬 관련 */
+  align-items: flex-end;
+  /* align-content: center; */
+
+  margin-bottom: 1em;
+  border: 1px solid lightgray;
+
+  cursor: pointer;
+  transition: transform 250ms ease-in;
+}
+
+.closeBtn {
+  padding: 8px 11px;
+  background: gray;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.card {
+  font-size: 18px;
+  margin-inline: 1.9375rem;
+}
+
+.date {
+  font-family: Spoqa Han Sans Neo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  height: 0.5rem;
+}
