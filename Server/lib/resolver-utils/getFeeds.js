@@ -13,6 +13,7 @@ function tokenDecode(token){
 const getAllLatestPost = async (token, context) => {
     let decode = '';
     let userIndex = -1
+    let likeObject = [];
 
     if(token !== undefined) {
         decode = tokenDecode(token.split(' ')[1]);
@@ -40,6 +41,14 @@ const getAllLatestPost = async (token, context) => {
         JWT 토큰 값이 없어서 decode를 진행하지 않은, 즉 로그인을 하지 않은 경우에는
         userIndex가 -1로 지정이 되어서 무조건 좋아요 누른 여부(didLike)가 0으로 나옴.
         */
+        likeObject = await context.prisma.like.findMany({
+            where: {
+                postIndex: postIndex,
+            }
+        })
+        likeObject.totalLike = await context.prisma.like.count({where:{postIndex: node.postIndex}})
+        console.log("테스트:", likeObject);
+
         console.log(userIndex, '번 유저가', postIndex, '번 카드에 좋아요를 눌렀을까요?! >>', didLike);
 
         returnData.push({

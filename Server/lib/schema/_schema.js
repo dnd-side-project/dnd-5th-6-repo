@@ -21,8 +21,10 @@ const typeDefs = gql`
     
     type Like {
         likeIndex: Int!
-        userIndex: Int!
-        postIndex: Int!
+        userIndex: Int
+        postIndex: Int
+        totalLike: Int!
+        isLiked: Boolean!
     }
     
     type PostData {
