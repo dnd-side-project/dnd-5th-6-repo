@@ -34,7 +34,7 @@ const typeDefs = gql`
     type PostInfomation {
         Post: Post!
         User: User!
-        Like: Int!
+        Like: Like!
     }
 `
 
