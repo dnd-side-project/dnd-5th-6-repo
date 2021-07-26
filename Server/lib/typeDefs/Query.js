@@ -13,7 +13,7 @@ const typeDefs = gql`
         ): String!
 #        readFeed: String!
         getAllLatestPost: PostData!
-    }    
+    }
 `
 
 module.exports = typeDefs;

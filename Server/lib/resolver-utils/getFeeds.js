@@ -3,7 +3,6 @@ require("dotenv").config();
 const SECRET_KEY = process.env.JWT_SECRET_KEY
 
 function tokenDecode(token){
-    console.log("시크릿 키: ", SECRET_KEY);
     const decode = jwt.verify(token, SECRET_KEY);
     if (!decode) {
         return null;
@@ -12,31 +11,23 @@ function tokenDecode(token){
 }
 
 const getAllLatestPost = async (token, context) => {
-    console.log("토큰:", token);
-
-    var decode = '';
-    var didLogin = false;
-    var userIndex = -1
+    let decode = '';
+    let userIndex = -1
 
     if(token !== undefined) {
         decode = tokenDecode(token.split(' ')[1]);
         if (decode === null) {
             throw new Error('Invalid_Token')
         } else {
-            didLogin = true;
             userIndex = decode.ID;
         }
     }
-    
-
     let returnData = [];
     const allLatestPost = await context.prisma.post.findMany({
         orderBy:[{uploadDate: 'desc'}],
         where: {feedOpen: 1}
     });
     for (const node of allLatestPost) {
-
-        // 우선 schema에 didLike 등록 안해서 console로 찍는 작업만 했음
         const postIndex = node.postIndex;
         const didLike = await context.prisma.like.count({
             where: {

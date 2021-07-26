@@ -8,7 +8,7 @@ const typeDefs = gql`
 #        kakaoID: String
     }
     
-    type Post{
+    type Post {
         postIndex: Int!
         userIndex: Int!
         uploadDate: String!
