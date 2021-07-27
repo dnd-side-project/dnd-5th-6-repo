@@ -5,6 +5,9 @@ const resolvers = {
         getAllLatestPost: (parent, args, context) => {
             return getAllLatestPost(context.req.headers['authorization'], context);
         },
+    },
+    Mutation: {
+
     }
 }
 

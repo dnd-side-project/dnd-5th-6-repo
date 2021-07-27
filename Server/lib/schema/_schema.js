@@ -8,7 +8,7 @@ const typeDefs = gql`
 #        kakaoID: String
     }
     
-    type Post{
+    type Post {
         postIndex: Int!
         userIndex: Int!
         uploadDate: String!
@@ -21,18 +21,25 @@ const typeDefs = gql`
     
     type Like {
         likeIndex: Int!
-        userIndex: Int!
-        postIndex: Int!
+        userIndex: Int
+        postIndex: Int
+        totalLike: Int!
+        isLiked: Boolean!
     }
     
     type PostData {
         PostData: [PostInfomation]!
+        likeArray: [Int!]
     }
     
     type PostInfomation {
         Post: Post!
         User: User!
         Like: Int!
+    }
+    
+    type LikedPost {
+        postIndex: Int!
     }
 `
 
