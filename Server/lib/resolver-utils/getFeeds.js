@@ -24,7 +24,7 @@ const getAllLatestPost = async (token, context) => {
     }
     let returnData = [];
     const allLatestPost = await context.prisma.post.findMany({
-        orderBy:[{uploadDate: `${orderByFlag}`}],
+        orderBy:[{uploadDate: `desc`}],
         where: {feedOpen: 1}
     });
     for (const node of allLatestPost) {
