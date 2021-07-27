@@ -8,7 +8,9 @@ services:
       ports:
         - 3000:3000
       working_dir: /app
-      command: sh -c "npm install && npx prisma generate && npm run serve:start"
+      volumes:
+        - ./:/app
+      command: sh -c "npm install && npx prisma generate && npx prisma db pull && npm run serve:start"
     prisma:
       image: prismagraphql/prisma:1.34
       restart: always
@@ -21,8 +23,8 @@ services:
           databases:
             default:
               connector: mysql
-              host: dnd-instance.ckymmd75tic1.ap-northeast-2.rds.amazonaws.com
-              port: 3306
-              user: admin
-              password: dnd565656
+              host: ${DOCKER_DB_HOST}
+              port: ${DOCKER_DB_PORT}
+              user: ${DOCKER_DB_USER}
+              password: ${DOCKER_DB_PASSWORD}
               connectionLimit: 2
