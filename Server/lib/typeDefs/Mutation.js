@@ -8,6 +8,9 @@ const typeDefs = gql`
         kakaoLogin (
             accessToken: String!
         ): String!
+        likePost (
+            postIndex: Int!
+        ): Boolean!
     }
 `
 
