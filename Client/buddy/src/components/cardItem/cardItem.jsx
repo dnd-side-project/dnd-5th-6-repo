@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./cardItem.module.css";
-import { Modal } from "./../modal/modal";
+import { Modal } from "../modal/cardModal";
 
 function CardItem(props) {
   const [showModal, setShowModal] = useState(false);
   const content = props.card.content;
-  console.log(props);
+
   const openModal = () => {
     setShowModal(true);
     document.body.style.overflow = "hidden";

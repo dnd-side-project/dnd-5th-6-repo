@@ -17,6 +17,7 @@
   cursor: pointer;
   transition: transform 250ms ease-in;
 }
+
 .card {
   font-size: 12px;
   margin-inline: 0.9375rem;

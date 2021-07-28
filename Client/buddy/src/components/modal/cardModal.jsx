@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styles from "./modal.module.css";
+import styles from "./cardModal.module.css";
 import ReactDom from "react-dom";
 
 export const Modal = ({ setShowModal, uploadDate, content }) => {
@@ -18,7 +18,7 @@ export const Modal = ({ setShowModal, uploadDate, content }) => {
   };
 
   return (
-    <div className={styles.contain} ref={modalRef} onClick={close}>
+    <div className={styles.container} ref={modalRef} onClick={close}>
       <div>
         <button className={styles.closeBtn} onClick={closeModal}>
           닫기

@@ -1,4 +1,4 @@
-.contain {
+.container {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-.contain .modal {
+.container .modal {
   z-index: 1;
   background: white;
   width: 18.063rem;
@@ -31,8 +31,6 @@
 
   margin-bottom: 1em;
   border: 1px solid lightgray;
-
-  cursor: pointer;
   transition: transform 250ms ease-in;
 }
 
