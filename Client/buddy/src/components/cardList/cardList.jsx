@@ -20,7 +20,7 @@ const GET_CARD = gql`
 function CardList() {
   const { loading, error, data } = useQuery(GET_CARD);
   const postData = data && data["getAllLatestPost"]["PostData"];
-
+  console.log(data);
   return (
     <ul className={styles.cardList}>
       {loading && <h1>loading</h1>}
@@ -31,4 +31,4 @@ function CardList() {
   );
 }
 
-export default CardList;
+export default React.memo(CardList);
