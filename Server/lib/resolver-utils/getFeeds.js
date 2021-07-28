@@ -1,6 +1,64 @@
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
-const SECRET_KEY = process.env.JWT_SECRET_KEY
+const SECRET_KEY = process.env.JWT_SECRET_KEY;
+
+const getAllLatestPost = async (token, args, context) => {
+    let userIndex = -1
+    let orderByFlag = args.flag; // 0 최신순 1 인기순
+
+    if(token !== undefined) {
+        const decode = tokenDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
+    }
+    const allLatestPost = await context.prisma.post.findMany({
+        orderBy:[{uploadDate: `desc`}],
+        where: {feedOpen: 1}
+    });
+
+    let returnData = await parseReturnData(context, allLatestPost);
+    if (orderByFlag === 1) returnData = sortByPopularity(returnData);
+    const returnLike = await getLikeCount(context, userIndex);
+
+    return {
+        PostData: returnData,
+        likeArray: returnLike
+    };
+}
+
+const getSpecificExercise = async (token, args, context) => {
+    let userIndex = -1
+    const orderByFlag = args.flag; // 0 최신순 1 인기순
+    const exercise = args.exercise // 0 ~ 11
+
+    if(token !== undefined) {
+        const decode = tokenDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
+    }
+    const allLatestPost = await context.prisma.post.findMany({
+        orderBy:[{uploadDate: `desc`}],
+        where: {
+            feedOpen: 1,
+            exercise: exercise
+        }
+    });
+
+    let returnData = await parseReturnData(context, allLatestPost);
+    if (orderByFlag === 1) returnData = sortByPopularity(returnData);
+    const returnLike = await getLikeCount(context, userIndex);
+
+    return {
+        PostData: returnData,
+        likeArray: returnLike
+    };
+}
 
 function tokenDecode(token){
     const decode = jwt.verify(token, SECRET_KEY);
@@ -10,27 +68,15 @@ function tokenDecode(token){
     return decode;
 }
 
-const getAllLatestPost = async (token, args, context) => {
-    let decode = '';
-    let userIndex = -1
-    let returnLike = [];
-    let orderByFlag = args.flag; // 0 최신순 1 인기순
-
-    if(token !== undefined) {
-        decode = tokenDecode(token.split(' ')[1]);
-        if (decode === null) {
-            throw new Error('Invalid_Token')
-        } else {
-            userIndex = decode.ID;
-        }
-    }
-    let returnData = [];
-    const allLatestPost = await context.prisma.post.findMany({
-        orderBy:[{uploadDate: `desc`}],
-        where: {feedOpen: 1}
+function sortByPopularity(data){
+    return data.sort((a, b) => {
+        return parseFloat(b.Like) - parseFloat(a.Like);
     });
+}
 
-    for (const node of allLatestPost) {
+async function parseReturnData(context, data){
+    let returnData = [];
+    for(const node of data){
         returnData.push({
             Post: node,
             User: await context.prisma.user.findUnique({
@@ -42,71 +88,11 @@ const getAllLatestPost = async (token, args, context) => {
         });
         node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 11)
     }
-
-    // 인기순 정렬
-    if (orderByFlag === 1) {
-        returnData.sort((a, b) => {
-            return parseFloat(b.Like) - parseFloat(a.Like);
-        });
-    }
-
-    const likeArray = await context.prisma.like.findMany({
-        where: {userIndex: userIndex}
-    });
-
-    for(const node of likeArray) {
-        returnLike.push(node.postIndex);
-    }
-
-    return {
-        PostData: returnData,
-        likeArray: returnLike
-    };
+    return returnData;
 }
 
-const getSpecificExercise = async (token, args, context) => {
-    let decode = '';
-    let userIndex = -1
+async function getLikeCount(context, userIndex){
     let returnLike = [];
-    let orderByFlag = args.flag; // 0 최신순 1 인기순
-    let exercise = args.exercise // 0 ~ 11
-
-    if(token !== undefined) {
-        decode = tokenDecode(token.split(' ')[1]);
-        if (decode === null) {
-            throw new Error('Invalid_Token')
-        } else {
-            userIndex = decode.ID;
-        }
-    }
-    let returnData = [];
-    const allLatestPost = await context.prisma.post.findMany({
-        orderBy:[{uploadDate: `desc`}],
-        where: {
-            feedOpen: 1,
-            exercise: exercise
-        }
-    });
-    for (const node of allLatestPost) {
-        returnData.push({
-            Post: node,
-            User: await context.prisma.user.findUnique({
-                where: { userIndex: node.userIndex }
-            }),
-            Like: await context.prisma.like.count({
-                where: { postIndex: node.postIndex }
-            })
-        });
-        node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 11)
-    }
-
-    // 인기순 정렬
-    if (orderByFlag == 1) {
-        returnData.sort((a, b) => {
-            return parseFloat(b.Like) - parseFloat(a.Like);
-        });
-    }
-
     const likeArray = await context.prisma.like.findMany({
         where: {userIndex: userIndex}
     });
@@ -114,12 +100,9 @@ const getSpecificExercise = async (token, args, context) => {
     for(const node of likeArray) {
         returnLike.push(node.postIndex);
     }
-
-    return {
-        PostData: returnData,
-        likeArray: returnLike
-    };
+    return returnLike
 }
+
 
 
 module.exports = {

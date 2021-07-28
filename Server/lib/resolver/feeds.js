@@ -1,5 +1,4 @@
-const { getAllLatestPost } = require('../resolver-utils/getFeeds');
-const { getSpecificExercise } = require('../resolver-utils/getFeeds');
+const { getAllLatestPost, getSpecificExercise } = require('../resolver-utils/getFeeds');
 
 const resolvers = {
     Query: {
