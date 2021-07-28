@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 const SECRET_KEY = process.env.JWT_SECRET_KEY
+
 function tokenDecode(token){
     const decode = jwt.verify(token, SECRET_KEY);
     if (!decode) {
@@ -8,6 +9,7 @@ function tokenDecode(token){
     }
     return decode;
 }
+
 const getAllLatestPost = async (token, args, context) => {
     let decode = '';
     let userIndex = -1
@@ -27,6 +29,7 @@ const getAllLatestPost = async (token, args, context) => {
         orderBy:[{uploadDate: `desc`}],
         where: {feedOpen: 1}
     });
+
     for (const node of allLatestPost) {
         returnData.push({
             Post: node,
@@ -41,7 +44,7 @@ const getAllLatestPost = async (token, args, context) => {
     }
 
     // 인기순 정렬
-    if (orderByFlag == 1) {
+    if (orderByFlag === 1) {
         returnData.sort((a, b) => {
             return parseFloat(b.Like) - parseFloat(a.Like);
         });
