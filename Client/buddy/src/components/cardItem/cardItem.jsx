@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import styles from "./cardItem.module.css";
 import { Modal } from "../modal/cardModal";
 
-function CardItem(props) {
+const CardItem = memo((props) => {
   const [showModal, setShowModal] = useState(false);
-  const content = props.card.content;
 
+  const post = props.card["Post"];
+  const user = props.card["User"];
+  const like = props.card["Like"];
+
+  console.log(props);
   const openModal = () => {
     setShowModal(true);
     document.body.style.overflow = "hidden";
@@ -17,22 +21,27 @@ function CardItem(props) {
         {showModal ? (
           <Modal
             setShowModal={setShowModal}
-            uploadDate={props.card.uploadDate}
-            content={content}
+            uploadDate={post.uploadDate}
+            content={post.content}
           />
         ) : null}
         <li className={styles.cardItem} onClick={openModal}>
           <div className={styles.card}>
-            <p className={styles.date}>{props.card.uploadDate}</p>
+            <p className={styles.date}>{post.uploadDate}</p>
             <p className={styles.content}>
-              {content.length >= 30 ? content.slice(0, 30) + " .. " : content}
+              {post.content.length >= 30
+                ? post.content.slice(0, 30) + " .. "
+                : post.content}
             </p>
           </div>
         </li>
-        <button>좋아요</button>
+        <div className={styles.like}>
+          <button className={styles.likeBtn}> </button>
+          <span className={styles.likeCount}>{like}</span>
+        </div>
       </div>
     </>
   );
-}
+});
 
 export default CardItem;
