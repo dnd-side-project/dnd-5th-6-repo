@@ -1,21 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { gql, useLazyQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import styles from "./login.module.css";
-
+import { ADD_KAKAO_TOKEN } from "../../apollo/queries/login/login";
 const { Kakao } = window;
-
-const ADD_KAKAO_TOKEN = gql`
-  query AddToken($accessToken: String!) {
-    kakaoLogin(accessToken: $accessToken)
-  }
-`;
 
 function KakaoLogin() {
   const history = useHistory();
-  const { Kakao } = window;
 
-  const [addToken, { loading, error, data }] = useLazyQuery(ADD_KAKAO_TOKEN, {
+  const [addToken, { loading, error, data }] = useMutation(ADD_KAKAO_TOKEN, {
     onCompleted: (token) => {
       if (token !== false) {
         localStorage.setItem("Token", JSON.parse(token.kakaoLogin).JWT);

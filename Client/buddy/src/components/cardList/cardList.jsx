@@ -1,31 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./cardList.module.css";
-import { gql, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import CardItem from "../cardItem/cardItem";
-
-const GET_CARD = gql`
-  query getCard {
-    getAllLatestPost {
-      PostData {
-        Post {
-          postIndex
-          uploadDate
-          content
-        }
-      }
-    }
-  }
-`;
+import { GET_CARD } from "../../apollo/queries/CardItem/getCard";
 
 function CardList() {
-  const { loading, error, data } = useQuery(GET_CARD);
+  const [Addsort, { loading, error, data }] = useLazyQuery(GET_CARD);
+
   const postData = data && data["getAllLatestPost"]["PostData"];
-  console.log(data);
+  const likeArray = data && data["getAllLatestPost"]["likeArray"];
+
+  useEffect(() => {
+    Addsort({ variables: { flag: 1 } });
+  }, []);
+
   return (
     <ul className={styles.cardList}>
       {loading && <h1>loading</h1>}
+      {error ? <h1>error: {error.message}</h1> : null}
       {postData?.map((card) => (
-        <CardItem key={card["Post"].postIndex} card={card["Post"]} />
+        <CardItem key={card["Post"].postIndex} card={card} />
       ))}
     </ul>
   );
