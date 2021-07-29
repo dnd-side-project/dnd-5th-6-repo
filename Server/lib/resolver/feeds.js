@@ -1,4 +1,5 @@
 const { getAllLatestPost, getSpecificExercise } = require('../resolver-utils/getFeeds');
+const { updatePostByLike } = require('../resolver-utils/likePost');
 
 const resolvers = {
     Query: {
@@ -10,7 +11,9 @@ const resolvers = {
         },
     },
     Mutation: {
-
+        likePost: (parent, args, context) => {
+            return updatePostByLike(context.req.headers['authorization'], args, context);
+        }
     }
 }
 
