@@ -4,11 +4,13 @@ const getAllLatestPost = async (token, args, context) => {
     let userIndex = -1
     let orderByFlag = args.flag; // 0 최신순 1 인기순
 
-    const decode = jwtDecode(token.split(' ')[1]);
-    if (decode === null) {
-        throw new Error('Invalid_Token')
-    } else {
-        userIndex = decode.ID;
+    if(token !== undefined) {
+        const decode = jwtDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
     }
 
     const allLatestPost = await context.prisma.post.findMany({
@@ -31,11 +33,13 @@ const getSpecificExercise = async (token, args, context) => {
     const orderByFlag = args.flag; // 0 최신순 1 인기순
     const exercise = args.exercise // 0 ~ 11
 
-    const decode = jwtDecode(token.split(' ')[1]);
-    if (decode === null) {
-        throw new Error('Invalid_Token')
-    } else {
-        userIndex = decode.ID;
+    if(token !== undefined) {
+        const decode = jwtDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
     }
 
     const allLatestPost = await context.prisma.post.findMany({
