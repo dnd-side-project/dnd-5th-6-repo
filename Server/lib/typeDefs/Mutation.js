@@ -10,6 +10,7 @@ const typeDefs = gql`
         ): String!
         likePost (
             postIndex: Int!
+            isDuplicate: Boolean
         ): Boolean!
     }
 `

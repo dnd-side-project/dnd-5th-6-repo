@@ -11,9 +11,15 @@ const updatePostByLike = async (token, args, context) => {
     }
 
     if (isDuplicate === true) {
+        const likeIndex = await context.prisma.like.findMany({
+            where: {
+                userIndex: userIndex,
+                postIndex: postIndex
+            }
+        });
         await context.prisma.like.delete({
             where: {
-                postIndex: postIndex
+                likeIndex: likeIndex[0].likeIndex
             }
         })
     } else {
