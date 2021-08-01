@@ -20,7 +20,7 @@ model Post {
   postIndex    Int      @id @default(autoincrement())
   userIndex    Int
   uploadDate   DateTime @db.Date
-  exercise     String   @db.VarChar(45)
+  exercise     Int
   content      String   @db.VarChar(300)
   condition    Int
   feedOpen     Int      @db.SmallInt
