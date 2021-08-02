@@ -1,18 +1,30 @@
 import React, { useEffect } from "react";
 import styles from "./cardList.module.css";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useQuery } from "@apollo/client";
 import CardItem from "../cardItem/cardItem";
-import { GET_CARD } from "../../apollo/queries/CardItem/getCard";
+import {
+  GET_ALL_CARD,
+  GET_OPTIONAL_CARD,
+} from "./../../apollo/queries/CardItem/getCard";
+import { IS_LOGGED_IN } from "./../../apollo/queries/login/login";
 
-function CardList() {
-  const [Addsort, { loading, error, data }] = useLazyQuery(GET_CARD);
+function CardList({ flag, exercise }) {
+  const [sortBy, { loading, error, data }] = useLazyQuery(
+    exercise ? GET_OPTIONAL_CARD : GET_ALL_CARD
+  );
 
-  const postData = data && data["getAllLatestPost"]["PostData"];
-  const likeArray = data && data["getAllLatestPost"]["likeArray"];
+  console.log({ flag, exercise });
+
+  const postData = data && Object.values(data)[0]["PostData"];
+  const likeArray = data && Object.values(data)[0]["likeArray"];
+
+  console.log(likeArray);
 
   useEffect(() => {
-    Addsort({ variables: { flag: 1 } });
-  }, []);
+    sortBy({
+      variables: exercise ? { flag, exercise: exercise - 1 } : { flag },
+    });
+  }, [flag, exercise]);
 
   return (
     <ul className={styles.cardList}>
@@ -25,4 +37,4 @@ function CardList() {
   );
 }
 
-export default React.memo(CardList);
+export default CardList;
