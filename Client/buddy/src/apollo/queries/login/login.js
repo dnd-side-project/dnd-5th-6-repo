@@ -11,3 +11,9 @@ export const ADD_NAVER_TOKEN = gql`
     naverLogin(accessToken: $accessToken)
   }
 `;
+
+export const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client(always: true)
+  }
+`;

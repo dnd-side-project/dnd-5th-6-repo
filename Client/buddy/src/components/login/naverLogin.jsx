@@ -10,11 +10,11 @@ function NaverLogin() {
   const history = useHistory();
   const [addToken, { loading, error, data }] = useMutation(ADD_NAVER_TOKEN, {
     onCompleted: (token) => {
+      console.log(token);
       token && localStorage.setItem("Token", JSON.parse(token.naverLogin).JWT);
       token && history.push("/");
     },
   });
-
   const Naver = () => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: `${CLIENT_KEY}`,
