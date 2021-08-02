@@ -1,6 +1,7 @@
 const { getAllLatestPost, getSpecificExercise } = require('../resolver-utils/getFeeds');
-const { updatePostByLike } = require('../resolver-utils/likePost');
-const { addNewPost } = require('../resolver-utils/addPost');
+//const { updatePostByLike } = require('../resolver-utils/likePost');
+//const { addNewPost } = require('../resolver-utils/addPost');
+const { updatePostByLike, addNewPost } = require('../resolver-utils/Post');
 
 const resolvers = {
     Query: {
