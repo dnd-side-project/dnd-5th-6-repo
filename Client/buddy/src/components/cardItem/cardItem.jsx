@@ -1,10 +1,10 @@
 import React, { memo, useState } from "react";
 import styles from "./cardItem.module.css";
 import { Modal } from "../modal/cardModal";
+import Like from "./../like/like";
 
 const CardItem = memo((props) => {
   const [showModal, setShowModal] = useState(false);
-
   const post = props.card["Post"];
   const user = props.card["User"];
   const like = props.card["Like"];
@@ -12,17 +12,21 @@ const CardItem = memo((props) => {
   console.log(props);
   const openModal = () => {
     setShowModal(true);
+    console.log(showModal);
     document.body.style.overflow = "hidden";
   };
 
+  const handleLikeClick = (index) => {
+    console.log(index);
+  };
   return (
     <>
       <div className={styles.container}>
         {showModal ? (
           <Modal
-            setShowModal={setShowModal}
             uploadDate={post.uploadDate}
             content={post.content}
+            setShowModal={setShowModal}
           />
         ) : null}
         <li className={styles.cardItem} onClick={openModal}>
@@ -35,10 +39,20 @@ const CardItem = memo((props) => {
             </p>
           </div>
         </li>
-        <div className={styles.like}>
-          <button className={styles.likeBtn}> </button>
+        <Like
+          like={like}
+          handleLikeClick={handleLikeClick}
+          postIndex={post.postIndex}
+        ></Like>
+        {/* <div className={styles.like}>
+          <button
+            onClick={() => handleLikeClick(post.postIndex)}
+            className={styles.likeBtn}
+          >
+            {" "}
+          </button>
           <span className={styles.likeCount}>{like}</span>
-        </div>
+        </div> */}
       </div>
     </>
   );

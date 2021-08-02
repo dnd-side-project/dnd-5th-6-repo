@@ -1,0 +1,12 @@
+.like {
+  display: flex;
+  align-items: center;
+  margin-top: 0.625rem;
+}
+.likeBtn {
+  width: 1rem;
+  height: 1rem;
+}
+.likeCount {
+  margin-left: 0.625rem;
+}

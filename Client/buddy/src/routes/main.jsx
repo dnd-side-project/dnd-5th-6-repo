@@ -1,10 +1,7 @@
 import React from "react";
 import SelectOption from "../components/selectOption/selectOption";
 import NavBar from "../components/navBar/navBar";
-import NaverLogin from "../components/login/naverLogin";
-import CardList from "./../components/cardList/cardList";
-import CardItem from "../components/cardItem/cardItem";
-import KakaoLogin from "../components/login/kakaoLogin";
+import NaverLogin from "./../components/login/naverLogin";
 
 function Main() {
   return (
@@ -12,7 +9,6 @@ function Main() {
       <NavBar></NavBar>
       <NaverLogin></NaverLogin>
       <SelectOption></SelectOption>
-      <CardList></CardList>
     </>
   );
 }
