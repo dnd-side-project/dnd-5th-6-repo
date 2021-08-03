@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./like.module.css";
-function Like(props) {
-  console.log(props);
+function Like({ like, handleLikeToggle, postIndex }) {
   return (
     <div className={styles.like}>
       <button
         className={styles.likeBtn}
-        onClick={() => props.handleLikeClick(props.postIndex)}
+        onClick={() => handleLikeToggle(postIndex)}
       >
         {" "}
       </button>
-      <span className={styles.likeCount}>{props.like}</span>
+      <span className={styles.likeCount}>{like}</span>
     </div>
   );
 }
