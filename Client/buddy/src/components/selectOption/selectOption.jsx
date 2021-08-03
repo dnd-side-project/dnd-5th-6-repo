@@ -3,14 +3,17 @@ import styles from "./selectOption.module.css";
 import Button from "../button/button";
 import CardList from "./../cardList/cardList";
 import { exercises } from "../../data/exercises/exercises";
-import { useQuery } from "@apollo/client";
+import { useLazyQuery, useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "./../../apollo/queries/login/login";
+import {
+  GET_ALL_CARD,
+  GET_OPTIONAL_CARD,
+} from "../../apollo/queries/CardItem/getCard";
 
 const SelectOption = memo(() => {
   const [sortByFlag, setSortByFlag] = useState(0);
   const [sortByExe, setSortByExe] = useState(0);
-  const { data } = useQuery(IS_LOGGED_IN);
-  console.log(data);
+
   return (
     <>
       <div>
