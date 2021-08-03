@@ -60,6 +60,30 @@ const getSpecificExercise = async (token, args, context) => {
     };
 }
 
+const getMyPost = async (token, args, context) => {
+    let userIndex = -1
+    
+    if (token !== undefined) {
+        const decode = jwtDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
+    }
+
+    const allMyPost = await context.prisma.post.findMany({
+        orderBy: [{uploadDate: `desc`}],
+        where: {userIndex: userIndex}
+    });
+
+    let returnData = await parseReturnData(context, allMyPost);
+    
+    return {
+        PostData: returnData
+    };
+}
+
 function sortByPopularity(data) {
     return data.sort((a, b) => {
         return parseFloat(b.Like) - parseFloat(a.Like);
@@ -95,8 +119,8 @@ async function getLikeCount(context, userIndex) {
     return returnLike
 }
 
-
 module.exports = {
     getAllLatestPost,
-    getSpecificExercise
+    getSpecificExercise,
+    getMyPost
 };
