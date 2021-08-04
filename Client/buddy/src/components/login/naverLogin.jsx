@@ -9,12 +9,14 @@ const CLIENT_KEY = process.env.REACT_APP_CLIENT_KEY;
 function NaverLogin() {
   const history = useHistory();
   const [addToken, { loading, error, data }] = useMutation(ADD_NAVER_TOKEN, {
-    onCompleted: (token) => {
-      token && localStorage.setItem("Token", JSON.parse(token.naverLogin).JWT);
-      token && history.push("/");
+    onCompleted: (res) => {
+      const naverLogin = JSON.parse(res.naverLogin);
+      if (naverLogin.code === 201 || 200) {
+        localStorage.setItem("Token", naverLogin.JWT);
+        history.push("/");
+      }
     },
   });
-
   const Naver = () => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: `${CLIENT_KEY}`,
@@ -23,6 +25,23 @@ function NaverLogin() {
       loginButton: { color: "green", type: 3, height: "47" },
     });
     naverLogin.init();
+    naverLogin.getLoginStatus((status) => {
+      const { name, gender, email } = status && naverLogin.user;
+
+      if (name === undefined) {
+        alert("이름은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
+        naverLogin.reprompt();
+        return;
+      } else if (gender === undefined) {
+        alert("성별은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
+        naverLogin.reprompt();
+        return;
+      } else if (email === undefined) {
+        alert("이메일은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
+        naverLogin.reprompt();
+        return;
+      }
+    });
   };
 
   const getNaverToken = () => {

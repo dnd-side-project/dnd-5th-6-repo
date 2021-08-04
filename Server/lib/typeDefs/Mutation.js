@@ -12,6 +12,13 @@ const typeDefs = gql`
             postIndex: Int!
             isDuplicate: Boolean
         ): Boolean!
+        addPost (
+            uploadDate: String!
+            exercise: Int!
+            content: String!
+            condition: Int!
+            feedOpen: Int!
+        ): Boolean!
     }
 `
 

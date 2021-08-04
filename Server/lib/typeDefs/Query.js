@@ -9,6 +9,8 @@ const typeDefs = gql`
             flag: Int!
             exercise: Int!
         ): PostData!
+        getMyPost: PostData!
+        reporting: Int!
     }
 `
 
