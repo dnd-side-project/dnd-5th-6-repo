@@ -1,5 +1,5 @@
 const { getAllLatestPost, getSpecificExercise, getMyPost } = require('../resolver-utils/getFeeds');
-const { updatePostByLike, addNewPost } = require('../resolver-utils/Post');
+const { updatePostByLike, addNewPost, reporting } = require('../resolver-utils/Post');
 
 const resolvers = {
     Query: {
@@ -11,6 +11,9 @@ const resolvers = {
         },
         getMyPost: (parent, args, context) => {
             return getMyPost(context.req.headers['authorization'], args, context);
+        },
+        reporting: (parent, args, context) => {
+            return reporting(context.req.headers['authorization'], context);
         }
     },
     Mutation: {

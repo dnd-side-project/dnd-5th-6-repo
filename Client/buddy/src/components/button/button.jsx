@@ -1,15 +1,18 @@
+  
 import React, { memo } from "react";
 import styled from "styled-components";
 
 const Btn = styled.button`
   margin: 1%;
-  background-color: #47474700;
-  border: 1.5px solid #474747c4;
+  background-color: white;
+  border: 1.5px solid #C5C5C5;
   border-radius: 28px;
   height: 1.8rem;
   box-shadow: none;
+  color: #C5C5C5;
   :hover {
-    background-color: #474747c4;
+    background-color: #00BEE6;
+    border: 1.5px solid #00BEE6;
     color: white;
   }
 `;

@@ -1,7 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import styles from "./cardItem.module.css";
 import { Modal } from "../modal/cardModal";
-import Like from "./../like/like";
 import { TOGGLE_LIKE } from "./../../apollo/queries/CardItem/like";
 import { useMutation } from "@apollo/client";
 import { Liked, UnLiked } from "../../icons";
