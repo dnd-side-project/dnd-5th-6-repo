@@ -16,7 +16,7 @@ const resolvers = {
             return reporting(context.req.headers['authorization'], context);
         },
         getExercise: (parent, args, context) => {
-            return getExerciseList(args, context);
+            return getExerciseList(context);
         }
     },
     Mutation: {

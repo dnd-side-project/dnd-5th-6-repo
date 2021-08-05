@@ -84,14 +84,14 @@ const getMyPost = async (token, args, context) => {
     };
 }
 
-const getExerciseList = async (args, context) => {
-    var returnData = [];
-
+const getExerciseList = async (context) => {
     const data = await context.prisma.exercise.findMany();
-
-    console.log('data >>', data);
-
-    return;
+    return data.map(node => {
+        return {
+            Index: node.exerciseIndex,
+            Name: node.name
+        }
+    })
 }
 
 function sortByPopularity(data) {

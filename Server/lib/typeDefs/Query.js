@@ -11,7 +11,7 @@ const typeDefs = gql`
         ): PostData!
         getMyPost: PostData!
         reporting: Int!
-        getExercise: Exercise!
+        getExercise: [Exercise!]
     }
 `
 

@@ -46,6 +46,7 @@ const typeDefs = gql`
         Index: Int!
         Name: String!
     }
+    
 `
 
 module.exports = {typeDefs: typeDefs};
