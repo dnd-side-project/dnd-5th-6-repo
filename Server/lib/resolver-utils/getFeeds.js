@@ -2,7 +2,7 @@ const {jwtDecode} = require('../resolver-utils/UserAuth');
 
 const getAllLatestPost = async (token, args, context) => {
     let userIndex = -1
-    let orderByFlag = args.flag; // 0 최신순 1 인기순
+    const orderByFlag = args.flag; // 0 최신순 1 인기순
 
     if(token !== undefined) {
         const decode = jwtDecode(token.split(' ')[1]);
@@ -62,7 +62,6 @@ const getSpecificExercise = async (token, args, context) => {
 
 const getMyPost = async (token, args, context) => {
     let userIndex = -1
-    
     if (token !== undefined) {
         const decode = jwtDecode(token.split(' ')[1]);
         if (decode === null) {
@@ -71,13 +70,12 @@ const getMyPost = async (token, args, context) => {
             userIndex = decode.ID;
         }
     }
-
     const allMyPost = await context.prisma.post.findMany({
         orderBy: [{uploadDate: `desc`}],
         where: {userIndex: userIndex}
     });
 
-    let returnData = await parseReturnData(context, allMyPost);
+    const returnData = await parseReturnData(context, allMyPost);
     
     return {
         PostData: returnData
@@ -118,7 +116,7 @@ async function parseReturnData(context, data) {
 }
 
 async function getLikeCount(context, userIndex) {
-    let returnLike = [];
+    const returnLike = [];
     const likeArray = await context.prisma.like.findMany({
         where: {userIndex: userIndex}
     });
