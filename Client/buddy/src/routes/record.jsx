@@ -1,7 +1,8 @@
 import React from "react";
+import NavBar from "./../components/navBar/navBar";
 
 function Record() {
-  return <div>Record</div>;
+  return <NavBar></NavBar>;
 }
 
 export default Record;

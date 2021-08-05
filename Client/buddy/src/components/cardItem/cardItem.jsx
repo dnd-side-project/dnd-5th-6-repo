@@ -1,28 +1,57 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import styles from "./cardItem.module.css";
 import { Modal } from "../modal/cardModal";
 import Like from "./../like/like";
 import { TOGGLE_LIKE } from "./../../apollo/queries/CardItem/like";
+import { useMutation } from "@apollo/client";
+import { Liked, UnLiked } from "../../icons";
 
-const CardItem = memo(({ card }) => {
-  const [showModal, setShowModal] = useState(false);
-  // const [toggleLike]=useMutation(TOGGLE_LIKE,{
-  //   variables:{postIndex}
-  // })
+const CardItem = memo(({ card, likeArray }) => {
   const post = card["Post"];
   const user = card["User"];
   const like = card["Like"];
 
-  console.log({ card });
+  const [showModal, setShowModal] = useState(false);
+  const [isLiked, setIsLiked] = useState();
+  const [likeCount, setLikeCount] = useState(like);
+  const [likeArr, setLikeArr] = useState(likeArray);
+
+  const [toggleLike, { data }] = useMutation(TOGGLE_LIKE);
+
+  const checkAlreadyLiked = () => {
+    if (likeArr?.includes(post.postIndex)) {
+      setIsLiked(true);
+    }
+  };
+
   const openModal = () => {
     setShowModal(true);
     console.log(showModal);
     document.body.style.overflow = "hidden";
   };
 
-  const handleLikeToggle = (index) => {
-    console.log(index);
+  const handleLikeToggle = () => {
+    if (isLiked) {
+      setIsLiked(false);
+      setLikeCount(likeCount - 1);
+      setLikeArr(likeArr.filter((index) => index !== post.postIndex));
+      toggleLike({
+        variables: { postIndex: post.postIndex, isDuplicate: true },
+      });
+    } else {
+      setIsLiked(true);
+      setLikeCount(likeCount + 1);
+      setLikeArr([...likeArr, post.postIndex]);
+      toggleLike({
+        variables: { postIndex: post.postIndex, isDuplicate: false },
+      });
+    }
   };
+
+  useEffect(() => {
+    checkAlreadyLiked();
+  });
+
   return (
     <>
       <div className={styles.container}>
@@ -43,20 +72,10 @@ const CardItem = memo(({ card }) => {
             </p>
           </div>
         </li>
-        <Like
-          like={like}
-          handleLikeToggle={handleLikeToggle}
-          postIndex={post.postIndex}
-        ></Like>
-        {/* <div className={styles.like}>
-          <button
-            onClick={() => handleLikeClick(post.postIndex)}
-            className={styles.likeBtn}
-          >
-            {" "}
-          </button>
-          <span className={styles.likeCount}>{like}</span>
-        </div> */}
+        <span onClick={handleLikeToggle}>
+          {isLiked ? <Liked /> : <UnLiked />}
+          {likeCount}
+        </span>
       </div>
     </>
   );
