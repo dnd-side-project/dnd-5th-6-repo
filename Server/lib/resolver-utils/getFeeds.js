@@ -84,6 +84,16 @@ const getMyPost = async (token, args, context) => {
     };
 }
 
+const getExerciseList = async (args, context) => {
+    var returnData = [];
+
+    const data = await context.prisma.exercise.findMany();
+
+    console.log('data >>', data);
+
+    return;
+}
+
 function sortByPopularity(data) {
     return data.sort((a, b) => {
         return parseFloat(b.Like) - parseFloat(a.Like);
@@ -122,5 +132,6 @@ async function getLikeCount(context, userIndex) {
 module.exports = {
     getAllLatestPost,
     getSpecificExercise,
-    getMyPost
+    getMyPost,
+    getExerciseList
 };
