@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./cardList.module.css";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import CardItem from "../cardItem/cardItem";
@@ -12,13 +12,10 @@ function CardList({ flag, exercise }) {
   const [sortBy, { loading, error, data }] = useLazyQuery(
     exercise ? GET_OPTIONAL_CARD : GET_ALL_CARD
   );
-
-  console.log({ flag, exercise });
-
   const postData = data && Object.values(data)[0]["PostData"];
   const likeArray = data && Object.values(data)[0]["likeArray"];
 
-  console.log(likeArray);
+  console.log({ flag, exercise });
 
   useEffect(() => {
     sortBy({
@@ -31,7 +28,11 @@ function CardList({ flag, exercise }) {
       {loading && <h1>loading</h1>}
       {error ? <h1>error: {error.message}</h1> : null}
       {postData?.map((card) => (
-        <CardItem key={card["Post"].postIndex} card={card} />
+        <CardItem
+          key={card["Post"].postIndex}
+          card={card}
+          likeArray={likeArray}
+        />
       ))}
     </ul>
   );
