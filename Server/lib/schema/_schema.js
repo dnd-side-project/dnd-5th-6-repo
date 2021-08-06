@@ -41,6 +41,12 @@ const typeDefs = gql`
     type LikedPost {
         postIndex: Int!
     }
+
+    type Exercise {
+        Index: Int!
+        Name: String!
+    }
+    
 `
 
 module.exports = {typeDefs: typeDefs};
