@@ -15,6 +15,10 @@ apolloInstance.apollo.applyMiddleware({
     }
 })
 
+apolloInstance.testServer.applyMiddleware({
+    app
+})
+
 const connect = app.listen(port, () => {
     console.log("Apollo Server start.");
 })
