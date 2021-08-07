@@ -41,3 +41,8 @@ model Like {
   @@index([postIndex], name: "Like_Post__fk")
   @@index([userIndex], name: "Like_User__fk")
 }
+
+model Exercise {
+  exerciseIndex Int    @id @default(autoincrement())
+  name          String @db.VarChar(45)
+}

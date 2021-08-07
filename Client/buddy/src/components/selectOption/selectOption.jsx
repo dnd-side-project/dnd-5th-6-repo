@@ -24,12 +24,12 @@ const SelectOption = memo(() => {
       <div>
         <div className={styles.sortBar}>
           <span className={styles.feed}>피드</span>
-          <div className={styles.sort}>
-          <Sss onClick={() => setSortByFlag(0)}>최신순</Sss>
-          <span> · </span>
-          <Sss onClick={() => setSortByFlag(1)}>인기순</Sss>
+            <div className={styles.sort}>
+              <Sss onClick={() => setSortByFlag(0)}>최신순</Sss>
+              <span> · </span>
+              <Sss onClick={() => setSortByFlag(1)}>인기순</Sss>
+            </div>
           </div>
-        </div>
         <div className={styles.wrapbar}>
         {exercises.map((exercise, index) => (
           <Button

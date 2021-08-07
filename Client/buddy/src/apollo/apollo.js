@@ -26,6 +26,10 @@ const authLink = new ApolloLink((operation, forward) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache,
+  clientState: {
+    defaults,
+    resolvers,
+  },
 });
 
 cache.writeQuery({
