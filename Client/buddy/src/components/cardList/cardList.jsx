@@ -12,9 +12,11 @@ function CardList({ flag, exercise }) {
   const [sortBy, { loading, error, data }] = useLazyQuery(
     exercise ? GET_OPTIONAL_CARD : GET_ALL_CARD
   );
+
   const postData = data && Object.values(data)[0]["PostData"];
   const likeArray = data && Object.values(data)[0]["likeArray"];
 
+  console.log(postData);
   console.log({ flag, exercise });
 
   useEffect(() => {
@@ -26,7 +28,12 @@ function CardList({ flag, exercise }) {
   return (
     <ul className={styles.cardList}>
       {loading && <h1>loading</h1>}
-      {error ? <h1>error: {error.message}</h1> : null}
+      {error && (
+        <>
+          <h1>에러가 발생했어요.. 잠시후 다시 실행해 주세요.</h1>
+          {console.log("error:", error.message)}
+        </>
+      )}
       {postData?.map((card) => (
         <CardItem
           key={card["Post"].postIndex}

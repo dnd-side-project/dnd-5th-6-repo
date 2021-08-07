@@ -8,12 +8,12 @@ import Report from "./routes/report";
 function App() {
   return (
     <>
-    <Navbar></Navbar>
-    <Router>
-      <Route exact path="/" component={Main}></Route>
-      <Route path="/record" component={Record}></Route>
-      <Route path="/report" component={Report}></Route>
-    </Router>
+      <Router>
+        <Navbar></Navbar>
+        <Route exact path="/" component={Main}></Route>
+        <Route path="/record" component={Record}></Route>
+        <Route path="/report" component={Report}></Route>
+      </Router>
     </>
   );
 }
