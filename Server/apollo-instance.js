@@ -17,8 +17,6 @@ const resolvers = [
     users.resolvers,
     feeds.resolvers
 ]
-
-
 const testServer = new ApolloServer({
     typeDefs,
     resolvers,
