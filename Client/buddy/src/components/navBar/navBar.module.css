@@ -7,39 +7,6 @@
   margin: 4%;
 }
 
-
-.showmenu{
-  background-color:white;
-  width: 100%;
-height: 100%;
-  position: absolute;
-  /* left: 0px; */
-  right: 0px;
-  transition: 1s;
-  }
-  
-  .hidemenu{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  /* left: -376px; */
-  right: -376px;
-
-  /* 이 디스플레이를 주석처리하면 재밌는 것을,,, 볼수있습니다 */
-  display: none;
-  transition: 1s;
-  }
-
-  .list {
-    margin-top: 20%;
-  }
-
-  .listitem {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2rem;
-    
-  }
-
   .hambtn {
     /* margin-top: 10%;
     margin-left: 75%; */
@@ -49,4 +16,14 @@ height: 100%;
   right: 5.87%;
   top: 1.72%;
 
+  }
+
+  .height {
+    height: 2.3rem;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #C5C5C5;
+    border:none;
   }
