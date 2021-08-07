@@ -1,8 +1,13 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - echo Dnd Project Build Starting
+      - echo dnd Project Build Starting!
       - npm run serve:start
   post_build:
+    commands:
+      - echo Nothing to do in the post_build phase...
