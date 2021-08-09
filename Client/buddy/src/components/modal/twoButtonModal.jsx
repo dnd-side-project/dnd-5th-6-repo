@@ -1,8 +1,7 @@
 import React, { useRef } from "react";
-import styles from "./cardModal.module.css";
-import ReactDom from "react-dom";
+import styles from "./twoButtonModal.module.css";
 
-export const CardModal = ({ setShowModal, uploadDate, content }) => {
+export const TwoButtonModal = ({ setShowModal }) => {
   const modalRef = useRef();
 
   const close = (e) => {
@@ -19,17 +18,18 @@ export const CardModal = ({ setShowModal, uploadDate, content }) => {
 
   return (
     <div className={styles.container} ref={modalRef} onClick={close}>
-      <div>
-        <button className={styles.closeBtn} onClick={closeModal}>
-          닫기
-        </button>
-        <div className={styles.modal}>
-          <div className={styles.card}>
-            <p className={styles.date}>{uploadDate}</p>
-            <p className={styles.content}>{content}</p>
+      <div className={styles.modal}>
+        <div className={styles.button_container}>
+          <div className={styles.full}>
+            <span className={styles.full_text}>그만두기</span>
+          </div>
+          <div className={styles.empty}>
+            <span className={styles.empty_text}>취소</span>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default TwoButtonModal;
