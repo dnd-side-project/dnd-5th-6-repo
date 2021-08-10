@@ -86,7 +86,7 @@ const getExerciseList = async (context) => {
     const data = await context.prisma.exercise.findMany();
     return data.map(node => {
         return {
-            Index: node.exerciseIndex - 1,
+            Index: node.exerciseIndex,
             Name: node.name
         }
     })
