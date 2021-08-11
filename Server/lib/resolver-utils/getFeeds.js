@@ -92,6 +92,32 @@ const getExerciseList = async (context) => {
     })
 }
 
+const getMyDate = async (token, args, context) => {
+    let userIndex = -1
+    if(token !== undefined) {
+        const decode = jwtDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
+    }
+
+    const allMyDate = await context.prisma.post.findMany({
+        orderBy: [{uploadDate: `desc`}],
+        where: {userIndex: userIndex},
+        select: {uploadDate: true}
+    });
+
+    var resultData = [];
+
+    allMyDate.forEach(e => {
+        resultData.push(String(e.uploadDate));
+    })
+
+    return resultData;
+}
+
 function sortByPopularity(data) {
     return data.sort((a, b) => {
         return parseFloat(b.Like) - parseFloat(a.Like);
@@ -131,5 +157,6 @@ module.exports = {
     getAllLatestPost,
     getSpecificExercise,
     getMyPost,
-    getExerciseList
+    getExerciseList,
+    getMyDate
 };
