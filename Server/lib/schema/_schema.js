@@ -44,8 +44,7 @@ const typeDefs = gql`
     type Exercise {
         Index: Int!
         Name: String!
-    }
-    
+    }    
 `
 
 module.exports = {typeDefs: typeDefs};
