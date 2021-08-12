@@ -109,13 +109,7 @@ const getMyDate = async (token, args, context) => {
         select: {uploadDate: true}
     });
 
-    var resultData = [];
-
-    allMyDate.forEach(e => {
-        resultData.push(String(e.uploadDate));
-    })
-
-    return resultData;
+    return allMyDate.map(node => String(node.uploadDate));
 }
 
 function sortByPopularity(data) {
