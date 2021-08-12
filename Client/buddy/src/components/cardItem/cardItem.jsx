@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from "react";
 import styles from "./cardItem.module.css";
-import { Modal } from "../modal/cardModal";
+import { CardModal } from "../modal/cardModal";
 import { TOGGLE_LIKE } from "./../../apollo/queries/CardItem/like";
 import { useMutation } from "@apollo/client";
 import { Liked, UnLiked } from "../../icons";
@@ -10,6 +10,10 @@ const CardItem = memo(({ card, likeArray }) => {
   const user = card["User"];
   const like = card["Like"];
 
+  const exerciseImgURL = "images/exercises/exercise" + post.exercise + ".svg";
+  const conditionImgURL =
+    "images/conditions/condition" + post.condition + ".svg";
+
   const [showModal, setShowModal] = useState(false);
   const [isLiked, setIsLiked] = useState();
   const [likeCount, setLikeCount] = useState(like);
@@ -17,6 +21,7 @@ const CardItem = memo(({ card, likeArray }) => {
 
   const [toggleLike, { data }] = useMutation(TOGGLE_LIKE);
 
+  console.log(post.condition);
   const checkAlreadyLiked = () => {
     if (likeArr?.includes(post.postIndex)) {
       setIsLiked(true);
@@ -55,14 +60,17 @@ const CardItem = memo(({ card, likeArray }) => {
     <>
       <div className={styles.container}>
         {showModal ? (
-          <Modal
+          <CardModal
             uploadDate={post.uploadDate}
             content={post.content}
             setShowModal={setShowModal}
           />
         ) : null}
         <li className={styles.cardItem} onClick={openModal}>
-          <div className={styles.card}>
+          <img alt={post.exercise} src={exerciseImgURL}></img>
+          {/* <img alt={post.condition} src={conditionImgURL}></img> */}
+
+          <div className={styles.card} id={post.condition}>
             <p className={styles.date}>{post.uploadDate}</p>
             <p className={styles.content}>
               {post.content.length >= 30
