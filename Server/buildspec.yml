@@ -7,7 +7,7 @@ phases:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - echo dnd Project Build Starting!
+      - echo dnd Project Build Starting!!!!!!!!!!!
       - npm run test
   post_build:
     commands:
