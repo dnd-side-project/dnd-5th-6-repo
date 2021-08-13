@@ -24,7 +24,6 @@ model Post {
   content      String   @db.VarChar(300)
   condition    Int
   feedOpen     Int      @db.SmallInt
-  cardImgIndex Int?
   User         User     @relation(fields: [userIndex], references: [userIndex])
   Like         Like[]
 
@@ -40,4 +39,9 @@ model Like {
 
   @@index([postIndex], name: "Like_Post__fk")
   @@index([userIndex], name: "Like_User__fk")
+}
+
+model Exercise {
+  exerciseIndex Int    @id @default(autoincrement())
+  name          String @db.VarChar(45)
 }

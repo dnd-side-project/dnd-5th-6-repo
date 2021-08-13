@@ -12,11 +12,10 @@ const typeDefs = gql`
         postIndex: Int!
         userIndex: Int!
         uploadDate: String!
-        exercise: String!
+        exercise: Int!
         content: String!
         condition: Int!
         feedOpen: Int!
-        cardImgIndex: Int
     }
     
     type Like {
@@ -41,6 +40,11 @@ const typeDefs = gql`
     type LikedPost {
         postIndex: Int!
     }
+
+    type Exercise {
+        Index: Int!
+        Name: String!
+    }    
 `
 
 module.exports = {typeDefs: typeDefs};

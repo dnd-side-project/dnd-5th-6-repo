@@ -17,18 +17,18 @@ const resolvers = [
     users.resolvers,
     feeds.resolvers
 ]
-
 const testServer = new ApolloServer({
     typeDefs,
     resolvers,
     context: () => {
         const {request: req} = require('express')
-        req.headers['authorization'] = `Bearer ${process.env.TEST_TOKEN}`
+        // req.headers['authorization'] = `Bearer ${process.env.JWT_TEST_TOKEN}`
         return {
             req, prisma
         }
     }
 })
+
 
 const apollo = new ApolloServer({
     typeDefs,
