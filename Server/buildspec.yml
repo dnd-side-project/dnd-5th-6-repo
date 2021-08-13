@@ -2,15 +2,15 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      docker: 18
+    commands:
+      - npm install
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
       - echo dnd Project Build Starting!
-      - sudo docker-compose up --build
+      - npm run serve:start
   post_build:
     commands:
       - echo Nothing to do in the post_build phase...
