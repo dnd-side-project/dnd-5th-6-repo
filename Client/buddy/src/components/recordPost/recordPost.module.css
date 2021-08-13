@@ -1,0 +1,72 @@
+* {
+  font-family: Noto Sans KR;
+  font-style: normal;
+}
+form,
+section {
+  margin: 1em auto;
+  margin-inline: 0.5rem;
+}
+.box_section {
+  margin-block: 1rem;
+}
+.section_name {
+  color: #474747;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 23px;
+  margin-bottom: 0.25rem;
+}
+.section_detail {
+  color: #a5a5a5;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 17px;
+}
+hr {
+  border: none;
+  background-color: rgba(196, 196, 196, 0.2);
+  width: 23.438rem;
+  height: 0.063rem;
+}
+textarea {
+  outline: none !important;
+  border-color: #a5a5a5;
+  width: 21.4rem;
+  height: 4.063rem;
+  resize: none;
+}
+textarea:focus {
+  outline: none !important;
+  border-color: #00bee6;
+}
+.submit {
+  width: 21.563rem;
+  height: 3.125rem;
+  display: table;
+  text-align: center;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  background-color: #dddddd;
+}
+.submit_text {
+  display: table-cell;
+  vertical-align: middle;
+  color: #a5a5a5;
+}
+.text_byte {
+  color: #a5a5a5;
+  float: right;
+}
+.conditions {
+  display: flex;
+}
+.condition {
+}
+.feed {
+  display: flex;
+}
+.toggle_button {
+  margin: 1%;
+  margin-left: 6rem;
+}

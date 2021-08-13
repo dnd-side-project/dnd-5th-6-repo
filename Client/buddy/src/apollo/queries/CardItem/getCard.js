@@ -8,6 +8,8 @@ export const GET_ALL_CARD = gql`
           postIndex
           uploadDate
           content
+          condition
+          exercise
         }
         User {
           userName
@@ -27,6 +29,8 @@ export const GET_OPTIONAL_CARD = gql`
           postIndex
           uploadDate
           content
+          condition
+          exercise
         }
         User {
           userName
