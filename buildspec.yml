@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - ./Servrer npm install
+      - npm install
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
