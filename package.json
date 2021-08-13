@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "nodemon index.js",
-    "serve:start": "./Server nodemon index.js",
+    "serve:start": "nodemon ./Server/index.js",
     "test:jest": "jest"
   },
   "dependencies": {
