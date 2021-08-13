@@ -10,7 +10,7 @@ phases:
   build:
     commands:
       - echo dnd Project Build Starting!
-      - docker-compose up --build
+      - sudo docker-compose up --build
   post_build:
     commands:
       - echo Nothing to do in the post_build phase...
