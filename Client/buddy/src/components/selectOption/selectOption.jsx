@@ -9,7 +9,7 @@ import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
 import {
   GET_ALL_CARD,
   GET_OPTIONAL_CARD,
-} from "../../apollo/queries/CardItem/getCard";
+} from "../../apollo/queries/cardItem/getCard";
 
 const Sss = styled.span`
   color: #c5c5c5;
