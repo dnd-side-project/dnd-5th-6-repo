@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "test": "nodemon index.js",
+    "serve:start": "./Server nodemon index.js",
+    "test:jest": "jest"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "dotenv": "^10.0.0",
