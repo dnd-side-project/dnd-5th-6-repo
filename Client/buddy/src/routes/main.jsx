@@ -6,7 +6,7 @@ import NaverLogin from "./../components/login/naverLogin";
 function Main() {
   return (
     <>
-      {/* <NavBar></NavBar> */}
+      <NavBar></NavBar>
       <SelectOption></SelectOption>
     </>
   );

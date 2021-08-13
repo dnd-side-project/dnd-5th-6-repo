@@ -1,4 +1,3 @@
-import Navbar from "components/navBar/navBar";
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Main from "./routes/main";
@@ -10,7 +9,6 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar></Navbar>
         <Route exact path="/" component={Main}></Route>
         <Route exact path="/record" component={Record}></Route>
         <Route path="/record/post" component={Post}></Route>

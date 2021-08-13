@@ -21,8 +21,8 @@ const Navbar = () => {
           <PaceBuddy />
         </Link>
         {/* <button className={styles.hambtn} onClick={toggleNav}>햄버거바</button>  */}
-        <Hamburger />
-        {/* <svg
+        {/* <Hamburger /> */}
+        <svg
           className={styles.hambtn}
           onClick={toggleNav}
           width="28"
@@ -38,7 +38,7 @@ const Navbar = () => {
             stroke-linecap="round"
             stroke-linejoin="round"
           />
-        </svg> */}
+        </svg>
       </div>
       <div className={isOpen ? `${styles.showmenu}` : `${styles.hidemenu}`}>
         {/* `${styles.navLinks} ${styles.showNav}` : `${styles.navLinks}`} */}
@@ -54,6 +54,7 @@ const Navbar = () => {
           </NavItem>
         </div>
       </div>
+      <hr />
     </div>
   );
 };
