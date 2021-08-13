@@ -2,14 +2,27 @@
   "scripts": {
     "test": "nodemon index.js",
     "serve:start": "nodemon ./Server/index.js",
+    "dep:install": "npm install",
     "test:jest": "jest"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
-    "dotenv": "^10.0.0",
     "moment": "^2.29.1",
-    "nodemon": "^2.0.9",
     "postcss-modules-values": "^4.0.0",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "@graphql-tools/schema": "^7.1.5",
+    "@prisma/client": "^2.26.0",
+    "apollo-server": "^2.25.2",
+    "apollo-server-testing": "^2.25.2",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "graphql-request": "^3.5.0",
+    "graphql-scalars": "^1.10.0",
+    "jest": "^27.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12"
   }
 }
