@@ -76,9 +76,11 @@ const getMyPost = async (token, args, context) => {
     });
 
     const returnData = await parseReturnData(context, allMyPost);
-    
+    const returnLike = await getLikeCount(context, userIndex);
+
     return {
-        PostData: returnData
+        PostData: returnData,
+        likeArray: returnLike
     };
 }
 
