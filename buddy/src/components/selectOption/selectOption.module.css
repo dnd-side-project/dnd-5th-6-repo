@@ -1,0 +1,59 @@
+.sortBar {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.buttondesign {
+    margin:1%;
+    background-color:#47474700;
+    border: 1.5px solid #474747c4;
+    border-radius: 28px;
+    height: 1.8rem;
+    box-shadow: none;
+}
+    /* .buttondesign::after {
+        color: white;
+        background-color:#474747b7
+    } */
+
+
+/* 스크롤 버튼바 */
+/* 참조 : https://blog.naver.com/PostView.naver?blogId=rwans0397&logNo=220699305909&redirect=Dlog&widgetTypeCall=true&directAccess=false */
+.wrapbar {
+    width: 93%;
+    height: 2.8rem;
+    white-space:nowrap;
+    overflow-x:scroll;
+    -ms-overflow-style: none;
+    margin-left: 2%;
+}
+/* 스크롤바 안보이게 하는거 : https://wooaoe.tistory.com/49 */
+.wrapbar::-webkit-scrollbar{ display:none; }
+
+.body {
+        /* cardList의 마진과 맞춰 줄 맞추기 */
+        margin-left: 4%;
+}
+
+.feed {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.sort {
+    /* position: absolute; */
+    /* left: .67%;
+    right: 5.87%;
+    top: 1.72%; */
+    display: block;
+    width: 95%;
+    font-size: 13px;
+    text-align: right;
+
+}
+
+.scroll {
+width:1000px;
+height:300px;
+white-space:nowrap;
+overflow-x:scroll;}
