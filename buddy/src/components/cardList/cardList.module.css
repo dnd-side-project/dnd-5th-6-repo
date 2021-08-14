@@ -1,0 +1,29 @@
+/* .cardList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+} */
+
+/* 카드 전체 틀 */
+.cardList {
+  /* 그리드 정렬 */
+  display: grid;
+  /* 2열 정렬 */
+  grid-template-columns: 50% 50%;
+
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0%;
+  margin-left: 4%;
+  margin-top: 0%;
+  
+}
+
+
+
+
+.card {
+  /* height: max-content; */
+  height: 100%;
+}
