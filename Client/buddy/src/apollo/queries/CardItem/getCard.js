@@ -42,8 +42,19 @@ export const GET_OPTIONAL_CARD = gql`
   }
 `;
 
-export const GET_MODAL_STATE = gql`
-  query SelectExe {
-    exercises @client
+export const GET_MY_CARD = gql`
+  query getMyCard {
+    getMyPost {
+      PostData {
+        Post {
+          postIndex
+          uploadDate
+          exercise
+          content
+          condition
+        }
+        Like
+      }
+    }
   }
 `;

@@ -10,7 +10,7 @@ function RecordPost() {
   const [selectExe, setSelectExe] = useState(0);
   const [isSelected, setIsSelected] = useState(0);
   const [textByte, setTextByte] = useState(0);
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState(true);
   const textRef = useRef();
 
   const { data } = useQuery(GET_EXERCISES);
@@ -71,24 +71,26 @@ function RecordPost() {
         </div>
       </section>
       <hr />
-      <form>
-        <div className={styles.box_section}>
-          <div className={styles.section_name}>한 줄 기록</div>
-          <div className={styles.section_detail}>
-            운동의 감정을 간단하게 작성해보세요!
+      <section>
+        <form>
+          <div className={styles.box_section}>
+            <div className={styles.section_name}>한 줄 기록</div>
+            <div className={styles.section_detail}>
+              운동의 감정을 간단하게 작성해보세요!
+            </div>
           </div>
-        </div>
-        <div>
-          <textarea
-            ref={textRef}
-            name="message"
-            placeholder="최소 10자에서 최대 45자까지 기록할 수 있어요."
-            onKeyUp={handlecheckByte}
-            maxLength={limitedByte}
-          ></textarea>
-          <div className={styles.text_byte}>{textByte}/45</div>
-        </div>
-      </form>
+          <div>
+            <textarea
+              ref={textRef}
+              name="message"
+              placeholder="최소 10자에서 최대 45자까지 기록할 수 있어요."
+              onKeyUp={handlecheckByte}
+              maxLength="45"
+            ></textarea>
+            <div className={styles.text_byte}>{textByte}/45</div>
+          </div>
+        </form>
+      </section>
       <hr />
       <section>
         <div className={styles.box_section}>
