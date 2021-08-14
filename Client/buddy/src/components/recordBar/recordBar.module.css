@@ -1,6 +1,3 @@
-* {
-  font-family: Noto Sans KR;
-}
 .box_section {
   display: flex;
 }
@@ -8,11 +5,13 @@
   flex-shrink: 0;
 }
 .section_name {
+  font-family: Noto Sans KR;
   font-size: 1.5rem;
   font-weight: bold;
   color: #000000;
 }
 .section_text {
+  font-family: Noto Sans KR;
   color: #474747;
   font-size: 1rem;
 }

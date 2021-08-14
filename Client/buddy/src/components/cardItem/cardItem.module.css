@@ -24,15 +24,16 @@
 }
 
 .card {
+  color: #474747;
   font-size: 12px;
   margin-inline: 0.9375rem;
 }
 
 .date {
-  font-family: Spoqa Han Sans Neo;
+  font-family: pretendard;
   font-style: normal;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 14px;
   height: 0.5rem;
 }
 

@@ -1,7 +1,3 @@
-* {
-  font-family: Noto Sans KR;
-  font-style: normal;
-}
 form,
 section {
   margin: 1em auto;
@@ -11,6 +7,8 @@ section {
   margin-block: 1rem;
 }
 .section_name {
+  font-family: Noto Sans KR;
+  font-style: normal;
   color: #474747;
   font-weight: bold;
   font-size: 16px;
@@ -18,6 +16,8 @@ section {
   margin-bottom: 0.25rem;
 }
 .section_detail {
+  font-family: Noto Sans KR;
+  font-style: normal;
   color: #a5a5a5;
   font-weight: normal;
   font-size: 12px;
@@ -30,6 +30,8 @@ hr {
   height: 0.063rem;
 }
 textarea {
+  font-family: Noto Sans KR;
+  font-style: normal;
   outline: none !important;
   border-color: #a5a5a5;
   width: 21.4rem;
@@ -37,6 +39,8 @@ textarea {
   resize: none;
 }
 textarea:focus {
+  font-family: Noto Sans KR;
+  font-style: normal;
   outline: none !important;
   border-color: #00bee6;
 }
@@ -50,11 +54,15 @@ textarea:focus {
   background-color: #dddddd;
 }
 .submit_text {
+  font-family: Noto Sans KR;
+  font-style: normal;
   display: table-cell;
   vertical-align: middle;
   color: #a5a5a5;
 }
 .text_byte {
+  font-family: pretendard;
+  font-style: normal;
   color: #a5a5a5;
   float: right;
 }
