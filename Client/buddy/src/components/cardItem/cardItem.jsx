@@ -98,20 +98,21 @@ const CardItem = memo(({ card, likeArray }) => {
             style={{ backgroundImage: `url(${exerciseImgURL})` }}
           >
             <div className={styles.card}>
-              <p className={styles.date}>{post.uploadDate}</p>
+              <p className={styles.date}>07.17</p>
               <p className={styles.content}>
                 {post.content.length >= 30
-                  ? post.content.slice(0, 30) + " .. "
+                  ? post.content.slice(0, 16) + " .. "
                   : post.content}
               </p>
             </div>
           </CardImageExercise>
         </CardImageCondition>
-        {/* </li> */}
-        <span className={styles.like} onClick={handleLikeToggle}>
-          {isLiked ? <Liked /> : <UnLiked />}
-          {likeCount}
-        </span>
+        <div className={styles.like}>
+          <div className={styles.like_icon} onClick={handleLikeToggle}>
+            {isLiked ? <Liked /> : <UnLiked />}
+          </div>
+          <span className={styles.like_text}>{likeCount}</span>
+        </div>
       </div>
     </>
   );

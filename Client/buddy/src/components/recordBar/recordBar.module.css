@@ -6,9 +6,10 @@
 }
 .section_name {
   font-family: Noto Sans KR;
+  font-style: normal;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #000000;
+  color: #474747;
 }
 .section_text {
   font-family: Noto Sans KR;
