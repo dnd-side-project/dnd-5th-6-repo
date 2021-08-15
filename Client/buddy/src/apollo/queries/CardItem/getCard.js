@@ -55,6 +55,7 @@ export const GET_MY_CARD = gql`
         }
         Like
       }
+      likeArray
     }
   }
 `;
