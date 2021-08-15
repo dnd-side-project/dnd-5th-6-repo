@@ -25,11 +25,16 @@
   position: relative;
   background-color: white;
 }
+.modal_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .button_container {
   display: flex;
   justify-content: center;
   position: relative;
-  top: 8rem;
+  top: 2rem;
 }
 
 .full {
@@ -58,4 +63,12 @@
   color: #00bee6;
   vertical-align: middle;
   display: table-cell;
+}
+.message {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: center;
+  color: #474747;
 }
