@@ -21,7 +21,7 @@ const getAllLatestPost = async (token, args, context) => {
     let returnData = await parseReturnData(context, allLatestPost);
     if (orderByFlag === 1) returnData = sortByPopularity(returnData);
     const returnLike = await getLikeCount(context, userIndex);
-
+    
     return {
         PostData: returnData,
         likeArray: returnLike
@@ -132,7 +132,8 @@ async function parseReturnData(context, data) {
                 where: {postIndex: node.postIndex}
             })
         });
-        node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 11)
+        
+        node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 8) + "." + JSON.stringify(node.uploadDate).slice(9, 11);
     }
     return returnData;
 }
