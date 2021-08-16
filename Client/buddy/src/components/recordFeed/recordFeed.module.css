@@ -22,4 +22,5 @@
 }
 .button {
   all: unset;
+  margin-left: 0.5rem;
 }

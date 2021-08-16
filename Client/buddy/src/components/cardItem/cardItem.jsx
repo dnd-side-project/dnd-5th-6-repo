@@ -98,7 +98,7 @@ const CardItem = memo(({ card, likeArray }) => {
             style={{ backgroundImage: `url(${exerciseImgURL})` }}
           >
             <div className={styles.card}>
-              <p className={styles.date}>07.17</p>
+              <p className={styles.date}>{post.uploadDate}</p>
               <p className={styles.content}>
                 {post.content.length >= 30
                   ? post.content.slice(0, 16) + " .. "

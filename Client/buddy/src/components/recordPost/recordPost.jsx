@@ -1,38 +1,97 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./recordPost.module.css";
 import Button from "../button/button";
 import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { Weathers } from "./../../weathers";
 import Toggle from "./../toggle/toggle";
+import { ADD_CARD } from "./../../apollo/queries/cardItem/addCard";
+import { useHistory } from "react-router";
+import { OneButtonModal } from "./../modal/oneButtonModal";
 
 function RecordPost() {
+  const history = useHistory();
   const [selectExe, setSelectExe] = useState(0);
   const [isSelected, setIsSelected] = useState(0);
   const [textByte, setTextByte] = useState(0);
   const [isToggled, setIsToggled] = useState(true);
+  const [isDone, setIsDone] = useState(false);
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const textRef = useRef();
 
+  const clearState = () => {
+    setSelectExe(0);
+    setIsSelected(0);
+    setTextByte(0);
+    setIsToggled(true);
+    setIsDone(false);
+  };
   const { data } = useQuery(GET_EXERCISES);
+
+  const [addCard, { loading, error, dataS }] = useMutation(ADD_CARD, {
+    onCompleted: (res) => {
+      console.log(res);
+      clearState();
+      res.addPost && openModal();
+    },
+  });
+
   const exercises = data && data["getExercise"];
 
+  const openModal = () => {
+    setShowModal(true);
+    console.log(showModal);
+    document.body.style.overflow = "hidden";
+  };
   const handlecheckByte = () => {
     setTextByte(textRef.current.value.length);
-    console.log(textRef.current.value);
   };
 
   const handleWClick = (key) => {
     setIsSelected(key);
   };
-  console.log(isSelected);
-  const limitedByte = () => {};
-  const checkAll = () => {};
-  //    const onSubmit = () => (
 
-  //    );
+  const limitedByte = () => {};
+
+  const checkAll = () => {
+    if (selectExe && isSelected && textByte) {
+      setIsDone(true);
+    } else {
+      setIsDone(false);
+    }
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    isDone &&
+      addCard({
+        variables: {
+          uploadDate: "2021-08-16",
+          exercise: selectExe,
+          content: textRef.current.value,
+          condition: isSelected,
+          feedOpen: +isToggled,
+        },
+      });
+    textRef.current.value = "";
+  };
+
+  useEffect(() => {
+    checkAll();
+    setIsBlocked(true);
+  }, [selectExe, isSelected, textByte, isToggled]);
 
   return (
     <>
+      {showModal ? (
+        <OneButtonModal
+          setShowModal={setShowModal}
+          message1="기록이 저장되었어요!"
+          right="확인"
+          link="/record"
+        ></OneButtonModal>
+      ) : null}
       <section>
         <div className={styles.box_section}>
           <div className={styles.section_name}>운동 선택</div>
@@ -85,7 +144,7 @@ function RecordPost() {
               name="message"
               placeholder="최소 10자에서 최대 45자까지 기록할 수 있어요."
               onKeyUp={handlecheckByte}
-              maxLength="45"
+              max="45"
             ></textarea>
             <div className={styles.text_byte}>{textByte}/45</div>
           </div>
@@ -110,9 +169,15 @@ function RecordPost() {
           </div>
         </div>
       </section>
-      <div className={styles.submit}>
-        <p className={styles.submit_text}>저장하기</p>
-      </div>
+      {isDone ? (
+        <div className={styles.submit_active} onClick={onSubmit}>
+          <p className={styles.submit_text_active}>저장하기</p>
+        </div>
+      ) : (
+        <div className={styles.submit_disable}>
+          <p className={styles.submit_text_disable}>저장하기</p>
+        </div>
+      )}
     </>
   );
 }
