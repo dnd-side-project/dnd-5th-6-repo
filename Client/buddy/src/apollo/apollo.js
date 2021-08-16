@@ -8,7 +8,7 @@ import {
   ApolloLink,
 } from "@apollo/client";
 
-const httpLink = new HttpLink({ uri: "http://13.124.114.54:3000/graphql" });
+const httpLink = new HttpLink({ uri: "http://pace-buddy.com/" });
 const cache = new InMemoryCache();
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem("Token");
