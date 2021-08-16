@@ -4,56 +4,55 @@
   margin-bottom: 0.5%;
 }
 
-
 .sort {
-    display:inline;
-    font-size: 13px;
-    text-align: right;
-    margin-left: 55%;
-
+  display: inline;
+  font-size: 13px;
+  text-align: right;
+  margin-left: 55%;
 }
-
 
 .buttondesign {
-    margin:1%;
-    background-color:#47474700;
-    border: 1.5px solid #474747c4;
-    border-radius: 28px;
-    height: 1.8rem;
-    box-shadow: none;
+  margin: 1%;
+  background-color: #47474700;
+  border: 1.5px solid #474747c4;
+  border-radius: 28px;
+  height: 1.8rem;
+  box-shadow: none;
 }
-    /* .buttondesign::after {
+/* .buttondesign::after {
         color: white;
         background-color:#474747b7
     } */
 
-
 /* 스크롤 버튼바 */
 /* 참조 : https://blog.naver.com/PostView.naver?blogId=rwans0397&logNo=220699305909&redirect=Dlog&widgetTypeCall=true&directAccess=false */
 .wrapbar {
-    width: 93%;
-    height: 2.8rem;
-    white-space:nowrap;
-    overflow-x:scroll;
-    -ms-overflow-style: none;
-    margin-left: 2%;
+  width: 93%;
+  height: 2.8rem;
+  white-space: nowrap;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  margin-left: 2%;
 }
 /* 스크롤바 안보이게 하는거 : https://wooaoe.tistory.com/49 */
-.wrapbar::-webkit-scrollbar{ display:none; }
+.wrapbar::-webkit-scrollbar {
+  display: none;
+}
 
 .body {
-        /* cardList의 마진과 맞춰 줄 맞추기 */
-        margin-left: 4%;
+  /* cardList의 마진과 맞춰 줄 맞추기 */
+  margin-left: 4%;
 }
 
 .feed {
-    font-size: 24px;
-    font-weight: bold;
+  font-family: Noto Sans KR;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-
 .scroll {
-width:1000px;
-height:300px;
-white-space:nowrap;
-overflow-x:scroll;}
+  width: 1000px;
+  height: 300px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}

@@ -10,6 +10,7 @@ function NaverLogin() {
   const history = useHistory();
   const [addToken, { loading, error, data }] = useMutation(ADD_NAVER_TOKEN, {
     onCompleted: (res) => {
+      console.log(res);
       const naverLogin = JSON.parse(res.naverLogin);
       if (naverLogin.code === 201 || 200) {
         localStorage.setItem("Token", naverLogin.JWT);
@@ -17,29 +18,32 @@ function NaverLogin() {
       }
     },
   });
+  console.log(error);
   const Naver = () => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: `${CLIENT_KEY}`,
-      callbackUrl: "http://localhost:8080",
+      callbackUrl: "http://localhost:8080/login",
       isPopup: false, // popup 형식으로 띄울것인지 설정
       loginButton: { color: "green", type: 3, height: "47" },
     });
     naverLogin.init();
     naverLogin.getLoginStatus((status) => {
-      const { name, gender, email } = status && naverLogin.user;
+      if (status) {
+        const { name, gender, email } = naverLogin.user;
 
-      if (name === undefined) {
-        alert("이름은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
-        naverLogin.reprompt();
-        return;
-      } else if (gender === undefined) {
-        alert("성별은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
-        naverLogin.reprompt();
-        return;
-      } else if (email === undefined) {
-        alert("이메일은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
-        naverLogin.reprompt();
-        return;
+        if (name === undefined) {
+          alert("이름은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
+          naverLogin.reprompt();
+          return;
+        } else if (gender === undefined) {
+          alert("성별은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
+          naverLogin.reprompt();
+          return;
+        } else if (email === undefined) {
+          alert("이메일은 필수 동의 항목입니다. 정보 제공을 동의해주세요.");
+          naverLogin.reprompt();
+          return;
+        }
       }
     });
   };

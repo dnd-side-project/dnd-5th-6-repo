@@ -9,10 +9,11 @@
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
 }
 
 .container .modal {
-  z-index: 1;
+  z-index: 3;
   background: white;
   width: 18.063rem;
   height: 24.063rem;

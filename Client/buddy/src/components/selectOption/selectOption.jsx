@@ -57,6 +57,7 @@ const SelectOption = memo(() => {
               key={exercise.Index}
               exercise={exercise.Name}
               index={exercise.Index}
+              selectExe={selectExe}
               setSelectExe={setSelectExe}
             ></Button>
           ))}
