@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import { TwoButtonModal } from "./../modal/twoButtonModal";
 import { EmptyCard, RecordBtn } from "./../../icons";
 import CardList from "./../cardList/cardList";
-import { GET_MY_CARD } from "./../../apollo/queries/cardItem/getCard";
+import { GET_MY_CARD } from "../../apollo/queries/cardItem/getCard";
 
 function RecordFeed({ isLoggedIn }) {
   const [showModal, setShowModal] = useState(false);

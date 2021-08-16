@@ -5,7 +5,7 @@ import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
 import { useQuery, useMutation } from "@apollo/client";
 import { Weathers } from "./../../weathers";
 import Toggle from "./../toggle/toggle";
-import { ADD_CARD } from "./../../apollo/queries/cardItem/addCard";
+import { ADD_CARD } from "../../apollo/queries/cardItem/addCard";
 import { useHistory } from "react-router";
 import { OneButtonModal } from "./../modal/oneButtonModal";
 
@@ -17,7 +17,7 @@ function RecordPost() {
   const [textByte, setTextByte] = useState(0);
   const [isToggled, setIsToggled] = useState(true);
   const [isDone, setIsDone] = useState(false);
-  const [isBlocked, setIsBlocked] = useState(false);
+  //const [isBlocked, setIsBlocked] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const textRef = useRef();
 
@@ -94,7 +94,7 @@ function RecordPost() {
 
   useEffect(() => {
     checkAll();
-    setIsBlocked(true);
+    // setIsBlocked(true);
   }, [selectExe, isSelected, textByte, isToggled]);
 
   return (
