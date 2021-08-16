@@ -6,10 +6,12 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "./../../apollo/queries/login/login";
 import styled from "styled-components";
 import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
+import ErrorPage from "../feedPage/errorPage";
 import {
   GET_ALL_CARD,
   GET_OPTIONAL_CARD,
 } from "../../apollo/queries/cardItem/getCard";
+import NullPage from "components/feedPage/nullPage";
 
 const Sss = styled.span`
   color: #c5c5c5;
@@ -30,6 +32,7 @@ const SelectOption = memo(() => {
   );
 
   const exercises = exeList && exeList["getExercise"];
+  const postData = data && Object.values(data)[0]["PostData"];
 
   useEffect(() => {
     sortBy({
@@ -63,14 +66,14 @@ const SelectOption = memo(() => {
           ))}
         </div>
       </div>
-      {loading && <h1>loading</h1>}
-      {error && (
-        <>
-          <h1>에러가 발생했어요.. 잠시후 다시 실행해 주세요.</h1>
-          {console.log("error:", error.message)}
-        </>
+      {error && <ErrorPage></ErrorPage>}
+      {loading ? (
+        <h1>Loading..</h1>
+      ) : postData?.length ? (
+        <CardList data={data}></CardList>
+      ) : (
+        <NullPage></NullPage>
       )}
-      <CardList data={data}></CardList>
     </>
   );
 });

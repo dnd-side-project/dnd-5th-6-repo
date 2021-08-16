@@ -19,11 +19,10 @@ const Btn = styled.button`
 const Button = memo((props) => {
   const handleClick = (key) => {
     props.setSelectExe(key);
-    props.setExeSelected(!props.exeSelected);
   };
   console.log(props.exeSelected);
   return (
-    <Btn isClicked={props.exeSelected} onClick={() => handleClick(props.index)}>
+    <Btn onClick={() => handleClick(props.index)}>
       {props.exercise ? props.exercise : "전체"}
     </Btn>
   );
