@@ -45,7 +45,7 @@ textarea:focus {
   outline: none !important;
   border-color: #00bee6;
 }
-.submit {
+.submit_disable {
   width: 21.563rem;
   height: 3.125rem;
   display: table;
@@ -54,12 +54,28 @@ textarea:focus {
   vertical-align: middle;
   background-color: #dddddd;
 }
-.submit_text {
+.submit_text_disable {
   font-family: Noto Sans KR;
   font-style: normal;
   display: table-cell;
   vertical-align: middle;
   color: #a5a5a5;
+}
+.submit_active {
+  width: 21.563rem;
+  height: 3.125rem;
+  display: table;
+  text-align: center;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  background-color: #00bee6;
+}
+.submit_text_active {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
 }
 .text_byte {
   font-family: Noto Sans KR;
