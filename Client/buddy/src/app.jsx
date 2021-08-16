@@ -12,7 +12,7 @@ function App() {
   const {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
-  console.log(isLoggedIn);
+  console.log(isLoggedIn, "isLoggedIn");
   return (
     <>
       <Router>

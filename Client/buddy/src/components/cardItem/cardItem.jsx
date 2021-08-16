@@ -100,8 +100,8 @@ const CardItem = memo(({ card, likeArray }) => {
             <div className={styles.card}>
               <p className={styles.date}>{post.uploadDate}</p>
               <p className={styles.content}>
-                {post.content.length >= 30
-                  ? post.content.slice(0, 16) + " .. "
+                {post.content.length >= 25
+                  ? post.content.slice(0, 23) + " .. "
                   : post.content}
               </p>
             </div>

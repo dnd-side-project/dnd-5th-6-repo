@@ -11,6 +11,7 @@ import { OneButtonModal } from "./../modal/oneButtonModal";
 
 function RecordPost() {
   const history = useHistory();
+  const [exeSelected, setExeSelected] = useState(false);
   const [selectExe, setSelectExe] = useState(0);
   const [isSelected, setIsSelected] = useState(0);
   const [textByte, setTextByte] = useState(0);
@@ -77,6 +78,20 @@ function RecordPost() {
     textRef.current.value = "";
   };
 
+  // useEffect(() => {
+  //   const unblock = history.block((location, action) => {
+  //     if (action === "POP" && isBlocked) {
+  //       console.log(isDone);
+  //       console.log("isNotDone");
+  //       return window.confirm("Navigate Back?");
+  //     }
+  //     return true;
+  //   });
+  //   return () => {
+  //     unblock();
+  //   };
+  // }, [isBlocked]);
+
   useEffect(() => {
     checkAll();
     setIsBlocked(true);
@@ -102,6 +117,8 @@ function RecordPost() {
             key={exercise.Index}
             exercise={exercise.Name}
             index={exercise.Index}
+            exeSelected={exeSelected}
+            setExeSelected={setExeSelected}
             setSelectExe={setSelectExe}
           ></Button>
         ))}

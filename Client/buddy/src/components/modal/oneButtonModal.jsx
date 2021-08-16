@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./oneButtonModal.module.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 export const OneButtonModal = ({
   setShowModal,
@@ -9,6 +10,7 @@ export const OneButtonModal = ({
   right,
   link,
 }) => {
+  const history = useHistory();
   const modalRef = useRef();
   console.log("modal open");
   //   const close = (e) => {
@@ -20,6 +22,7 @@ export const OneButtonModal = ({
 
   const closeModal = () => {
     setShowModal(false);
+    history.push(link);
     document.body.style.overflow = "unset";
   };
 
@@ -33,11 +36,11 @@ export const OneButtonModal = ({
             {message2}
           </div>
           <div className={styles.button_container}>
-            <Link to={link} style={{ textDecoration: "none" }}>
-              <div className={styles.full} onClick={closeModal}>
-                <span className={styles.full_text}>{right}</span>
-              </div>
-            </Link>
+            {/* <Link to={link} style={{ textDecoration: "none" }}> */}
+            <div className={styles.full} onClick={closeModal}>
+              <span className={styles.full_text}>{right}</span>
+            </div>
+            {/* </Link> */}
           </div>
         </div>
       </div>

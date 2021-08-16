@@ -34,9 +34,9 @@ const Navbar = () => {
           <path
             d="M5.59998 7H22.4M11.9724 14H22.4M7.91722 21H22.4"
             stroke="#474747"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>
