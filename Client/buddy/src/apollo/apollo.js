@@ -8,7 +8,7 @@ import {
   ApolloLink,
 } from "@apollo/client";
 
-const httpLink = new HttpLink({ uri: "http://pace-buddy.com/" });
+const httpLink = new HttpLink({ uri: "https://pace-buddy.com/" });
 const cache = new InMemoryCache();
 const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem("Token");
