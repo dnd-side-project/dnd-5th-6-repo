@@ -1,12 +1,12 @@
 import NaverLogin from "components/login/naverLogin";
 import React from "react";
-import Navbar from "components/navBar/navBar";
-import Logincontents from "components/login/login";
+import NavBar from "components/navBar/navBar";
+import LoginContents from "components/login/login";
 
 function Login() {
   return (<>
-  <Navbar></Navbar>
-  <Logincontents></Logincontents></>
+  <NavBar></NavBar>
+  <LoginContents></LoginContents></>
   );
 }
 

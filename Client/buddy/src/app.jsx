@@ -15,7 +15,7 @@ import {
   isBrowser,
   isMobile
 } from "react-device-detect";
-import { Weblogo } from "icons";
+import { WebLogo } from "icons";
 
 function App() {
   const {
@@ -26,7 +26,7 @@ function App() {
     <>
     <BrowserView>
       <div style={{marginLeft:750, marginTop:280}}>
-        <Weblogo></Weblogo>
+        <WebLogo></WebLogo>
         </div>
         <p style={{marginLeft:680}}>Pace buudy는 모바일 웹에서만 사용할 수 있어요!</p>
       </BrowserView>

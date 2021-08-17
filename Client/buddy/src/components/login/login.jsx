@@ -1,10 +1,11 @@
 import NaverLogin from "components/login/naverLogin";
 import React from "react";
 import styles from "./login.module.css"
-import {Logincharter} from "icons"
+import {LoginCharter} from "icons"
 import KakaoLogin from "./kakaoLogin";
 
-function Logincontents() {
+
+function LoginContents() {
   return (<>
   <div>
       <p className={styles.write}>반가워요!</p>
@@ -12,11 +13,11 @@ function Logincontents() {
       <p className={styles.write}>운동을 기록해 볼까요?</p>
   </div>
   <div className={styles.Logincharter}>
-      <Logincharter></Logincharter>
+      <LoginCharter></LoginCharter>
   </div>
   <KakaoLogin></KakaoLogin>
   <NaverLogin></NaverLogin>
   </>);
 }
 
-export default Logincontents;
+export default LoginContents;

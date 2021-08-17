@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import styles from "./calendarbar.module.css"
 import Calendar from "./calendar";
 import moment from "moment";
-import { Modal } from "components/modal/calendarMoeal";
+import { Modal } from "components/modal/calendarModal";
 import classname from "classnames";
 import styled from "styled-components";
-import { Dropdown } from "icons";
+import { DropDown } from "icons";
 
-const DateBtn = styled.button`
+const DateButton = styled.button`
 font-family: pretendard;
 font-style: normal;
 font-weight: bold;
@@ -21,7 +21,7 @@ padding-top: 3%;
 background-color: white;
 `;
 
-const DropBtn = styled.svg`
+const DropButton = styled.svg`
 position: absolute;
 width:2rem;
 height: 2rem;
@@ -67,14 +67,13 @@ function CalendarBar() {
         ) : null} */}
         {/* <div className={sidebarClasses}>  */}
         {showModal ? <Modal setShowModal={setShowModal} /> : null}
-            <DateBtn onClick={openModal}>
+            <DateButton onClick={openModal}>
             <span>{today.format('YYYY.MM.DD')}</span>
-            <DropBtn onClick={openModal}>
+            <DropButton onClick={openModal}>
 
-            <Dropdown></Dropdown>
-            </DropBtn>
-            </DateBtn>
-            {/* </div> */}
+            <DropDown></DropDown>
+            </DropButton>
+            </DateButton>
         </div>
     </>);
 }

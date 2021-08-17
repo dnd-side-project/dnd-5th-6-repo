@@ -8,7 +8,7 @@ import moment from 'moment';
 
 import styled from "styled-components";
 
-const DayBtn = styled.button`
+const DayButton = styled.button`
 height: 2.2rem;
 width: 10%;
 border: none;
@@ -23,7 +23,7 @@ background-color: white;
   }
 `;
 
-const TodayBtn = styled.button`
+const TodayButton = styled.button`
 height: 2.2rem;
 width: 10%;
 border: none;
@@ -69,9 +69,9 @@ const Calendar = () => {
                 if(moment().format('YYYYMMDD') === days.format('YYYYMMDD')){
                   return(
                     
-                      <TodayBtn key={index} onClick={datelog}>
+                      <TodayButton key={index} onClick={datelog}>
                         <span>{days.format('D')}</span>
-                      </TodayBtn>
+                      </TodayButton>
                   );
                 }else if(days.format('MM') !== today.format('MM')){
                   return(
@@ -82,9 +82,9 @@ const Calendar = () => {
                 }else{
                   
                   return(
-                      <DayBtn key={index} className={styles.days} onClick={datelog} >
+                      <DayButton key={index} className={styles.days} onClick={datelog} >
                         <span>{days.format('D')}</span>
-                      </DayBtn>
+                      </DayButton>
                   );
                 }
               })

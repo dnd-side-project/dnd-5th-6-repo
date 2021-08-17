@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useRef } from "react";
 import classname from "classnames";
 import styles from "./navBar.module.css";
-import { Hamburger, PaceBuddy, Close } from "../../icons";
+import { HamBurger, PaceBuddy, Close } from "../../icons";
 import { Link } from "react-router-dom";
 import { Next, Profilepoto } from "icons";
 
 
 
-export const Navbar = () => {
+export const NavBar = () => {
   // 처음엔 닫겨있기
   const [showSideDrawer, setShowSideDrawer] = useState(false);
   const sidebarClasses = classname([
@@ -40,10 +40,10 @@ export const Navbar = () => {
         </Link>
 
         {/* navbar 페이지 분기로 수정, 라우팅 시 애니메이션 효과를 따로 적용 */}
-        <Link className={styles.hambtn}  onClick={() => setShowSideDrawer(!showSideDrawer)} 
+        <Link className={styles.ham_button}  onClick={() => setShowSideDrawer(!showSideDrawer)} 
         >
             {/* 상태 따라서 전환 */}
-        { showSideDrawer ? <Close /> : <Hamburger />}
+        { showSideDrawer ? <Close /> : <HamBurger />}
         </Link>
         </div>
       {/* <button onClick={() => setShowSideDrawer(!showSideDrawer)}>
@@ -59,7 +59,7 @@ export const Navbar = () => {
         {/* 내용물.. */}
       <div className={sidebarClasses}>  
         <div className={styles.profile}>
-              <Profilepoto className={styles.Profilepoto}></Profilepoto>
+              <Profilepoto className={styles.profile_poto}></Profilepoto>
               <Link to="/login/" className={styles.login}>로그인하기</Link>
               <Next className={styles.next}></Next>
 
@@ -91,4 +91,4 @@ export const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;

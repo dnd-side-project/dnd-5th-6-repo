@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Weblogo = () => (
+export const WebLogo = () => (
   <svg width="196" height="196" viewBox="0 0 196 196" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M150.171 51.5949C144.982 51.5949 140.082 52.7478 135.759 54.4772C127.688 36.0302 109.529 23.0596 87.9117 23.0596C60.2411 23.0596 37.4706 44.6772 36.0294 72.0596C20.7529 72.0596 8.64703 84.4537 8.64703 99.4419C8.64703 114.718 21.0412 126.824 36.0294 126.824H150.171C170.924 126.824 187.929 109.818 187.929 89.0655C187.929 68.6008 171.212 51.5949 150.171 51.5949Z" fill="#92ABC0" />
     <path d="M150.171 129.994H36.0294C19.3118 129.994 5.76471 116.447 5.76471 99.7297C5.76471 83.8768 17.8706 70.9062 33.4353 69.465C36.3177 41.7944 59.6647 20.1768 87.9118 20.1768C108.953 20.1768 127.976 31.9944 137.2 50.7297C141.235 49.2885 145.847 48.712 150.171 48.712C172.653 48.712 190.812 66.8709 190.812 89.3532C190.812 111.836 172.653 129.994 150.171 129.994ZM36.0294 74.9415C22.4824 74.9415 11.2412 85.8944 11.2412 99.4414C11.2412 112.989 22.1941 123.941 35.7412 123.941H150.171C169.482 123.941 185.047 108.377 185.047 89.065C185.047 69.7532 169.482 54.4768 150.171 54.4768C145.559 54.4768 140.947 55.3415 136.912 57.0709C135.471 57.6473 133.741 57.0709 133.165 55.6297C125.382 37.7591 107.512 25.9415 88.2 25.9415C62.2588 25.9415 40.6412 46.4062 39.2 72.3473C38.9118 73.7885 37.7588 74.9415 36.0294 74.9415Z" fill="#474747" />
@@ -178,7 +178,7 @@ export const UnLiked = () => (
   </svg>
 );
 
-export const Hamburger = () => (
+export const HamBurger = () => (
   <svg
     width="28"
     height="28"
@@ -283,7 +283,7 @@ export const Profilepoto = () => (
 
 );
 
-export const Logincharter = () => (
+export const LoginCharter = () => (
   <svg width="285" height="219" viewBox="0 0 285 219" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0)">
       <path d="M139.2 159.9H110.8V216.2H139.2V159.9Z" fill="white" stroke="#474747" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
@@ -321,14 +321,14 @@ export const Logincharter = () => (
 
 );
 
-export const Calenderclose = () => (
+export const CalenderClose = () => (
   <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M21.7 6.2998L6.30005 21.6998M6.30005 6.2998L21.7 21.6998" stroke="#474747" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 
 );
 
-export const Dropdown = () => (
+export const DropDown = () => (
   <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M8.26424 9.7499C7.37333 9.7499 6.92717 10.827 7.55713 11.457L12.2929 16.1928C12.6834 16.5833 13.3166 16.5833 13.7071 16.1928L18.4429 11.457C19.0729 10.827 18.6267 9.7499 17.7358 9.7499L8.26424 9.7499Z" fill="#474747" />
   </svg>
