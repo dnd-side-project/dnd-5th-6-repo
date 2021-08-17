@@ -18,11 +18,11 @@ const SectionBox = styled.div`
 function MyProfile() {
   return (
     <>
-    <Navbar></Navbar>
+      <Navbar></Navbar>
       <SectionBox>
         <div className={styles.profile_box}>
           <div className={styles.profile}>
-            <ProfileActive></ProfileActive>
+            <ProfileActive size={"100"}></ProfileActive>
           </div>
         </div>
         <section className={styles.element_section}>
