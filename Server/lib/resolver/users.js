@@ -1,8 +1,11 @@
 const {naverUserInfo, naverDuplicateCheck, kakaoValidCheck} = require('../resolver-utils/SocialLogin');
-const {createJwtToken}= require('../resolver-utils/UserAuth')
+const {createJwtToken}= require('../resolver-utils/UserAuth');
+const {getUserNickname} = require('../resolver-utils/UserInfo');
 const resolvers = {
     Query: {
-
+        userNickname: async (parent, args, context) => {
+            return getUserNickname(context.req.headers['authorization'], context);
+        }
     },
     Mutation: {
         naverLogin: async (parent, args, context) => {
