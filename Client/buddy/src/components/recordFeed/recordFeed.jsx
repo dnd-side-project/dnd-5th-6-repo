@@ -33,7 +33,7 @@ function RecordFeed({ isLoggedIn }) {
           link="/login"
         ></TwoButtonModal>
       ) : null}
-      <section>
+      <section className={styles.section}>
         <div className={styles.box_section}>
           <div className={styles.record_bar}>
             <div className={styles.section_name}>기록</div>
@@ -63,7 +63,9 @@ function RecordFeed({ isLoggedIn }) {
             </button>
           </>
         ) : (
-          <CardList data={data}></CardList>
+          <section className={styles.section}>
+            <CardList data={data}></CardList>
+          </section>
         )
       ) : (
         <>

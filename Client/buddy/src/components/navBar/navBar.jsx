@@ -5,9 +5,11 @@ import { HamBurger, PaceBuddy, Close } from "../../icons";
 import { Link } from "react-router-dom";
 import { Next, Profilepoto } from "icons";
 import { ProfileActive } from "./../../icons";
+import { useHistory } from "react-router";
 
 export const NavBar = () => {
   // 처음엔 닫겨있기
+  const history = useHistory();
   const [showSideDrawer, setShowSideDrawer] = useState(false);
   const sidebarClasses = classname([
     styles.SideDrawer,

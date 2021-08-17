@@ -5,7 +5,7 @@ import { ProfileActive, RightAngleBracket } from "./../../icons";
 import Navbar from "components/navBar/navBar";
 
 const SectionBox = styled.div`
-  position: absolute;
+  position: fixed;
   top: 3rem;
   left: 0;
   right: 0;
