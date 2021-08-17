@@ -22,7 +22,7 @@ export const OneButtonModal = ({
 
   const closeModal = () => {
     setShowModal(false);
-    history.push(link);
+    history.go(-1);
     document.body.style.overflow = "unset";
   };
 
