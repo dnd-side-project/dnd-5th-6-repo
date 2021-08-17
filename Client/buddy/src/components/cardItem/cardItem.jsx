@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from "react";
 import styles from "./cardItem.module.css";
 import styled from "styled-components";
 import { CardModal } from "../modal/cardModal";
-import { TOGGLE_LIKE } from "./../../apollo/queries/cardItem/like";
+import { TOGGLE_LIKE } from "../../apollo/queries/cardItem/like";
 import { useMutation } from "@apollo/client";
 import { Liked, UnLiked } from "../../icons";
 
@@ -100,8 +100,8 @@ const CardItem = memo(({ card, likeArray }) => {
             <div className={styles.card}>
               <p className={styles.date}>{post.uploadDate}</p>
               <p className={styles.content}>
-                {post.content.length >= 30
-                  ? post.content.slice(0, 16) + " .. "
+                {post.content.length >= 25
+                  ? post.content.slice(0, 23) + " .. "
                   : post.content}
               </p>
             </div>

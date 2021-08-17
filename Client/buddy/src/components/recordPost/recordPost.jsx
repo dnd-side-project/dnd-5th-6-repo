@@ -5,18 +5,19 @@ import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
 import { useQuery, useMutation } from "@apollo/client";
 import { Weathers } from "./../../weathers";
 import Toggle from "./../toggle/toggle";
-import { ADD_CARD } from "./../../apollo/queries/cardItem/addCard";
+import { ADD_CARD } from "../../apollo/queries/cardItem/addCard";
 import { useHistory } from "react-router";
 import { OneButtonModal } from "./../modal/oneButtonModal";
 
 function RecordPost() {
   const history = useHistory();
+  const [exeSelected, setExeSelected] = useState(false);
   const [selectExe, setSelectExe] = useState(0);
   const [isSelected, setIsSelected] = useState(0);
   const [textByte, setTextByte] = useState(0);
   const [isToggled, setIsToggled] = useState(true);
   const [isDone, setIsDone] = useState(false);
-  const [isBlocked, setIsBlocked] = useState(false);
+  //const [isBlocked, setIsBlocked] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const textRef = useRef();
 
@@ -77,9 +78,23 @@ function RecordPost() {
     textRef.current.value = "";
   };
 
+  // useEffect(() => {
+  //   const unblock = history.block((location, action) => {
+  //     if (action === "POP" && isBlocked) {
+  //       console.log(isDone);
+  //       console.log("isNotDone");
+  //       return window.confirm("Navigate Back?");
+  //     }
+  //     return true;
+  //   });
+  //   return () => {
+  //     unblock();
+  //   };
+  // }, [isBlocked]);
+
   useEffect(() => {
     checkAll();
-    setIsBlocked(true);
+    // setIsBlocked(true);
   }, [selectExe, isSelected, textByte, isToggled]);
 
   return (
@@ -102,6 +117,8 @@ function RecordPost() {
             key={exercise.Index}
             exercise={exercise.Name}
             index={exercise.Index}
+            exeSelected={exeSelected}
+            setExeSelected={setExeSelected}
             setSelectExe={setSelectExe}
           ></Button>
         ))}
