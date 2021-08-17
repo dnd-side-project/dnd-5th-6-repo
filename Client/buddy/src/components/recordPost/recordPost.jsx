@@ -99,8 +99,8 @@ function RecordPost() {
   }, [selectExe, isSelected, textByte, isToggled]);
 
   return (
-    <>
-    <CalendarBar></CalendarBar>
+    <div className={styles.all}>
+      <CalendarBar></CalendarBar>
       {showModal ? (
         <OneButtonModal
           setShowModal={setShowModal}
@@ -109,24 +109,26 @@ function RecordPost() {
           link="/record"
         ></OneButtonModal>
       ) : null}
-      <section>
+      <section className={styles.section}>
         <div className={styles.box_section}>
           <div className={styles.section_name}>운동 선택</div>
           <div className={styles.section_detail}>어떤 운동을 하셨나요?</div>
         </div>
-        {exercises?.map((exercise) => (
-          <Button
-            key={exercise.Index}
-            exercise={exercise.Name}
-            index={exercise.Index}
-            exeSelected={exeSelected}
-            setExeSelected={setExeSelected}
-            setSelectExe={setSelectExe}
-          ></Button>
-        ))}
+        <div>
+          {exercises?.map((exercise) => (
+            <Button
+              key={exercise.Index}
+              exercise={exercise.Name}
+              index={exercise.Index}
+              exeSelected={exeSelected}
+              setExeSelected={setExeSelected}
+              setSelectExe={setSelectExe}
+            ></Button>
+          ))}
+        </div>
       </section>
       <hr />
-      <section>
+      <section className={styles.section}>
         <div className={styles.box_section}>
           <div className={styles.section_name}>컨디션 선택</div>
           <div className={styles.section_detail}>
@@ -149,7 +151,7 @@ function RecordPost() {
         </div>
       </section>
       <hr />
-      <section>
+      <section className={styles.section}>
         <form>
           <div className={styles.box_section}>
             <div className={styles.section_name}>한 줄 기록</div>
@@ -157,7 +159,7 @@ function RecordPost() {
               운동의 감정을 간단하게 작성해보세요!
             </div>
           </div>
-          <div>
+          <div className={styles.text_form}>
             <textarea
               ref={textRef}
               name="message"
@@ -170,7 +172,7 @@ function RecordPost() {
         </form>
       </section>
       <hr />
-      <section>
+      <section className={styles.section}>
         <div className={styles.box_section}>
           <div className={styles.feed}>
             <div className={styles.section_text}>
@@ -188,16 +190,18 @@ function RecordPost() {
           </div>
         </div>
       </section>
-      {isDone ? (
-        <div className={styles.submit_active} onClick={onSubmit}>
-          <p className={styles.submit_text_active}>저장하기</p>
-        </div>
-      ) : (
-        <div className={styles.submit_disable}>
-          <p className={styles.submit_text_disable}>저장하기</p>
-        </div>
-      )}
-    </>
+      <section className={styles.feed_open}>
+        {isDone ? (
+          <div className={styles.submit_active} onClick={onSubmit}>
+            <p className={styles.submit_text_active}>저장하기</p>
+          </div>
+        ) : (
+          <div className={styles.submit_disable}>
+            <p className={styles.submit_text_disable}>저장하기</p>
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
 

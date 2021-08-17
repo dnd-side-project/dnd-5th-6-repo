@@ -27,24 +27,34 @@ const SelectOption = memo(() => {
 
   console.log(selectExe, sortByFlag);
 
-  const [sortBy, { loading, error, data }] = useLazyQuery(
-    selectExe ? GET_OPTIONAL_CARD : GET_ALL_CARD
+  // const [sortBy, { loading, error, data }] = useLazyQuery(
+  //   selectExe ? GET_OPTIONAL_CARD : GET_ALL_CARD
+  // );
+  const { loading, error, data } = useQuery(
+    selectExe ? GET_OPTIONAL_CARD : GET_ALL_CARD,
+    {
+      variables: selectExe
+        ? { flag: sortByFlag, exercise: selectExe }
+        : { flag: sortByFlag },
+    }
   );
 
   const exercises = exeList && exeList["getExercise"];
   const postData = data && Object.values(data)[0]["PostData"];
 
-  useEffect(() => {
-    sortBy({
-      variables: selectExe
-        ? { flag: sortByFlag, exercise: selectExe }
-        : { flag: sortByFlag },
-    });
-  }, [sortByFlag, selectExe]);
+  // useEffect(() => {
+  //   console.log(selectExe);
+  //   console.log(selectExe ? true : false);
+  //   sortBy({
+  //     variables: selectExe
+  //       ? { flag: sortByFlag, exercise: selectExe }
+  //       : { flag: sortByFlag },
+  //   });
+  // }, [sortByFlag, selectExe]);
 
   return (
     <>
-      <div>
+      <section className={styles.section}>
         <div className={styles.sortBar}>
           <span className={styles.feed}>피드</span>
           <div className={styles.sort}>
@@ -65,12 +75,14 @@ const SelectOption = memo(() => {
             ></Button>
           ))}
         </div>
-      </div>
+      </section>
       {error && <ErrorPage></ErrorPage>}
       {loading ? (
         <h1>Loading..</h1>
       ) : postData?.length ? (
-        <CardList data={data}></CardList>
+        <section className={styles.section}>
+          <CardList data={data}></CardList>
+        </section>
       ) : (
         <NullPage></NullPage>
       )}

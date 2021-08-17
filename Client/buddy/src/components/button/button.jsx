@@ -20,7 +20,7 @@ const Button = memo((props) => {
   const handleClick = (key) => {
     props.setSelectExe(key);
   };
-  console.log(props.exeSelected);
+
   return (
     <Btn onClick={() => handleClick(props.index)}>
       {props.exercise ? props.exercise : "전체"}
