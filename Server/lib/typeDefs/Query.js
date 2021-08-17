@@ -13,6 +13,7 @@ const typeDefs = gql`
         reporting: Int!
         getExercise: [Exercise!]
         getMyDate: [String!]
+        userNickname: String!
     }
 `
 
