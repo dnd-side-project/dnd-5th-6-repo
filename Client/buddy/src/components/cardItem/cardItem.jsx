@@ -45,7 +45,6 @@ const CardItem = memo(({ card, likeArray }) => {
 
   const [toggleLike, { data }] = useMutation(TOGGLE_LIKE);
 
-  console.log(post.condition);
   const checkAlreadyLiked = () => {
     if (likeArr?.includes(post.postIndex)) {
       setIsLiked(true);

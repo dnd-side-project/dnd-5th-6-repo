@@ -1,4 +1,52 @@
 import React from "react";
+
+export const RightAngleBracket = () => (
+  <svg
+    width="9"
+    height="9"
+    viewBox="0 0 9 9"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0.64375 6.896L6.67575 4.384L0.64375 1.52V0.271999L8.17975 4.032V4.832L0.64375 8.144V6.896Z"
+      fill="#474747"
+      fillOpacity="0.4"
+    />
+  </svg>
+);
+
+export const ProfileActive = () => (
+  <svg
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M50 100C77.6142 100 100 77.6142 100 50C100 22.3858 77.6142 0 50 0C22.3858 0 0 22.3858 0 50C0 77.6142 22.3858 100 50 100Z"
+      fill="#00BEE6"
+    />
+    <path
+      d="M39.8334 41.3333C41.03 41.3333 42.0001 40.3633 42.0001 39.1667C42.0001 37.97 41.03 37 39.8334 37C38.6368 37 37.6667 37.97 37.6667 39.1667C37.6667 40.3633 38.6368 41.3333 39.8334 41.3333Z"
+      fill="#474747"
+    />
+    <path
+      d="M60.1667 41.3333C61.3633 41.3333 62.3333 40.3633 62.3333 39.1667C62.3333 37.97 61.3633 37 60.1667 37C58.97 37 58 37.97 58 39.1667C58 40.3633 58.97 41.3333 60.1667 41.3333Z"
+      fill="#474747"
+    />
+    <path
+      d="M60.1666 49V52.8333C60.1666 58.5 55.6666 63 49.9999 63C44.3333 63 39.8333 58.5 39.8333 52.8333V49H60.1666Z"
+      fill="white"
+      stroke="#474747"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 export const NullFrame = () => (
   <svg
     width="40"
@@ -18,15 +66,15 @@ export const NullFrame = () => (
       d="M28.3333 35H11.6667C10.7826 35 9.93478 34.6488 9.30965 34.0237C8.68453 33.3986 8.33334 32.5507 8.33334 31.6667V8.33333C8.33334 7.44928 8.68453 6.60143 9.30965 5.97631C9.93478 5.35119 10.7826 5 11.6667 5H23.3333L31.6667 13.3333V31.6667C31.6667 32.5507 31.3155 33.3986 30.6904 34.0237C30.0652 34.6488 29.2174 35 28.3333 35Z"
       stroke="#00BEE6"
       strokeWidth="2"
-      strokLinecap="round"
-      strokLinejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M20 22H20.0167"
       stroke="#00BEE6"
       strokeWidth="2"
-      strokLinecap="round"
-      strokLinejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16 22H16.0167"
