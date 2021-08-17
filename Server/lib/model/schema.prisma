@@ -24,6 +24,7 @@ model Post {
   content      String   @db.VarChar(300)
   condition    Int
   feedOpen     Int      @db.SmallInt
+  cardImgIndex Int?
   User         User     @relation(fields: [userIndex], references: [userIndex])
   Like         Like[]
 
