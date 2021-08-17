@@ -8,6 +8,7 @@ import Toggle from "./../toggle/toggle";
 import { ADD_CARD } from "../../apollo/queries/cardItem/addCard";
 import { useHistory } from "react-router";
 import { OneButtonModal } from "./../modal/oneButtonModal";
+import CalendarBar from "components/calendar/calendarbar";
 
 function RecordPost() {
   const history = useHistory();
@@ -99,6 +100,7 @@ function RecordPost() {
 
   return (
     <>
+    <CalendarBar></CalendarBar>
       {showModal ? (
         <OneButtonModal
           setShowModal={setShowModal}

@@ -1,63 +1,94 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
+import classname from "classnames";
 import styles from "./navBar.module.css";
-import { NavItem, NavLink } from "reactstrap";
-import { Hamburger, PaceBuddy } from "../../icons";
+import { HamBurger, PaceBuddy, Close } from "../../icons";
 import { Link } from "react-router-dom";
+import { Next, Profilepoto } from "icons";
 
-// function NavBar() {
 
-const Navbar = () => {
-  const [isOpen, setNav] = useState(false); //useState의 기능은 this.state와 유사하다, 초기값을 false로 설정
-  const toggleNav = () => {
-    setNav((isOpen) => !isOpen); //on, off 개념의 boolean
-  };
 
-  return (
-    <div>
-      {/* 위 작성 함수 호출 */}
-      {/* pacebuddylogo */}
-      <div>
-        <Link to="/">
+export const NavBar = () => {
+  // 처음엔 닫겨있기
+  const [showSideDrawer, setShowSideDrawer] = useState(false);
+  const sidebarClasses = classname([
+    styles.SideDrawer,
+    {
+      [styles.show]: showSideDrawer
+    }
+    
+  ]);
+  
+  // const modalRef = useRef();
+
+  // const close = (e) => {
+  //   if (e.target === modalRef.current) {
+  //     setShowSideDrawer(true);
+  //     document.body.style.overflow = "unset";
+  //   }
+  // };
+
+
+
+  const ToggleSidebar = () => {
+    
+    return (
+        <>
+        
+        <div className={styles.height}>
+        <Link onClick={() => setShowSideDrawer(false)} to="/">
           <PaceBuddy />
         </Link>
-        {/* <button className={styles.hambtn} onClick={toggleNav}>햄버거바</button>  */}
-        {/* <Hamburger /> */}
-        <svg
-          className={styles.hambtn}
-          onClick={toggleNav}
-          width="28"
-          height="28"
-          viewBox="0 0 28 28"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+
+        {/* navbar 페이지 분기로 수정, 라우팅 시 애니메이션 효과를 따로 적용 */}
+        <Link className={styles.ham_button}  onClick={() => setShowSideDrawer(!showSideDrawer)} 
         >
-          <path
-            d="M5.59998 7H22.4M11.9724 14H22.4M7.91722 21H22.4"
-            stroke="#474747"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-      <div className={isOpen ? `${styles.showmenu}` : `${styles.hidemenu}`}>
-        {/* `${styles.navLinks} ${styles.showNav}` : `${styles.navLinks}`} */}
-        <div className={styles.list}>
-          <NavItem className={styles.listitem}>
-            <NavLink href="/">Feed</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/record/">record</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/report">report</NavLink>
-          </NavItem>
+            {/* 상태 따라서 전환 */}
+        { showSideDrawer ? <Close /> : <HamBurger />}
+        </Link>
         </div>
+      {/* <button onClick={() => setShowSideDrawer(!showSideDrawer)}>
+        Toggle Sidebar
+      </button> */}
+      </>
+    );
+  };
+
+  return (<>
+
+    <Fragment>
+        {/* 내용물.. */}
+      <div className={sidebarClasses}>  
+        <div className={styles.profile}>
+              <Profilepoto className={styles.profile_poto}></Profilepoto>
+              <Link to="/login/" className={styles.login}>로그인하기</Link>
+              <Next className={styles.next}></Next>
+
+              <br></br>
+
+              <div className={styles.hello}>반가워요!</div>
+          </div>
+          {/* <hr className={styles.line}></hr> */}
+          <div className={styles.container}>
+              <Link className={styles.link} onClick={() => setShowSideDrawer(false)} to="/">
+                  피드
+              </Link>
+              <Link className={styles.link} onClick={() => setShowSideDrawer(false)} to="/record/">
+                  기록
+              </Link>
+              <Link className={styles.link} style={{ color: '#C5C5C5' }}>
+                  리포트🚧
+              </Link>
+              <Link className={styles.link} style={{ color: '#00BEE6' }} to="/help/">
+                  페이스버디란?
+              </Link>
+          </div>
       </div>
-      <hr />
-    </div>
+      <ToggleSidebar />
+    </Fragment>
+    
+       
+</>
   );
 };
-// }
 
-export default Navbar;
+export default NavBar;

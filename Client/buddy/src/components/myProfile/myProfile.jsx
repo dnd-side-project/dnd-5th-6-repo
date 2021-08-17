@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./myProfile.module.css";
 import styled from "styled-components";
 import { ProfileActive, RightAngleBracket } from "./../../icons";
+import Navbar from "components/navBar/navBar";
 
 const SectionBox = styled.div`
   position: absolute;
@@ -17,6 +18,7 @@ const SectionBox = styled.div`
 function MyProfile() {
   return (
     <>
+    <Navbar></Navbar>
       <SectionBox>
         <div className={styles.profile_box}>
           <div className={styles.profile}>
