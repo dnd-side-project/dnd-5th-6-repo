@@ -7,12 +7,14 @@ import Post from "./routes/post";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "./apollo/queries/login/login";
 import Login from "./routes/login";
+import PrivateRoute from "./services/PrivateRoute";
+import MyProfile from "./components/myProfile/myProfile";
 
 function App() {
   const {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
-  console.log(isLoggedIn, "isLoggedIn");
+  console.log({ isLoggedIn });
   return (
     <>
       <Router>
@@ -20,8 +22,9 @@ function App() {
           <Route exact path="/" component={Main}></Route>
           <Route path="/login" component={Login}></Route>
           <Route exact path="/record" component={Record}></Route>
-          <Route path="/record/post" component={Post}></Route>
-          <Route path="/report" component={Report}></Route>
+          <PrivateRoute path="/record/post" component={Post}></PrivateRoute>
+          <PrivateRoute path="/report" component={Report}></PrivateRoute>
+          <PrivateRoute path="/myPage" component={MyProfile}></PrivateRoute>
         </Switch>
       </Router>
     </>
