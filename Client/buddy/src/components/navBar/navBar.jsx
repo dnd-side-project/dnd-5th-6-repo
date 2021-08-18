@@ -16,9 +16,6 @@ export const NavBar = () => {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
 
-  console.log('나브바 열음');
-  console.log('isLoggined>>', isLoggedIn)
-
   // 처음엔 닫겨있기
   const history = useHistory();
   const [showSideDrawer, setShowSideDrawer] = useState(false);
