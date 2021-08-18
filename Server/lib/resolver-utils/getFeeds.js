@@ -21,7 +21,7 @@ const getAllLatestPost = async (token, args, context) => {
     let returnData = await parseReturnData(context, allLatestPost);
     if (orderByFlag === 1) returnData = sortByPopularity(returnData);
     const returnLike = await getLikeCount(context, userIndex);
-
+    
     return {
         PostData: returnData,
         likeArray: returnLike
@@ -76,9 +76,11 @@ const getMyPost = async (token, args, context) => {
     });
 
     const returnData = await parseReturnData(context, allMyPost);
-    
+    const returnLike = await getLikeCount(context, userIndex);
+
     return {
-        PostData: returnData
+        PostData: returnData,
+        likeArray: returnLike
     };
 }
 
@@ -86,10 +88,30 @@ const getExerciseList = async (context) => {
     const data = await context.prisma.exercise.findMany();
     return data.map(node => {
         return {
-            Index: node.exerciseIndex - 1,
+            Index: node.exerciseIndex,
             Name: node.name
         }
     })
+}
+
+const getMyDate = async (token, args, context) => {
+    let userIndex = -1
+    if(token !== undefined) {
+        const decode = jwtDecode(token.split(' ')[1]);
+        if (decode === null) {
+            throw new Error('Invalid_Token')
+        } else {
+            userIndex = decode.ID;
+        }
+    }
+
+    const allMyDate = await context.prisma.post.findMany({
+        orderBy: [{uploadDate: `desc`}],
+        where: {userIndex: userIndex},
+        select: {uploadDate: true}
+    });
+
+    return allMyDate.map(node => String(node.uploadDate));
 }
 
 function sortByPopularity(data) {
@@ -110,7 +132,8 @@ async function parseReturnData(context, data) {
                 where: {postIndex: node.postIndex}
             })
         });
-        node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 11)
+        
+        node.uploadDate = JSON.stringify(node.uploadDate).slice(6, 8) + "." + JSON.stringify(node.uploadDate).slice(9, 11);
     }
     return returnData;
 }
@@ -131,5 +154,6 @@ module.exports = {
     getAllLatestPost,
     getSpecificExercise,
     getMyPost,
-    getExerciseList
+    getExerciseList,
+    getMyDate
 };

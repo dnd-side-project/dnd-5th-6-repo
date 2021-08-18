@@ -1,4 +1,4 @@
-const { getAllLatestPost, getSpecificExercise, getMyPost, getExerciseList } = require('../resolver-utils/getFeeds');
+const { getAllLatestPost, getSpecificExercise, getMyPost, getExerciseList, getMyDate } = require('../resolver-utils/getFeeds');
 const { updatePostByLike, addNewPost, reporting } = require('../resolver-utils/Post');
 
 const resolvers = {
@@ -17,6 +17,9 @@ const resolvers = {
         },
         getExercise: (parent, args, context) => {
             return getExerciseList(context);
+        },
+        getMyDate: (parent, args, context) => {
+            return getMyDate(context.req.headers['authorization'], args, context);
         }
     },
     Mutation: {

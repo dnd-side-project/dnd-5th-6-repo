@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styles from "./cardModal.module.css";
 import ReactDom from "react-dom";
 
-export const Modal = ({ setShowModal, uploadDate, content }) => {
+export const CardModal = ({ setShowModal, uploadDate, content }) => {
   const modalRef = useRef();
 
   const close = (e) => {

@@ -3,6 +3,14 @@ import { useHistory } from "react-router";
 import { useMutation } from "@apollo/client";
 import styles from "./login.module.css";
 import { ADD_KAKAO_TOKEN } from "../../apollo/queries/login/login";
+import styled from "styled-components";
+
+const KakaoLoginImgURL = "./KakoLoginImg.svg";
+
+const KakaoLoginImg = styled.div`
+
+`;
+
 const { Kakao } = window;
 
 function KakaoLogin() {
@@ -32,9 +40,13 @@ function KakaoLogin() {
   return (
     <div>
       {/* 버튼에 함수 연결 추후 이미지로 교체 */}
-      <button className={styles.kakao} onClick={kakaoLoginClickHandler}>
+      <KakaoLoginImg
+          style={{ backgroundImage: `url(${KakaoLoginImgURL})` }}
+          onClick={kakaoLoginClickHandler}
+        ></KakaoLoginImg>
+      {/* <button className={styles.kakao} onClick={kakaoLoginClickHandler}>
         카카오로 로그인
-      </button>
+      </button> */}
     </div>
   );
 }

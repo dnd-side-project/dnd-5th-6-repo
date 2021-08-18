@@ -1,0 +1,68 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+
+.today {
+    font-family: pretendard;
+    background-color: #00BEE6;
+    color: white;
+    height: 2.2rem;
+    width: 10%;
+    border-radius: 100px;
+    border: none;
+    margin-bottom:1%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.notdays {
+    font-family: pretendard;
+    height: 2.2rem;
+    width: 10%;
+    color:#C5C5C5;
+    border: none;
+    border-radius: 100px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom:1%;
+    
+    background-color: white;
+}
+
+.days {
+    font-family: pretendard;
+    height: 2.2rem;
+    margin-bottom:1%;
+    width: 10%;
+    border: none;
+    border-radius: 100px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: white;
+}
+
+.container {
+    font-family: pretendard;
+    width: 100%;
+}
+
+.mondays {
+    font-family: Noto Sans KR;
+    display: block;
+    float: left;
+    height: 2.4rem;
+    width: 10%;
+    border: none;
+    border-radius: 100px;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: white;
+}
+
+.font {
+    font-family: pretendard;
+}
