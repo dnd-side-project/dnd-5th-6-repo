@@ -6,8 +6,19 @@ import { Link } from "react-router-dom";
 import { Next, Profilepoto } from "icons";
 import { ProfileActive } from "./../../icons";
 import { useHistory } from "react-router";
+import { useQuery } from "@apollo/client";
+import { IS_LOGGED_IN } from "../../apollo/queries/login/login";
+
 
 export const NavBar = () => {
+
+  const {
+    data: { isLoggedIn },
+  } = useQuery(IS_LOGGED_IN);
+
+  console.log('나브바 열음');
+  console.log('isLoggined>>', isLoggedIn)
+
   // 처음엔 닫겨있기
   const history = useHistory();
   const [showSideDrawer, setShowSideDrawer] = useState(false);
@@ -56,7 +67,37 @@ export const NavBar = () => {
       <Fragment>
         {/* 내용물.. */}
         <div className={sidebarClasses}>
-          <div className={styles.profile}>
+
+            {isLoggedIn ? (
+              <div className={styles.profile}>            
+                <ProfileActive
+                  size={"60"}
+                  className={styles.profile_photo}
+                ></ProfileActive>
+                <Link to="/myPage" className={styles.nickname}>
+                  버디업 님
+                </Link>
+                <Next className={styles.next}></Next>
+                <br></br>
+                <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
+              </div>
+            ) : (
+              <div className={styles.profile}>
+                <Profilepoto
+                  size={"60"}
+                  className={styles.profile_photo}
+                ></Profilepoto>
+                <Link to="/login" className={styles.login}>
+                  로그인하기
+                </Link>
+                <Next className={styles.next}></Next>
+                <br></br>
+                <div className={styles.hello}>반가워요!</div>
+          </div>
+            )}
+
+
+          {/* <div className={styles.profile}>            
             <ProfileActive
               size={"60"}
               className={styles.profile_photo}
@@ -69,7 +110,7 @@ export const NavBar = () => {
             <br></br>
 
             <div className={styles.hello}>반가워요!</div>
-          </div>
+          </div> */}
           {/* <hr className={styles.line}></hr> */}
           <div className={styles.container}>
             <Link

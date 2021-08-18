@@ -125,6 +125,14 @@
   text-decoration: none;
 }
 
+.nickname {
+  display: block;
+  margin-bottom: 5%;
+  margin-left: 4%;
+  color: #474747;
+  text-decoration: none;
+}
+
 .next {
   margin-bottom: 5%;
 }
@@ -138,6 +146,17 @@
   /* flex-direction: column; */
   flex-wrap: wrap;
   color: #c5c5c5;
+}
+
+.ment {
+  display: block;
+  position: absolute;
+  margin-left: 21.8%;
+  margin-top: 6%;
+  font-size: 11px;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  color: #474747;
 }
 
 .navwidth {
