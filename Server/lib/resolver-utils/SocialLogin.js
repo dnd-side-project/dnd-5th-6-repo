@@ -117,6 +117,7 @@ const kakaoDuplicateCheck = async (context, id) => {
 }
 
 const makeUserNickname = async (context) => {
+    const buddy = '버디';
     let alpa = 65;
     let nick;
     const userNode = await context.prisma.user.findMany();
@@ -139,10 +140,10 @@ const makeUserNickname = async (context) => {
         where: {
             userIndex: lastUser.userIndex
         },data: {
-            userName: nick
+            userName: buddy.concat(nick)
         }
     })
-    return {userIndex: lastUser.userIndex, nickName: nick};
+    return {userIndex: lastUser.userIndex, nickName: buddy.concat(nick)};
 }
 
 module.exports = {
