@@ -1,5 +1,23 @@
 import React from "react";
 
+export const NavbarNext = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M7.5 4.5L13 10L7.5 15.5"
+      stroke="#474747"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 export const NaverLoginImg = () => (
   <svg
     width="311"

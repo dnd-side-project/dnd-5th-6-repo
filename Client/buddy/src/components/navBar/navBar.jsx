@@ -9,6 +9,7 @@ import { useHistory } from "react-router";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../apollo/queries/login/login";
 import { GET_NICKNAME } from "./../../apollo/queries/users/users";
+import { NavbarNext } from "../../icons";
 
 export const NavBar = () => {
   const {
@@ -80,7 +81,9 @@ export const NavBar = () => {
               <Link to="/myPage" className={styles.nickname}>
                 {nickName}님
               </Link>
-              <Next className={styles.next}></Next>
+              <div className={styles.next}>
+              <NavbarNext className={styles.next}></NavbarNext>
+              </div>
               <br></br>
               <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
             </div>
@@ -93,7 +96,9 @@ export const NavBar = () => {
               <Link to="/login" className={styles.login}>
                 로그인하기
               </Link>
+              <div className={styles.next}>
               <Next className={styles.next}></Next>
+              </div>
               <br></br>
               <div className={styles.hello}>반가워요!</div>
             </div>
