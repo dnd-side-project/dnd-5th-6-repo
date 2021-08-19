@@ -17,3 +17,14 @@ export const IS_LOGGED_IN = gql`
     isLoggedIn @client
   }
 `;
+export const LOCAL_LOG_IN = gql`
+  mutation logUserIn($Token: String!) {
+    logUserIn(Token: $Token) @client
+  }
+`;
+
+export const LOG_OUT = gql`
+  mutation logUserOut {
+    logUserOut @client
+  }
+`;

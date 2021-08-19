@@ -4,6 +4,9 @@
   align-items: center;
   flex-direction: column;
 }
+#section_exercise {
+  width: 21.438rem;
+}
 .section {
   display: flex;
   flex-direction: column;

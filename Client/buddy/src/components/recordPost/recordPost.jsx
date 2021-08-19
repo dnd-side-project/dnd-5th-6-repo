@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./recordPost.module.css";
-import Button from "../button/button";
+import styled from "styled-components";
 import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
 import { useQuery, useMutation } from "@apollo/client";
 import { Weathers } from "./../../weathers";
@@ -10,9 +10,26 @@ import { useHistory } from "react-router";
 import { OneButtonModal } from "./../modal/oneButtonModal";
 import CalendarBar from "components/calendar/calendarbar";
 
+const Btn = styled.button`
+  margin-right: 1.5%;
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-size: 0.75rem;
+  background-color: ${(props) =>
+    props.isSelectedExe === "on" ? "#00bee6" : "white"};
+  border: 1.5px solid
+    ${(props) => (props.isSelectedExe === "on" ? "white" : "#c5c5c5")};
+  border-radius: 28px;
+  height: 1.8rem;
+  box-shadow: none;
+  color: ${(props) => (props.isSelectedExe === "on" ? "white" : "#474747")};
+`;
+
 function RecordPost() {
   const history = useHistory();
-  const [exeSelected, setExeSelected] = useState(false);
+
   const [selectExe, setSelectExe] = useState(0);
   const [isSelected, setIsSelected] = useState(0);
   const [textByte, setTextByte] = useState(0);
@@ -40,7 +57,9 @@ function RecordPost() {
   });
 
   const exercises = data && data["getExercise"];
-
+  const handleClickExe = (key) => {
+    setSelectExe(key);
+  };
   const openModal = () => {
     setShowModal(true);
     console.log(showModal);
@@ -79,20 +98,6 @@ function RecordPost() {
     textRef.current.value = "";
   };
 
-  // useEffect(() => {
-  //   const unblock = history.block((location, action) => {
-  //     if (action === "POP" && isBlocked) {
-  //       console.log(isDone);
-  //       console.log("isNotDone");
-  //       return window.confirm("Navigate Back?");
-  //     }
-  //     return true;
-  //   });
-  //   return () => {
-  //     unblock();
-  //   };
-  // }, [isBlocked]);
-
   useEffect(() => {
     checkAll();
     // setIsBlocked(true);
@@ -109,21 +114,20 @@ function RecordPost() {
           link="/record"
         ></OneButtonModal>
       ) : null}
-      <section className={styles.section}>
+      <section className={styles.section} id={styles.section_exercise}>
         <div className={styles.box_section}>
           <div className={styles.section_name}>운동 선택</div>
           <div className={styles.section_detail}>어떤 운동을 하셨나요?</div>
         </div>
         <div>
           {exercises?.map((exercise) => (
-            <Button
+            <Btn
               key={exercise.Index}
-              exercise={exercise.Name}
-              index={exercise.Index}
-              exeSelected={exeSelected}
-              setExeSelected={setExeSelected}
-              setSelectExe={setSelectExe}
-            ></Button>
+              isSelectedExe={exercise.Index === selectExe ? "on" : "off"}
+              onClick={() => handleClickExe(exercise.Index)}
+            >
+              {exercise.Name}
+            </Btn>
           ))}
         </div>
       </section>

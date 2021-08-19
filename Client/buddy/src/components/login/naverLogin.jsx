@@ -2,18 +2,21 @@ import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router";
 import { ADD_NAVER_TOKEN } from "../../apollo/queries/login/login";
+import { LOCAL_LOG_IN } from "./../../apollo/queries/login/login";
 
 const { naver } = window;
 const CLIENT_KEY = process.env.REACT_APP_CLIENT_KEY;
 
 function NaverLogin() {
   const history = useHistory();
+  const [localLogInMutation] = useMutation(LOCAL_LOG_IN);
   const [addToken, { loading, error, data }] = useMutation(ADD_NAVER_TOKEN, {
     onCompleted: (res) => {
       console.log(res);
       const naverLogin = JSON.parse(res.naverLogin);
       if (naverLogin.code === 201 || 200) {
-        localStorage.setItem("Token", naverLogin.JWT);
+        localLogInMutation({ variables: { Token: naverLogin.JWT } });
+        //localStorage.setItem("Token", naverLogin.JWT);
         history.push("/");
       }
     },
@@ -24,7 +27,7 @@ function NaverLogin() {
       clientId: `${CLIENT_KEY}`,
       callbackUrl: "http://localhost:8080/login",
       isPopup: false, // popup 형식으로 띄울것인지 설정
-      loginButton: { color: "green", type: 3, height: "47" },
+      loginButton: { color: "green", type: 5, height: "47" },
     });
     naverLogin.init();
     naverLogin.getLoginStatus((status) => {
@@ -56,6 +59,16 @@ function NaverLogin() {
     }
   };
 
+  const handleNaverLogin = () => {
+    if (
+      document &&
+      document?.querySelector("#naverIdLogin")?.firstChild &&
+      window !== undefined
+    ) {
+      const loginBtn = document.getElementById("naverIdLogin")?.firstChild;
+      loginBtn.click();
+    }
+  };
   useEffect(() => {
     Naver();
     getNaverToken();

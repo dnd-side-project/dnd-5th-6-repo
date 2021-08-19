@@ -15,7 +15,7 @@
   display: inline;
   font-size: 13px;
   text-align: right;
-  margin-left: 55%;
+  margin-left: 61%;
 }
 
 .buttondesign {
@@ -63,4 +63,12 @@
   height: 300px;
   white-space: nowrap;
   overflow-x: scroll;
+}
+
+.sort-flag-off {
+  color: #c5c5c5;
+}
+
+.sort-flag-on {
+  color: #00bee6;
 }
