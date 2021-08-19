@@ -47,7 +47,7 @@ export const NavBar = () => {
           <Link
             className={styles.ham_button}
             onClick={() => setShowSideDrawer(!showSideDrawer)}
-            to = "/"
+            to="#"
           >
             {/* 상태 따라서 전환 */}
             {showSideDrawer ? <Close /> : <HamBurger />}
@@ -114,7 +114,7 @@ export const NavBar = () => {
             <Link
               className={styles.link}
               onClick={() => setShowSideDrawer(false)}
-              to="/"
+              to="#"
             >
               피드
             </Link>

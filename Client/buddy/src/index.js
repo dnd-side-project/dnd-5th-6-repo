@@ -8,7 +8,7 @@ import client from "./apollo/apollo";
 ReactDOM.render(
   <ApolloProvider client={client}>
     <div>
-      <style jsx = "true" global = "true">{`
+      <style jsx="true" global="true">{`
       body {
         margin: 0px;
         padding: 0px;
