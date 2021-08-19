@@ -19,6 +19,7 @@ border-radius: 100px;
 margin-left: 32%;
 padding-top: 3%;
 background-color: white;
+color: #474747;
 `;
 
 const DropButton = styled.svg`
@@ -29,26 +30,14 @@ top: 1rem;
 right: 7rem;
 `;
 
-function CalendarBar() {
+function CalendarBar(props) {
+    const [todayDate, setTodayDate] = useState(0);
     const [getMoment, setMoment] = useState(moment());
-    // const [showModal, setShowModal] = useState(false);
-    // const [showCalendarModal, setShowCalendarModal] = useState(false);
-    // const sidebarClasses = classname([
-    //     styles.CalendarModal,
-    //     {
-    //         [styles.show]: showCalendarModal
-    //     }
-
-    // ]);
-
-    // const openModal = () => {
-    //     setShowModal(true);
-    //     console.log(showModal);
-    //     document.body.style.overflow = "hidden";
-    //     // setShowCalendarModal(!showCalendarModal);
-    //   };
-
     const [showModal, setShowModal] = useState(false);
+
+
+    const dateState = props.dateState;
+    const setDateState = props.setDateState;
 
     const openModal = () => {
         setShowModal(true);
@@ -66,9 +55,10 @@ function CalendarBar() {
           />
         ) : null} */}
         {/* <div className={sidebarClasses}>  */}
-        {showModal ? <Modal setShowModal={setShowModal} /> : null}
+        {showModal ? <Modal dateState={dateState} setDateState={setDateState} setShowModal={setShowModal} /> : null}
             <DateButton onClick={openModal}>
-            <span>{today.format('YYYY.MM.DD')}</span>
+            {/* <span>{today.format('YYYY.MM.DD')}</span> */}
+            <span>{dateState}</span>
             <DropButton onClick={openModal}>
 
             <DropDown></DropDown>
