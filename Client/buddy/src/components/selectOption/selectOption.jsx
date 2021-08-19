@@ -104,8 +104,9 @@ const SelectOption = memo(() => {
           ))}
         </div>
       </section>
-      {error && <ErrorPage></ErrorPage>}
-      {loading ? (
+      {error ? (
+        <ErrorPage></ErrorPage>
+      ) : loading ? (
         <Load></Load>
       ) : postData?.length ? (
         <section className={styles.section}>
