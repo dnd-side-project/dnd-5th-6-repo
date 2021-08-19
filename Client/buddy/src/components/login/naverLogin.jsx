@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router";
 import { ADD_NAVER_TOKEN } from "../../apollo/queries/login/login";
 import { LOCAL_LOG_IN } from "./../../apollo/queries/login/login";
+import { NaverLoginImg } from "icons";
 
 const { naver } = window;
 const CLIENT_KEY = process.env.REACT_APP_CLIENT_KEY;
-
+const NaverBtn = styled.div`
+  display: none;
+`;
 function NaverLogin() {
   const history = useHistory();
   const [localLogInMutation] = useMutation(LOCAL_LOG_IN);
@@ -74,7 +78,14 @@ function NaverLogin() {
     getNaverToken();
   }, []);
 
-  return <div id="naverIdLogin" />;
+  return (
+    <>
+      <NaverBtn id="naverIdLogin" styles={{ display: "none" }} />
+      <div onClick={handleNaverLogin}>
+        <NaverLoginImg image="naver"></NaverLoginImg>
+      </div>
+    </>
+  );
 }
 
 export default NaverLogin;
