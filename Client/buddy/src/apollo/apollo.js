@@ -27,28 +27,8 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache,
   clientState: {
-    defaults: {
-      isLoggedIn: !!localStorage.getItem("Token"),
-    },
-    resolvers: {
-      Mutation: {
-        logUserIn: (_, { Token }, { cache }) => {
-          localStorage.setItem("token", Token);
-          cache.writeData({
-            data: {
-              isLoggedIn: true,
-            },
-          });
-          window.location = "/";
-          return null;
-        },
-        logUserOut: (_, __, { cache }) => {
-          localStorage.removeItem("Token");
-          window.location = "/";
-          return null;
-        },
-      },
-    },
+    defaults,
+    resolvers,
   },
 });
 
