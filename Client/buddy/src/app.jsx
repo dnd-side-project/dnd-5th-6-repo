@@ -13,7 +13,7 @@ import {
   BrowserView,
   MobileView,
   isBrowser,
-  isMobile
+  isMobile,
 } from "react-device-detect";
 import { WebLogo } from "icons";
 
@@ -24,23 +24,25 @@ function App() {
   console.log({ isLoggedIn });
   return (
     <>
-    <BrowserView>
-      <div style={{marginLeft:750, marginTop:280}}>
-        <WebLogo></WebLogo>
+      <BrowserView>
+        <div style={{ marginLeft: 750, marginTop: 280 }}>
+          <WebLogo></WebLogo>
         </div>
-        <p style={{marginLeft:680}}>Pace buudy는 모바일 웹에서만 사용할 수 있어요!</p>
+        <p style={{ marginLeft: 680 }}>
+          Pace buudy는 모바일 웹에서만 사용할 수 있어요!
+        </p>
       </BrowserView>
-    <MobileView>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Main}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route exact path="/record" component={Record}></Route>
-          <PrivateRoute path="/record/post" component={Post}></PrivateRoute>
-          <PrivateRoute path="/report" component={Report}></PrivateRoute>
-          <PrivateRoute path="/myPage" component={MyProfile}></PrivateRoute>
-        </Switch>
-      </Router>
+      <MobileView>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Main}></Route>
+            <Route path="/login" component={Login}></Route>
+            <Route exact path="/record" component={Record}></Route>
+            <PrivateRoute path="/record/post" component={Post}></PrivateRoute>
+            <PrivateRoute path="/report" component={Report}></PrivateRoute>
+            <PrivateRoute path="/myPage" component={MyProfile}></PrivateRoute>
+          </Switch>
+        </Router>
       </MobileView>
     </>
   );

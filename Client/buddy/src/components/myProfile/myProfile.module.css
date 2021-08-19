@@ -5,6 +5,7 @@
 }
 
 .element_section {
+  align-items: center;
   margin-inline: 1rem;
   display: flex;
   flex-direction: column;
@@ -19,6 +20,18 @@
   filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.05));
   background: #ffffff;
   border-radius: 14px;
+}
+.nickName {
+  display: table-cell;
+  vertical-align: middle;
+  color: #474747;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+}
+#nickName_text {
+  width: 23%;
 }
 .bracket {
   display: table-cell;
@@ -38,6 +51,7 @@
   top: 50%;
 }
 .element_text {
+  display: flex;
   display: table-cell;
   vertical-align: middle;
   padding-left: 1rem;

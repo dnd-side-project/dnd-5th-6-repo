@@ -3,6 +3,9 @@ import styles from "./myProfile.module.css";
 import styled from "styled-components";
 import { ProfileActive, RightAngleBracket } from "./../../icons";
 import Navbar from "components/navBar/navBar";
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_NICKNAME } from "./../../apollo/queries/users/users";
+import { LOG_OUT } from "apollo/queries/login/login";
 
 const SectionBox = styled.div`
   position: fixed;
@@ -16,6 +19,14 @@ const SectionBox = styled.div`
   z-index: -1;
 `;
 function MyProfile() {
+  const { data } = useQuery(GET_NICKNAME);
+  const [logOut] = useMutation(LOG_OUT);
+  const doLogOut = () => {
+    localStorage.removeItem("Token");
+    window.location = "/";
+  };
+  const nickName = data && data["userNickname"];
+
   return (
     <>
       <Navbar></Navbar>
@@ -27,7 +38,10 @@ function MyProfile() {
         </div>
         <section className={styles.element_section}>
           <div className={styles.element}>
-            <span className={styles.element_text}>닉네임</span>
+            <span className={styles.element_text} id={styles.nickName_text}>
+              닉네임
+            </span>
+            <span className={styles.nickName}>{nickName}</span>
           </div>
           <div className={styles.element}>
             <span className={styles.element_text}>개인정보처리방침</span>
@@ -41,7 +55,7 @@ function MyProfile() {
               <RightAngleBracket></RightAngleBracket>
             </div>
           </div>
-          <div className={styles.element}>
+          <div className={styles.element} onClick={doLogOut}>
             <span className={styles.element_text_disable}>로그아웃</span>
           </div>
           <div className={styles.element}>
