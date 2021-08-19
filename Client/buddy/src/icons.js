@@ -121,7 +121,7 @@ export const ProfileActive = ({ size }) => (
   </svg>
 );
 
-export const Profilepoto = () => (
+export const ProfilePhoto = () => (
   <svg
     width="60"
     height="60"
@@ -144,10 +144,10 @@ export const Profilepoto = () => (
     <path
       d="M36.1 29.3999V29.6999C36.1 33.0999 33.4 35.7999 30 35.7999C26.6 35.7999 23.9 33.0999 23.9 29.6999V29.3999"
       stroke="#939393"
-      stroke-width="1.5"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -389,19 +389,19 @@ export const LoginCharter = () => (
       <path
         d="M139.1 192.5V216.2H88.6C88.6 203.1 99.2 192.5 112.3 192.5H119.1"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M145.161 216.195L173.561 216.195L173.561 159.895L145.161 159.895L145.161 216.195Z"
         fill="white"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M145.1 192.5V216.2H195.6C195.6 203.1 185 192.5 171.9 192.5H165.1"
@@ -410,19 +410,19 @@ export const LoginCharter = () => (
       <path
         d="M145.1 192.5V216.2H195.6C195.6 203.1 185 192.5 171.9 192.5H165.1"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M68 74.2001C51.4 80.8001 39.9 64.8001 36.2 57.7001C38.7 53.1001 39.2 47.5001 37.1 42.2001C33.4 32.9001 22.8 28.3001 13.5 32.0001C4.1 35.8001 -0.400002 46.4001 3.3 55.7001C5.3 60.8001 9.4 64.5001 14.2 66.1001C35.3 115.1 75.8 98.9001 75.8 98.9001C75.8 98.9001 88.5 66.0001 68 74.2001Z"
         fill="white"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M27 65.8002C17.6 69.6002 7 65.0002 3.3 55.7002L27 65.8002Z"
@@ -431,28 +431,28 @@ export const LoginCharter = () => (
       <path
         d="M27 65.8002C17.6 69.6002 7 65.0002 3.3 55.7002"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M29.5 57.8001H38.1C42 57.8001 45.2 54.6001 45.2 50.7001C45.2 46.8001 42 43.6001 38.1 43.6001H29.5C25.6 43.6001 22.4 46.8001 22.4 50.7001C22.4 54.6001 25.6 57.8001 29.5 57.8001Z"
         fill="white"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M216.3 74.2001C232.9 80.8001 244.4 64.8001 248.1 57.7001C245.6 53.1001 245.1 47.5001 247.2 42.2001C250.9 32.9001 261.5 28.3001 270.9 32.0001C280.2 35.7001 284.8 46.3001 281.1 55.7001C279.1 60.8001 275 64.5001 270.2 66.1001C249.1 115.1 208.6 98.9001 208.6 98.9001C208.6 98.9001 195.8 66.0001 216.3 74.2001Z"
         fill="white"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M257.3 65.8001C266.6 69.5001 277.2 65.0001 281 55.6001L257.3 65.8001Z"
@@ -461,28 +461,28 @@ export const LoginCharter = () => (
       <path
         d="M257.3 65.8001C266.6 69.5001 277.2 65.0001 281 55.6001"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M254.8 57.8001H246.2C242.3 57.8001 239.1 54.6001 239.1 50.7001C239.1 46.8001 242.3 43.6001 246.2 43.6001H254.8C258.7 43.6001 261.9 46.8001 261.9 50.7001C261.9 54.6001 258.7 57.8001 254.8 57.8001Z"
         fill="white"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M142.1 166C187.387 166 224.1 129.287 224.1 84C224.1 38.7127 187.387 2 142.1 2C96.8127 2 60.1 38.7127 60.1 84C60.1 129.287 96.8127 166 142.1 166Z"
         fill="white"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M142.1 110.6C166.677 110.6 186.6 90.6768 186.6 66.1001C186.6 41.5234 166.677 21.6001 142.1 21.6001C117.523 21.6001 97.6 41.5234 97.6 66.1001C97.6 90.6768 117.523 110.6 142.1 110.6Z"
@@ -491,27 +491,27 @@ export const LoginCharter = () => (
       <path
         d="M146.6 45.9L153.1 41.2"
         stroke="#474747"
-        stroke-width="3"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M185.1 14.1001H99.2C91 19.1001 83.8 25.6001 77.8 33.1001H206.4C200.5 25.6001 193.3 19.2001 185.1 14.1001Z"
         fill="#00BFEA"
         stroke="#474747"
-        stroke-width="4"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="4"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M149.4 57.1001V59.8001C149.4 63.8001 146.2 67.0001 142.2 67.0001C138.2 67.0001 135 63.8001 135 59.8001V57.1001"
         stroke="#474747"
-        stroke-width="3"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M134.9 52.6999C135.949 52.6999 136.8 51.8492 136.8 50.7999C136.8 49.7506 135.949 48.8999 134.9 48.8999C133.851 48.8999 133 49.7506 133 50.7999C133 51.8492 133.851 52.6999 134.9 52.6999Z"
@@ -548,9 +548,9 @@ export const CalenderClose = () => (
     <path
       d="M21.7 6.2998L6.30005 21.6998M6.30005 6.2998L21.7 21.6998"
       stroke="#474747"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

@@ -3,7 +3,7 @@ import classname from "classnames";
 import styles from "./navBar.module.css";
 import { HamBurger, PaceBuddy, Close } from "../../icons";
 import { Link } from "react-router-dom";
-import { Next, Profilepoto } from "icons";
+import { Next, ProfilePhoto } from "icons";
 import { ProfileActive } from "./../../icons";
 import { useHistory } from "react-router";
 import { useQuery } from "@apollo/client";
@@ -80,10 +80,10 @@ export const NavBar = () => {
               </div>
             ) : (
               <div className={styles.profile}>
-                <Profilepoto
+                <ProfilePhoto
                   size={"60"}
                   className={styles.profile_photo}
-                ></Profilepoto>
+                ></ProfilePhoto>
                 <Link to="/login" className={styles.login}>
                   로그인하기
                 </Link>
