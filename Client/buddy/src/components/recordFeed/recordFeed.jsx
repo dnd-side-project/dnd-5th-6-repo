@@ -8,11 +8,14 @@ import CardList from "./../cardList/cardList";
 import { GET_MY_CARD } from "../../apollo/queries/cardItem/getCard";
 import ErrorPage from "../feedPage/errorPage";
 import Load from "components/loader/loader";
+import { IS_LOGGED_IN } from "./../../apollo/queries/login/login";
 
-function RecordFeed({ isLoggedIn }) {
+function RecordFeed() {
   const [showModal, setShowModal] = useState(false);
   const { loading, error, data } = useQuery(GET_MY_CARD);
-
+  const {
+    data: { isLoggedIn },
+  } = useQuery(IS_LOGGED_IN);
   console.log(isLoggedIn);
 
   const openModal = () => {

@@ -19,9 +19,10 @@ function NaverLogin() {
       console.log(res);
       const naverLogin = JSON.parse(res.naverLogin);
       if (naverLogin.code === 201 || 200) {
-        localLogInMutation({ variables: { Token: naverLogin.JWT } });
-        //localStorage.setItem("Token", naverLogin.JWT);
+        //localLogInMutation({ variables: { Token: naverLogin.JWT } });
+        localStorage.setItem("Token", naverLogin.JWT);
         history.push("/");
+        history.go(0);
       }
     },
   });
