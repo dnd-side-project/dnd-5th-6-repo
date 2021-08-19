@@ -47,6 +47,7 @@ export const NavBar = () => {
           <Link
             className={styles.ham_button}
             onClick={() => setShowSideDrawer(!showSideDrawer)}
+            to="#"
           >
             {/* 상태 따라서 전환 */}
             {showSideDrawer ? <Close /> : <HamBurger />}
@@ -113,7 +114,7 @@ export const NavBar = () => {
             <Link
               className={styles.link}
               onClick={() => setShowSideDrawer(false)}
-              to="/"
+              to="#"
             >
               피드
             </Link>
@@ -124,7 +125,7 @@ export const NavBar = () => {
             >
               기록
             </Link>
-            <Link className={styles.link} style={{ color: "#C5C5C5" }}>
+            <Link className={styles.link} style={{ color: "#C5C5C5" }} to="#">
               리포트🚧
             </Link>
             <Link
