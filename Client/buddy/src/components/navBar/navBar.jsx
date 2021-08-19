@@ -8,12 +8,14 @@ import { ProfileActive } from "./../../icons";
 import { useHistory } from "react-router";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../apollo/queries/login/login";
+import { GET_NICKNAME } from "./../../apollo/queries/users/users";
 
 export const NavBar = () => {
   const {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
-
+  const { data } = useQuery(GET_NICKNAME);
+  const nickName = data && data["userNickname"];
   // 처음엔 닫겨있기
   const history = useHistory();
   const [showSideDrawer, setShowSideDrawer] = useState(false);
@@ -76,7 +78,7 @@ export const NavBar = () => {
                 className={styles.profile_photo}
               ></ProfileActive>
               <Link to="/myPage" className={styles.nickname}>
-                버디업 님
+                {nickName}님
               </Link>
               <Next className={styles.next}></Next>
               <br></br>
