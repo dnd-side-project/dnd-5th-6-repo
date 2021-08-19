@@ -7,6 +7,7 @@ import { EmptyCard, RecordBtn } from "./../../icons";
 import CardList from "./../cardList/cardList";
 import { GET_MY_CARD } from "../../apollo/queries/cardItem/getCard";
 import ErrorPage from "../feedPage/errorPage";
+import Load from "components/loader/loader";
 
 function RecordFeed({ isLoggedIn }) {
   const [showModal, setShowModal] = useState(false);
@@ -22,7 +23,6 @@ function RecordFeed({ isLoggedIn }) {
 
   return (
     <>
-      {error && <ErrorPage></ErrorPage>}
       {showModal ? (
         <TwoButtonModal
           setShowModal={setShowModal}
@@ -53,7 +53,11 @@ function RecordFeed({ isLoggedIn }) {
           </div>
         </div>
       </section>
-      {isLoggedIn ? (
+      {error ? (
+        <ErrorPage></ErrorPage>
+      ) : loading ? (
+        <Load></Load>
+      ) : isLoggedIn ? (
         data?.length ? (
           <>
             <button className={styles.button}>
