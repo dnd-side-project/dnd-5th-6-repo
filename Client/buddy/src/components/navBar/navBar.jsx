@@ -9,9 +9,7 @@ import { useHistory } from "react-router";
 import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../apollo/queries/login/login";
 
-
 export const NavBar = () => {
-
   const {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
@@ -27,9 +25,10 @@ export const NavBar = () => {
   ]);
 
   const reload = () => {
-    setShowSideDrawer(false)
+    setShowSideDrawer(false);
+    history.push("/");
     history.go(0);
-  }
+  };
 
   // const modalRef = useRef();
 
@@ -45,7 +44,7 @@ export const NavBar = () => {
       <>
         <div className={styles.height}>
           <Link onClick={reload} to="/">
-            <PaceBuddy/>
+            <PaceBuddy />
           </Link>
 
           {/* navbar 페이지 분기로 수정, 라우팅 시 애니메이션 효과를 따로 적용 */}
@@ -70,35 +69,33 @@ export const NavBar = () => {
       <Fragment>
         {/* 내용물.. */}
         <div className={sidebarClasses}>
-
-            {isLoggedIn ? (
-              <div className={styles.profile}>            
-                <ProfileActive
-                  size={"60"}
-                  className={styles.profile_photo}
-                ></ProfileActive>
-                <Link to="/myPage" className={styles.nickname}>
-                  버디업 님
-                </Link>
-                <Next className={styles.next}></Next>
-                <br></br>
-                <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
-              </div>
-            ) : (
-              <div className={styles.profile}>
-                <ProfilePhoto
-                  size={"60"}
-                  className={styles.profile_photo}
-                ></ProfilePhoto>
-                <Link to="/login" className={styles.login}>
-                  로그인하기
-                </Link>
-                <Next className={styles.next}></Next>
-                <br></br>
-                <div className={styles.hello}>반가워요!</div>
-          </div>
-            )}
-
+          {isLoggedIn ? (
+            <div className={styles.profile}>
+              <ProfileActive
+                size={"60"}
+                className={styles.profile_photo}
+              ></ProfileActive>
+              <Link to="/myPage" className={styles.nickname}>
+                버디업 님
+              </Link>
+              <Next className={styles.next}></Next>
+              <br></br>
+              <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
+            </div>
+          ) : (
+            <div className={styles.profile}>
+              <ProfilePhoto
+                size={"60"}
+                className={styles.profile_photo}
+              ></ProfilePhoto>
+              <Link to="/login" className={styles.login}>
+                로그인하기
+              </Link>
+              <Next className={styles.next}></Next>
+              <br></br>
+              <div className={styles.hello}>반가워요!</div>
+            </div>
+          )}
 
           {/* <div className={styles.profile}>            
             <ProfileActive
