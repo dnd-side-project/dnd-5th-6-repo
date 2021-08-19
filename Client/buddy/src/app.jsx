@@ -16,6 +16,7 @@ import {
   isMobile,
 } from "react-device-detect";
 import { WebLogo } from "icons";
+import styles from "./app.module.css";
 
 function App() {
   const {
@@ -28,7 +29,7 @@ function App() {
         <div style={{ marginLeft: 750, marginTop: 280 }}>
           <WebLogo></WebLogo>
         </div>
-        <p style={{ marginLeft: 680 }}>
+        <p className={styles.text_style}>
           Pace buudy는 모바일 웹에서만 사용할 수 있어요!
         </p>
       </BrowserView>

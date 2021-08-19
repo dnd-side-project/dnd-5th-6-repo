@@ -86,7 +86,12 @@ const CardItem = memo(({ card, likeArray }) => {
           <CardModal
             uploadDate={post.uploadDate}
             content={post.content}
+            condition={post.condition}
+            exercise={post.exercise}
             setShowModal={setShowModal}
+            handleLikeToggle={handleLikeToggle}
+            isLiked={isLiked}
+            likeCount={likeCount}
           />
         ) : null}
         <CardImageCondition

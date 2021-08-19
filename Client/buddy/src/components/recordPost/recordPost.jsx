@@ -9,6 +9,7 @@ import { ADD_CARD } from "../../apollo/queries/cardItem/addCard";
 import { useHistory } from "react-router";
 import { OneButtonModal } from "./../modal/oneButtonModal";
 import CalendarBar from "components/calendar/calendarbar";
+import moment from "moment";
 
 const Btn = styled.button`
   margin-right: 1.5%;
@@ -37,6 +38,14 @@ function RecordPost() {
   const [isDone, setIsDone] = useState(false);
   //const [isBlocked, setIsBlocked] = useState(false);
   const [showModal, setShowModal] = useState(false);
+ 
+
+
+  const [todayDate, setTodayDate] = useState(0);
+  const [getMoment, setMoment] = useState(moment());
+  const today = getMoment;
+  const [dateState, setDateState] = useState(today.format('YYYY.MM.DD'));
+
   const textRef = useRef();
 
   const clearState = () => {
@@ -45,6 +54,7 @@ function RecordPost() {
     setTextByte(0);
     setIsToggled(true);
     setIsDone(false);
+    setDateState(today.format('YYYY.MM.DD'));
   };
   const { data } = useQuery(GET_EXERCISES);
 
@@ -88,7 +98,7 @@ function RecordPost() {
     isDone &&
       addCard({
         variables: {
-          uploadDate: "2021-08-16",
+          uploadDate: dateState,
           exercise: selectExe,
           content: textRef.current.value,
           condition: isSelected,
@@ -101,11 +111,11 @@ function RecordPost() {
   useEffect(() => {
     checkAll();
     // setIsBlocked(true);
-  }, [selectExe, isSelected, textByte, isToggled]);
+  }, [dateState,selectExe, isSelected, textByte, isToggled]);
 
   return (
     <div className={styles.all}>
-      <CalendarBar></CalendarBar>
+      <CalendarBar dateState={dateState} setDateState={setDateState}></CalendarBar>
       {showModal ? (
         <OneButtonModal
           setShowModal={setShowModal}

@@ -9,9 +9,11 @@
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 2;
+  z-index: 3;
 }
-
+.container {
+  flex-direction: column;
+}
 .container .modal {
   z-index: 3;
   background: white;
@@ -21,7 +23,6 @@
   justify-content: center;
   border-radius: 5px;
   position: relative;
-
   border-radius: 14px;
 
   background-color: #d3d3d3;
@@ -47,14 +48,41 @@
 }
 
 .card {
-  font-size: 18px;
-  margin-inline: 1.9375rem;
+  font-family: Noto Sans KR;
+  padding-top: 0.01rem;
+  color: #474747;
+  font-size: 1.125rem;
+  margin-inline: 0.9375rem;
 }
 
+.content {
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: normal;
+  height: 2.8rem;
+  margin-right: 0.5rem;
+}
 .date {
-  font-family: Spoqa Han Sans Neo;
+  font-family: pretendard;
   font-style: normal;
   font-weight: bold;
-  font-size: 36px;
-  height: 0.5rem;
+  font-size: 2.25rem;
+  margin-bottom: 0.8rem;
+}
+.like {
+  background-color: white;
+  font-family: pretendard;
+  color: #878787;
+  font-size: 12px;
+  margin-left: 0.25rem;
+  display: table;
+}
+.like_icon {
+  display: table-cell;
+}
+.like_text {
+  padding-left: 0.2rem;
+  display: table-cell;
+  height: 15px;
+  vertical-align: middle;
 }

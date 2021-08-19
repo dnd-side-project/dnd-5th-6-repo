@@ -14,12 +14,16 @@ const Close = styled.div`
     position:absolute;
 `;
 
-export const Modal = ({ setShowModal }) => {
-  // close the modal when clicking outside the modal.
+export const Modal = (props) => {
+  const dateState = props.dateState;
+  const setDateState = props.setDateState;
+  const setShowModal = props.setShowModal;
+
   const modalRef = useRef();
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
       setShowModal(false);
+      console.log(dateState);
     }
   };
 
@@ -28,7 +32,9 @@ export const Modal = ({ setShowModal }) => {
     <div className={styles.container} ref={modalRef} onClick={closeModal}>
       <div className={styles.modal}>
           <div className={styles.inner}>
-        <Calendar></Calendar>
+
+        {/* 내려주기 */}
+        <Calendar dateState={dateState} setDateState={setDateState} setShowModal={setShowModal}></Calendar>
         </div>
         {/* 버튼 */}
         <Close onClick={() => setShowModal(false)}>
