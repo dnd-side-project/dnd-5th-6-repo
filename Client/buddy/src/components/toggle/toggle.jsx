@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { purple } from "@material-ui/core/colors";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
@@ -9,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 const AntSwitch = withStyles((theme) => ({
   root: {
-    width: 38,
+    width: 39.8,
     height: 20,
     padding: 0,
     display: "flex",
@@ -34,7 +33,7 @@ const AntSwitch = withStyles((theme) => ({
   },
   track: {
     border: `1px solid #C5C5C5`,
-    borderRadius: 16 / 2,
+    borderRadius: 17 / 2,
     opacity: 1,
     backgroundColor: "#C5C5C5",
   },
