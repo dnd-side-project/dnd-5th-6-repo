@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import styles from "./login.module.css";
 import { ADD_KAKAO_TOKEN } from "../../apollo/queries/login/login";
 import styled from "styled-components";
+import IMG from "./로그인.png";
 
 const KakaoLoginImgURL = "./KakoLoginImg.svg";
 
@@ -40,10 +41,11 @@ function KakaoLogin() {
   return (
     <div>
       {/* 버튼에 함수 연결 추후 이미지로 교체 */}
-      <KakaoLoginImg
+      {/* <KakaoLoginImg
           style={{ backgroundImage: `url(${KakaoLoginImgURL})` }}
           onClick={kakaoLoginClickHandler}
-        ></KakaoLoginImg>
+        ></KakaoLoginImg> */}
+         <img src={IMG} onClick={kakaoLoginClickHandler} />
       {/* <button className={styles.kakao} onClick={kakaoLoginClickHandler}>
         카카오로 로그인
       </button> */}

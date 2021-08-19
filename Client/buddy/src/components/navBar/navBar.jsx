@@ -26,6 +26,11 @@ export const NavBar = () => {
     },
   ]);
 
+  const reload = () => {
+    setShowSideDrawer(false)
+    history.go(0);
+  }
+
   // const modalRef = useRef();
 
   // const close = (e) => {
@@ -39,8 +44,8 @@ export const NavBar = () => {
     return (
       <>
         <div className={styles.height}>
-          <Link onClick={() => setShowSideDrawer(false)} to="/">
-            <PaceBuddy />
+          <Link onClick={reload} to="/">
+            <PaceBuddy/>
           </Link>
 
           {/* navbar 페이지 분기로 수정, 라우팅 시 애니메이션 효과를 따로 적용 */}
@@ -104,9 +109,7 @@ export const NavBar = () => {
               로그인하기
             </Link>
             <Next className={styles.next}></Next>
-
             <br></br>
-
             <div className={styles.hello}>반가워요!</div>
           </div> */}
           {/* <hr className={styles.line}></hr> */}

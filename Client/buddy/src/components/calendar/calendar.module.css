@@ -43,6 +43,7 @@
     margin-left: 2%;
     margin-right: 2%;
     background-color: white;
+    color: #474747;
 }
 
 .container {
@@ -61,8 +62,10 @@
     margin-left: 2%;
     margin-right: 2%;
     background-color: white;
+    color : #474747;
 }
 
 .font {
     font-family: pretendard;
+    color: #474747;
 }
