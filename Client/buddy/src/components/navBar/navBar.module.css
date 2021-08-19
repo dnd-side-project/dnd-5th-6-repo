@@ -132,16 +132,19 @@
   margin-left: 4%;
   color: #474747;
   text-decoration: none;
+  font-family: Noto Sans KR;
+  font-style: normal;
+font-weight: bold;
 }
 
 .next {
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .hello {
   display: block;
   position: absolute;
-  margin-left: 21.8%;
+  margin-left: 19.8%;
   margin-top: 6%;
   font-size: 11px;
   /* flex-direction: column; */
@@ -152,12 +155,14 @@
 .ment {
   display: block;
   position: absolute;
-  margin-left: 21.8%;
+  margin-left: 19.8%;
   margin-top: 6%;
   font-size: 11px;
   /* flex-direction: column; */
   flex-wrap: wrap;
   color: #474747;
+  font-family: Noto Sans KR;
+  font-style: normal;
 }
 
 .navwidth {
