@@ -80,7 +80,6 @@ function RecordFeed() {
         )
       ) : (
         <>
-          <h1>로그인 </h1>
           <button className={styles.button} onClick={openModal}>
             <EmptyCard></EmptyCard>
           </button>
