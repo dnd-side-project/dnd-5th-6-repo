@@ -115,6 +115,7 @@ function RecordPost() {
 
   return (
     <div className={styles.all}>
+      <div style={{height: 51}}></div>
       <CalendarBar dateState={dateState} setDateState={setDateState}></CalendarBar>
       {showModal ? (
         <OneButtonModal
