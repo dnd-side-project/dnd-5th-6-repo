@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./twoButtonModal.module.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 export const TwoButtonModal = ({
   setShowModal,
@@ -9,16 +10,26 @@ export const TwoButtonModal = ({
   left,
   right,
   link,
+  func,
 }) => {
   const modalRef = useRef();
+  const history = useHistory();
   console.log("modal open");
+
   const close = (e) => {
     if (e.target === modalRef.current) {
       setShowModal(false);
       document.body.style.overflow = "unset";
     }
   };
-
+  const doFunctional = () => {
+    if (func) {
+      func();
+      history.push(link);
+    } else {
+      history.push(link);
+    }
+  };
   const closeModal = () => {
     setShowModal(false);
     document.body.style.overflow = "unset";
@@ -34,11 +45,11 @@ export const TwoButtonModal = ({
             {message2}
           </div>
           <div className={styles.button_container}>
-            <Link to={link} style={{ textDecoration: "none" }}>
+            <div onClick={doFunctional}>
               <div className={styles.full}>
                 <span className={styles.full_text}>{left}</span>
               </div>
-            </Link>
+            </div>
             <div className={styles.empty} onClick={closeModal}>
               <span className={styles.empty_text}>{right}</span>
             </div>
