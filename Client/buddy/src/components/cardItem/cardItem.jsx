@@ -3,8 +3,10 @@ import styles from "./cardItem.module.css";
 import styled from "styled-components";
 import { CardModal } from "../modal/cardModal";
 import { TOGGLE_LIKE } from "../../apollo/queries/cardItem/like";
-import { useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { Liked, UnLiked } from "../../icons";
+import { IS_LOGGED_IN } from "./../../apollo/queries/login/login";
+import TwoButtonModal from "components/modal/twoButtonModal";
 
 const CardImageCondition = styled.li`
   display: block;
@@ -29,7 +31,7 @@ const CardImageExercise = styled.div`
   z-index: 1;
 `;
 
-const CardItem = memo(({ card, likeArray }) => {
+const CardItem = memo(({ card, likeArray, isLoggedIn }) => {
   const post = card["Post"];
   const user = card["User"];
   const like = card["Like"];
@@ -39,6 +41,7 @@ const CardItem = memo(({ card, likeArray }) => {
     "images/conditions/condition" + post.condition + ".svg";
 
   const [showModal, setShowModal] = useState(false);
+  const [showModalAlert, setShowModalAlert] = useState(false);
   const [isLiked, setIsLiked] = useState();
   const [likeCount, setLikeCount] = useState(like);
   const [likeArr, setLikeArr] = useState(likeArray);
@@ -58,20 +61,24 @@ const CardItem = memo(({ card, likeArray }) => {
   };
 
   const handleLikeToggle = () => {
-    if (isLiked) {
-      setIsLiked(false);
-      setLikeCount(likeCount - 1);
-      setLikeArr(likeArr.filter((index) => index !== post.postIndex));
-      toggleLike({
-        variables: { postIndex: post.postIndex, isDuplicate: true },
-      });
+    if (isLoggedIn) {
+      if (isLiked) {
+        setIsLiked(false);
+        setLikeCount(likeCount - 1);
+        setLikeArr(likeArr.filter((index) => index !== post.postIndex));
+        toggleLike({
+          variables: { postIndex: post.postIndex, isDuplicate: true },
+        });
+      } else {
+        setIsLiked(true);
+        setLikeCount(likeCount + 1);
+        setLikeArr([...likeArr, post.postIndex]);
+        toggleLike({
+          variables: { postIndex: post.postIndex, isDuplicate: false },
+        });
+      }
     } else {
-      setIsLiked(true);
-      setLikeCount(likeCount + 1);
-      setLikeArr([...likeArr, post.postIndex]);
-      toggleLike({
-        variables: { postIndex: post.postIndex, isDuplicate: false },
-      });
+      setShowModalAlert(true);
     }
   };
 
@@ -82,6 +89,16 @@ const CardItem = memo(({ card, likeArray }) => {
   return (
     <>
       <div className={styles.container}>
+        {showModalAlert ? (
+          <TwoButtonModal
+            setShowModal={setShowModalAlert}
+            message1="로그인 후 기록할 수 있어요!"
+            message2="로그인 하시겠어요?"
+            left="로그인"
+            right="취소"
+            link="/login"
+          ></TwoButtonModal>
+        ) : null}
         {showModal ? (
           <CardModal
             uploadDate={post.uploadDate}
