@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <BrowserView>
-        <div style={{ marginLeft: 750, marginTop: 280 }}>
+        <div className={styles.image_style}>
           <WebLogo></WebLogo>
         </div>
         <p className={styles.text_style}>
