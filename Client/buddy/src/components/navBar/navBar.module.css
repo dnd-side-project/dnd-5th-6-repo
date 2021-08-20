@@ -150,6 +150,7 @@ font-weight: bold;
   /* flex-direction: column; */
   flex-wrap: wrap;
   color: #c5c5c5;
+  font-family: Noto Sans KR;
 }
 
 .ment {

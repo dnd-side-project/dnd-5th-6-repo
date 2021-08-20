@@ -16,7 +16,7 @@
 }
 
 .modal {
-  z-index: 1;
+  z-index: 100;
   background: white;
   width: 18.125rem;
   height: 11.875rem;
@@ -26,11 +26,13 @@
   background-color: white;
 }
 .modal_container {
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .button_container {
+  z-index: 100;
   display: flex;
   justify-content: center;
   position: relative;
