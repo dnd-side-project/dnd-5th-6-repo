@@ -17,7 +17,7 @@ function RecordFeed() {
     data: { isLoggedIn },
   } = useQuery(IS_LOGGED_IN);
   console.log(isLoggedIn);
-
+  console.log(!!data?.length);
   const openModal = () => {
     setShowModal(true);
     console.log(showModal);
@@ -61,7 +61,13 @@ function RecordFeed() {
       ) : loading ? (
         <Load></Load>
       ) : isLoggedIn ? (
-        data?.length ? (
+        !!data?.length ? (
+          <>
+            <section className={styles.section}>
+              <CardList data={data}></CardList>
+            </section>
+          </>
+        ) : (
           <>
             <button className={styles.button}>
               <Link to="/record/post">
@@ -69,10 +75,6 @@ function RecordFeed() {
               </Link>
             </button>
           </>
-        ) : (
-          <section className={styles.section}>
-            <CardList data={data}></CardList>
-          </section>
         )
       ) : (
         <>
