@@ -10,6 +10,7 @@ import { useQuery } from "@apollo/client";
 import { IS_LOGGED_IN } from "../../apollo/queries/login/login";
 import { GET_NICKNAME } from "./../../apollo/queries/users/users";
 import { NavbarNext } from "../../icons";
+import InfoModal from "./../modal/infoModal";
 
 export const NavBar = () => {
   const {
@@ -19,6 +20,7 @@ export const NavBar = () => {
   const nickName = data && data["userNickname"];
   // 처음엔 닫겨있기
   const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
   const [showSideDrawer, setShowSideDrawer] = useState(false);
   const sidebarClasses = classname([
     styles.SideDrawer,
@@ -31,6 +33,11 @@ export const NavBar = () => {
     setShowSideDrawer(false);
     history.push("/");
     history.go(0);
+  };
+  const handleInfoModal = () => {
+    setShowSideDrawer(false);
+    setShowModal(true);
+    document.body.style.overflow = "hidden";
   };
 
   // const modalRef = useRef();
@@ -69,6 +76,7 @@ export const NavBar = () => {
 
   return (
     <>
+      {showModal ? <InfoModal setShowModal={setShowModal}></InfoModal> : null}
       <Fragment>
         {/* 내용물.. */}
         <div className={sidebarClasses}>
@@ -82,7 +90,7 @@ export const NavBar = () => {
                 {nickName}님
               </Link>
               <div className={styles.next}>
-              <NavbarNext className={styles.next}></NavbarNext>
+                <NavbarNext className={styles.next}></NavbarNext>
               </div>
               <br></br>
               <div className={styles.ment}>오늘도 힘차게 움직여요 :)</div>
@@ -97,7 +105,7 @@ export const NavBar = () => {
                 로그인하기
               </Link>
               <div className={styles.next}>
-              <Next className={styles.next}></Next>
+                <Next className={styles.next}></Next>
               </div>
               <br></br>
               <div className={styles.hello}>반가워요!</div>
@@ -135,13 +143,13 @@ export const NavBar = () => {
             <Link className={styles.link} style={{ color: "#C5C5C5" }} to="#">
               리포트🚧
             </Link>
-            <Link
+            <div
               className={styles.link}
               style={{ color: "#00BEE6" }}
-              to="/help"
+              onClick={handleInfoModal}
             >
               페이스버디란?
-            </Link>
+            </div>
           </div>
         </div>
         <ToggleSidebar />

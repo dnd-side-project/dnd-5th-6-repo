@@ -7,7 +7,7 @@ export const EggSecond = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0)">
+    <g clipPath="url(#clip0)">
       <path
         d="M82.5452 180.256L104.045 180.256L104.045 137.556L82.5452 137.556L82.5452 180.256Z"
         fill="white"
@@ -136,9 +136,9 @@ export const EggSecond = () => (
         fill="white"
         stroke="#474747"
         strokeWidth="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         opacity="0.4"
@@ -149,9 +149,9 @@ export const EggSecond = () => (
         d="M92.9873 53.5999C96.0801 53.5999 98.5873 51.0927 98.5873 47.9999C98.5873 44.9071 96.0801 42.3999 92.9873 42.3999C89.8945 42.3999 87.3873 44.9071 87.3873 47.9999C87.3873 51.0927 89.8945 53.5999 92.9873 53.5999Z"
         stroke="#474747"
         strokeWidth="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         opacity="0.4"
@@ -162,25 +162,25 @@ export const EggSecond = () => (
         d="M107.287 53.5999C110.38 53.5999 112.887 51.0927 112.887 47.9999C112.887 44.9071 110.38 42.3999 107.287 42.3999C104.194 42.3999 101.687 44.9071 101.687 47.9999C101.687 51.0927 104.194 53.5999 107.287 53.5999Z"
         stroke="#474747"
         strokeWidth="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M101.587 48H98.5873"
         stroke="#474747"
         strokeWidth="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M87.3873 47.9999L74.5873 42.3999"
         stroke="#474747"
         strokeWidth="2"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </g>
     <defs>
@@ -198,7 +198,7 @@ export const EggFirst = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0)">
+    <g clipPath="url(#clip0)">
       <path
         d="M110.5 139.7L127.2 135.8L135.5 171.3C126.3 173.5 117.1 167.7 114.9 158.5L113.8 153.7"
         fill="white"
@@ -309,7 +309,7 @@ export const EggFirst = () => (
         d="M93.4 51.9L98.4 48.2"
         stroke="#474747"
         strokeWidth="2"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -335,8 +335,8 @@ export const EggFirst = () => (
         stroke="#474747"
         strokeWidth="3"
         strokeMiterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M157.2 13.6C160.956 13.6 164 10.5555 164 6.8C164 3.04446 160.956 0 157.2 0C153.444 0 150.4 3.04446 150.4 6.8C150.4 10.5555 153.444 13.6 157.2 13.6Z"
