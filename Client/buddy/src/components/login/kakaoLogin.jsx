@@ -8,9 +8,7 @@ import IMG from "./로그인.png";
 
 const KakaoLoginImgURL = "./KakoLoginImg.svg";
 
-const KakaoLoginImg = styled.div`
-
-`;
+const KakaoLoginImg = styled.div``;
 
 const { Kakao } = window;
 
@@ -45,7 +43,7 @@ function KakaoLogin() {
           style={{ backgroundImage: `url(${KakaoLoginImgURL})` }}
           onClick={kakaoLoginClickHandler}
         ></KakaoLoginImg> */}
-         <img src={IMG} onClick={kakaoLoginClickHandler} />
+      <img src={IMG} onClick={kakaoLoginClickHandler} />
       {/* <button className={styles.kakao} onClick={kakaoLoginClickHandler}>
         카카오로 로그인
       </button> */}
