@@ -121,7 +121,7 @@ export const NavBar = () => {
             <Link
               className={styles.link}
               onClick={() => setShowSideDrawer(false)}
-              to="#"
+              to="/"
             >
               피드
             </Link>
