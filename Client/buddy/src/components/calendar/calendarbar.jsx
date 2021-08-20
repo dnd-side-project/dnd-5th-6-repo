@@ -6,6 +6,9 @@ import { Modal } from "components/modal/calendarModal";
 import classname from "classnames";
 import styled from "styled-components";
 import { DropDown } from "icons";
+// import GoBackBtn from "components/goBack/goBackBtn";
+import { GoBack } from "../../icons";
+import { useHistory } from "react-router";
 
 const DateButton = styled.button`
 font-family: pretendard;
@@ -35,6 +38,12 @@ function CalendarBar(props) {
     const [getMoment, setMoment] = useState(moment());
     const [showModal, setShowModal] = useState(false);
 
+    const history = useHistory();
+
+    const GoBackClick = () => {
+        history.go(-1);
+    };
+
 
     const dateState = props.dateState;
     const setDateState = props.setDateState;
@@ -47,7 +56,9 @@ function CalendarBar(props) {
     return (<> 
         <div className={styles.height} >
         
-        
+        <div className={styles.goback} onClick={GoBackClick}>
+        <GoBack></GoBack>
+        </div>
             {/* 캘린더 모달 */}
         {/* {showModal ? (
           <CalendarModal
