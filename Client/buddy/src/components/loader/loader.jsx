@@ -17,8 +17,11 @@ const Animation = keyframes`
 const Loader = styled.div`
   animation: ${Animation} 1s linear infinite;
   width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 150%);
   text-align: center;
-  vertical-align: middle;
 `;
 
 function Load() {
