@@ -20,6 +20,7 @@ function KakaoLogin() {
       if (token !== false) {
         localStorage.setItem("Token", JSON.parse(token.kakaoLogin).JWT);
         history.push("/");
+        history.go(0);
       }
     },
   });
