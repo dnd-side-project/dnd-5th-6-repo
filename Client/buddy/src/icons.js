@@ -1,4 +1,23 @@
 import React from "react";
+
+export const InfoClose = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M21.6998 6.2998L6.2998 21.6998M6.2998 6.2998L21.6998 21.6998"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
 export const EggSecond = () => (
   <svg
     width="192"
