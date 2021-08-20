@@ -23,10 +23,19 @@
   font-size: 1rem;
 }
 .record_button {
-  display: flex;
-  /* align-items: ; */
+  display: absolute;
+  /* text-align: right; */
+  /* align-items: right; */
   margin-left: auto;
-  margin-right: 0.8rem;
+  margin-right: 2.7rem;
+  /* right: 5%; */
+  /* position: absolute; */
+  /* align-items: ; */
+  /* margin-left: auto;
+  margin-right: 0.8rem; */
+  width: 2rem;
+  /* left: 72%; */
+  /* right: 10%; */
   height: 2rem;
 }
 .button {

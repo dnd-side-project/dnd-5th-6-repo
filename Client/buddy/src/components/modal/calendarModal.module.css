@@ -65,17 +65,19 @@
     
     .container {
       position: fixed;
-      top: 0;
+      /* position:absolute; */
+      top: 52px;
       left: 0;
       bottom: 0;
       right: 0;
       display: flex;
       align-items:flex-end;
-      justify-content: center;
+      /* justify-content: center; */
       background: rgba(0, 0, 0, 0.6);
+      border-radius: 0;
 
       /* 왜 이게 높은데 모달이 더 높은데 있을 까... */
-      z-index:5;
+      z-index:2;
     }
     
     .container .modal {
