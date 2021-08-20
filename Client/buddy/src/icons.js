@@ -11,9 +11,9 @@ export const InfoClose = () => (
     <path
       d="M21.6998 6.2998L6.2998 21.6998M6.2998 6.2998L21.6998 21.6998"
       stroke="white"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
