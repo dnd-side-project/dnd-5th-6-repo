@@ -1,10 +1,11 @@
 import React from "react";
 import ZoomSlider from "react-instagram-zoom-slider";
+import { EggFirst, EggSecond } from "./../../icons";
 
 function Intro() {
   const slides = [
-    <img src="..." alt="First slide" />,
-    <img src="..." alt="Second slide" />,
+    <EggFirst alt="First slide" />,
+    <EggSecond src="..." alt="Second slide" />,
   ];
 
   return <ZoomSlider slides={slides} />;
