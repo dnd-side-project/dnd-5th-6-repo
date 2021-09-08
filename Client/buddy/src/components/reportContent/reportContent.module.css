@@ -1,0 +1,90 @@
+.report{
+    display: block;
+    height: 4rem;
+    color: #474747;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 4rem;
+    margin-left: 0.8rem;
+}
+
+.onement{
+    display: block;
+    height: 1.5rem;
+    color: #A5A5A5;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5rem;
+    margin-left: 0.8rem;
+}
+
+.changement{
+    display: block;
+    height: 1.5rem;
+    color: #474747;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.5rem;
+    margin-left: 0.8rem;
+}
+
+.emptyimg{
+    margin-top: 1.1rem;
+    margin-left: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.savement1{
+    position: absolute;
+    display: block;
+    height: 1.1rem;
+    color: #A5A5A5;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5rem;
+    margin-left: 0.8rem;
+}
+
+.savement2{
+    position: absolute;
+    display: block;
+    height: 1.1rem;
+    color: #A5A5A5;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 1.5rem;
+    margin-left: 0.8rem;
+    margin-top:1rem;
+}
+
+.to_report_button{
+    display: absolute;
+    /* text-align: right; */
+    /* align-items: right; */
+    margin-left: auto;
+    margin-right: 5rem;
+    margin-top: 1.2rem;
+    /* right: 5%; */
+    /* position: absolute; */
+    /* align-items: ; */
+    /* margin-left: auto;
+    margin-right: 0.8rem; */
+    width: 2rem;
+    /* left: 72%; */
+    /* right: 10%; */
+    height: 2rem;
+}
+
+.made_report{
+
+}

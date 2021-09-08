@@ -1,7 +1,10 @@
 import { useState } from "react";
 // import styles from "./calender.module.css";
 import styles from "./calendar.module.css";
-import moment from "moment";
+// import moment from "moment";
+import moment, { tz } from "moment-timezone";
+import { useQuery, useLazyQuery } from "@apollo/client";
+import { GET_MYDATE } from "apollo/queries/mydata/mydate";
 
 // 달력 코드 참조 https://yeolceo.tistory.com/m/69?category=919628
 
@@ -51,6 +54,29 @@ const Calendar = (props) => {
     const setDateState = props.setDateState;
     const setShowModal = props.setShowModal;
 
+
+    // const mydate = props.mydate;
+    // const setMydate = props.setMydate;
+
+    // const mymydate = mydate;
+
+    const { data: dateList } = useQuery(GET_MYDATE);
+
+
+
+    const mymydate = dateList && dateList["getMyDate"];
+
+    console.log(mymydate.length);
+    for (let i = 0; i <= mymydate.length; i++) {
+      let seoul = moment(mymydate[i]).tz("Asia/Seoul");
+      console.log(seoul.format("YYYY.MM.DD"));
+    }
+  
+  
+     //버튼 선택
+  const [selectExe, setSelectExe] = useState(0);
+  const [click, setClick] = useState(0);
+
     const calendarArr=()=>{
 
         let result = [];
@@ -75,14 +101,49 @@ const Calendar = (props) => {
                         <span>{days.format('D')}</span>
                       </TodayButton>
                   );
+
                 }else if(days.format('MM') !== today.format('MM')){
+                  for (let i = 0; i <= mymydate.length; i++) {
+                    let seoul = new Array();
+                    seoul = moment(mymydate[i]).tz("Asia/Seoul");
+                    let arr = seoul.format("YYYY.MM.DD");
+                    // console.log(seoul.format("YYYY.MM.DD"));
+                    if (JSON.stringify(arr) === JSON.stringify(days.format("YYYY.MM.DD"))){
+                      return(
+                        <button key={index} className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </button>);
+                    }
+                  }
                   return(
                       <button key={index} className={styles.notdays}>
                         <span>{days.format('D')}</span>
                       </button>
+
+// {isLoggedIn ? (
+//   <Link to="/record/post">
+//     <RecordBtn></RecordBtn>
+//   </Link>
+// ) : (
+//   <div onClick={openModal}>
+//     <RecordBtn></RecordBtn>
+//   </div>
+// )}
                   );
                 }else{
                   
+                  for (let i = 0; i <= mymydate.length; i++) {
+                    let seoul = new Array();
+                    seoul = moment(mymydate[i]).tz("Asia/Seoul");
+                    let arr = seoul.format("YYYY.MM.DD");
+                    // console.log(seoul.format("YYYY.MM.DD"));
+                    if (JSON.stringify(arr) === JSON.stringify(days.format("YYYY.MM.DD"))){
+                      return(
+                        <button key={index} className={styles.reportdays}>
+                          <span>{days.format('D')}</span>
+                        </button>);
+                    }
+                  }
                   return(
                       <DayButton key={index} className={styles.days} onClick={OnLogDate}>
                         <span>{days.format('D')}</span>

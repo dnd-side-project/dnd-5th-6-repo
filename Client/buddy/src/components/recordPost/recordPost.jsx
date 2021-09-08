@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./recordPost.module.css";
 import styled from "styled-components";
 import { GET_EXERCISES } from "./../../apollo/queries/exercises/getExercises";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation, useLazyQuery} from "@apollo/client";
 import { Weathers } from "./../../weathers";
 import Toggle from "./../toggle/toggle";
 import { ADD_CARD } from "../../apollo/queries/cardItem/addCard";
+import { GET_MYDATE } from "apollo/queries/mydata/mydate";
 import { useHistory } from "react-router";
 import { OneButtonModal } from "./../modal/oneButtonModal";
 import CalendarBar from "components/calendar/calendarbar";
@@ -41,12 +42,21 @@ function RecordPost() {
  
 
 
+
   const [todayDate, setTodayDate] = useState(0);
   const [getMoment, setMoment] = useState(moment());
   const today = getMoment;
   const [dateState, setDateState] = useState(today.format('YYYY.MM.DD'));
 
   const textRef = useRef();
+////////////////////////////////////////////////////////////
+
+  // const [mydate, setMydate] = useState(0);
+  // const { data: dateList } = useQuery(GET_MYDATE);
+  // const mymydate = dateList && dateList["getMyDate"];
+  // setMydate(mymydate);
+
+/////////////////////////////////////////////////////////////
 
   const clearState = () => {
     setSelectExe(0);

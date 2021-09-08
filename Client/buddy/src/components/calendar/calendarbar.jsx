@@ -47,6 +47,9 @@ function CalendarBar(props) {
 
     const dateState = props.dateState;
     const setDateState = props.setDateState;
+    // const mydate = props.mydate;
+    // const setMydate = props.setMydate;
+    
 
     const openModal = () => {
         setShowModal(true);

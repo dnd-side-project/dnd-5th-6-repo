@@ -69,3 +69,18 @@
     font-family: pretendard;
     color: #474747;
 }
+
+.reportdays {
+    
+    font-family: pretendard;
+    height: 2.2rem;
+    width: 10%;
+    color:#00BEE6;
+    border: none;
+    border-radius: 100px;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom:1%;
+    
+    background-color: white;
+}

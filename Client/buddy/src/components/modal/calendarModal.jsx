@@ -15,9 +15,16 @@ const Close = styled.div`
 `;
 
 export const Modal = (props) => {
+  // const dateState = props.dateState;
+  // const setDateState = props.setDateState;
+  const setShowModal = props.setShowModal;
+
+
   const dateState = props.dateState;
   const setDateState = props.setDateState;
-  const setShowModal = props.setShowModal;
+  // const mydate = props.mydate;
+  // const setMydate = props.setMydate;
+  
 
   const modalRef = useRef();
   const closeModal = (e) => {

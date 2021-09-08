@@ -140,7 +140,7 @@ export const NavBar = () => {
             >
               기록
             </Link>
-            <Link className={styles.link} style={{ color: "#C5C5C5" }} to="#">
+            <Link className={styles.link} style={{ color: "#C5C5C5" }} to="/report">
               리포트🚧
             </Link>
             <div
